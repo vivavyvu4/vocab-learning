@@ -1,4 +1,4 @@
-/*
+/* Episode 1-100
 [00:00:12] (Stars Ocean)
 [00:00:24] (Han Li)
 [00:00:26] Hunt begins.
