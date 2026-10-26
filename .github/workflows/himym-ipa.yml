@@ -1,0 +1,36 @@
+name: Generate HIMYM IPA subtitles
+
+on:
+  push:
+    paths:
+      - "himymt/scripts/generate_ipa.py"
+      - ".github/workflows/himym-ipa.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Install eSpeak
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y espeak
+      - name: Generate IPA subtitle file
+        run: python3 himymt/scripts/generate_ipa.py
+      - name: Commit generated subtitles
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "himymt/s01/How I Met Your Mother - 1x01 - Pilot.ipa.en.srt"
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Add IPA subtitles for HIMYM S01E01"
+            git push origin main
+          fi
