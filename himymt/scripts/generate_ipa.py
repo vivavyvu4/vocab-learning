@@ -17,16 +17,46 @@ def read_subtitles(path: Path) -> str:
     raise UnicodeError(f"Could not decode subtitle file: {path}")
 
 
+def normalize_ipa(ipa: str) -> str:
+    """Make eSpeak IPA easier to read while retaining its approximate US pronunciation."""
+    # Remove invisible joiners that eSpeak can emit between IPA symbols.
+    ipa = re.sub(r"[\u200b-\u200f\ufeff]", "", ipa)
+    # Use a familiar Latin r for the American English approximant /ɹ/.
+    ipa = ipa.replace("ɹ", "r")
+
+    # eSpeak places stress immediately before the vowel nucleus. Move the
+    # marker left over the preceding consonant cluster so it appears at the
+    # beginning of the stressed syllable (e.g. mˈʌðɚ -> ˈmʌðɚ).
+    vowels = set("i y ɨ ʉ ɯ u ɪ ʏ ʊ e ø ɘ ɵ ɤ o ə ɛ œ ɜ ɞ ʌ ɔ æ ɐ a ɶ ɑ ɒ".split())
+    for marker in ("ˈ", "ˌ"):
+        start = 0
+        while True:
+            pos = ipa.find(marker, start)
+            if pos < 0:
+                break
+            cluster_start = pos
+            while cluster_start > 0:
+                char = ipa[cluster_start - 1]
+                if char.isspace() or char in vowels or char in "ˈˌ/.,!?;:()[]":
+                    break
+                cluster_start -= 1
+            if cluster_start < pos:
+                ipa = ipa[:cluster_start] + marker + ipa[cluster_start:pos] + ipa[pos + 1:]
+                start = cluster_start + len(marker) + (pos - cluster_start)
+            else:
+                start = pos + 1
+    return " ".join(ipa.split()).strip()
+
+
 def to_ipa(line: str) -> str:
-    """Return a readable, approximate General American IPA transcription."""
+    """Return readable, approximate General American IPA transcription."""
     result = subprocess.run(
         ["espeak", "-q", "-v", "en-us", "--ipa=3", line],
         check=True,
         capture_output=True,
         text=True,
     )
-    # eSpeak may include line breaks or unusual spacing in its output.
-    ipa = " ".join(result.stdout.split()).strip()
+    ipa = normalize_ipa(result.stdout)
     if not ipa:
         return ""
     return f"/{ipa}/"
