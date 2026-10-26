@@ -5,6 +5,8 @@ on:
     paths:
       - "himymt/scripts/generate_ipa.py"
       - ".github/workflows/himym-ipa.yml"
+      - "himymt/**/*.en.srt"
+      - "!himymt/**/*.ipa.en.srt"
   workflow_dispatch:
 
 permissions:
@@ -21,16 +23,16 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y espeak
-      - name: Generate IPA subtitle file
+      - name: Generate IPA subtitle files
         run: python3 himymt/scripts/generate_ipa.py
       - name: Commit generated subtitles
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "himymt/s01/How I Met Your Mother - 1x01 - Pilot.ipa.en.srt"
+          git add 'himymt/**/*.ipa.en.srt'
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "Add IPA subtitles for HIMYM S01E01"
+            git commit -m "Generate American IPA subtitles for HIMYM"
             git push origin main
           fi
