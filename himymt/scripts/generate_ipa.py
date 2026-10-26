@@ -14,7 +14,7 @@ def to_ipa(line: str) -> str:
     )
     return result.stdout.strip()
 
-source = SOURCE.read_text(encoding="utf-8-sig")
+source = SOURCE.read_bytes().decode("cp1252")
 blocks = re.split(r"\n\s*\n", source.strip())
 output_blocks = []
 
