@@ -60,4 +60,4 @@ Supported tags:
 
 In the player, choose a separate browser voice for each supported character. A blank character selection uses the default English voice. Mood changes are approximations using browser TTS rate and pitch, not the actors' original performances.
 
-**Speaker labels are a first-pass annotation, not a verified script transcript.** Clear lines in the early episode are tagged; uncertain lines remain `UNKNOWN` rather than being confidently assigned to the wrong character. The original English SRT and IPA SRT remain unchanged. If the annotated file cannot load, the player falls back to the original English SRT.
+**Speaker labels are a first-pass annotation, not a verified script transcript.** Most dialogue cues across EP1 now have a first-pass speaker label; 67 uncertain or mixed-speaker cues remain `UNKNOWN` rather than being confidently assigned to the wrong character. The original English SRT and IPA SRT remain unchanged. If the annotated file cannot load, the player falls back to the original English SRT.
