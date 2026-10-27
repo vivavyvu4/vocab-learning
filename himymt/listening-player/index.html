@@ -34,6 +34,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
       <div class="timing"><span id="elapsed">Cue 1</span><span id="duration">-- subtitles</span></div>
       <div class="progress-line" role="progressbar" aria-label="Episode progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress"><div class="progress-fill" id="progressFill"></div></div>
       <div class="transport">
+        <button id="floatBtn" title="Open an always-on-top floating subtitle window">▣ Floating mini-player</button>
         <button id="prevBtn" title="Previous subtitle" aria-label="Previous subtitle">⏮</button>
         <button id="restartBtn" title="Replay current subtitle" aria-label="Replay current subtitle">↺</button>
         <button class="primary" id="playBtn" disabled>▶ Play episode</button>
@@ -85,14 +86,14 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     status:$("loadStatus"), sentence:$("sentence"), ipa:$("ipa"), tip:$("tip"), cue:$("cueLabel"),
     voiceCount:$("voiceCount"), refreshVoices:$("refreshVoicesBtn"), testVoice:$("testVoiceBtn"), voiceInventory:$("voiceInventory"),
     elapsed:$("elapsed"), duration:$("duration"), fill:$("progressFill"), progress:$("progress"),
-    mode:$("modeLabel"), play:$("playBtn"), stop:$("stopBtn"), prev:$("prevBtn"), next:$("nextBtn"),
+    mode:$("modeLabel"), play:$("playBtn"), stop:$("stopBtn"), prev:$("prevBtn"), next:$("nextBtn"), float:$("floatBtn"),
     restart:$("restartBtn"), voice:$("voiceSelect"), speed:$("speedSelect"), gap:$("gapSelect"),
     speaker:$("speakerLabel"), characterVoices:$("characterVoices"), roleVoices:{},
     showEnglish:$("showEnglish"), showIpa:$("showIpa"), autoNext:$("autoNext"), loop:$("loopEpisode"),
     count:$("cueCount"), srtFile:$("srtFile"), ipaFile:$("ipaFile")
   };
   let cues = [], current = 0, speaking = false, paused = false, utterance = null, voices = [], runToken = 0;
-  let gapTimer = null, completed = false;
+  let gapTimer = null, completed = false, pipWindow = null;
 
   function timeMs(value) {
     const m = value.trim().match(/^(\d{2}):(\d{2}):(\d{2})[,.](\d{1,3})$/);
@@ -240,7 +241,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     renderCharacterVoiceSettings();
   }
   function render() {
-    if (!cues.length) return;
+    if (!cues.length) { syncFloatingPlayer(); return; }
     const cue = cues[current];
     ui.sentence.textContent = ui.showEnglish.checked ? cue.text : "English subtitle hidden";
     ui.speaker.textContent = (cue.speaker || "UNKNOWN").replace(/_/g," ")+" · "+(cue.mood || "NEUTRAL");
@@ -254,8 +255,51 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     ui.count.textContent = cues.length+" subtitle cues loaded";
     ui.prev.disabled=current===0;
     ui.next.disabled=current>=cues.length-1 && !ui.loop.checked;
+    syncFloatingPlayer();
   }
-  function updateState(label) { ui.mode.textContent=label; ui.play.textContent=paused?"▶ Resume":speaking?"Ⅱ Pause":"▶ Play episode"; ui.stop.disabled=!speaking&&!paused; }
+
+  function syncFloatingPlayer() {
+    if (!pipWindow || pipWindow.closed) { pipWindow=null; return; }
+    const doc=pipWindow.document;
+    const cue=cues[current];
+    const english=doc.getElementById("floatEnglish");
+    const ipa=doc.getElementById("floatIpa");
+    const speaker=doc.getElementById("floatSpeaker");
+    const progress=doc.getElementById("floatProgress");
+    const playButton=doc.getElementById("floatPlay");
+    if (!english || !ipa || !speaker || !progress || !playButton) return;
+    english.textContent=cue ? (ui.showEnglish.checked?cue.text:"English subtitle hidden") : "Load subtitles in the main player";
+    ipa.textContent=cue && ui.showIpa.checked ? (cue.ipa || "IPA not available for this subtitle") : "";
+    ipa.style.display=ui.showIpa.checked?"block":"none";
+    speaker.textContent=cue ? ((cue.speaker||"UNKNOWN").replace(/_/g," ")+" · "+(cue.mood||"NEUTRAL")+" · "+(current+1)+"/"+cues.length) : "HIMYM · EP1";
+    progress.style.width=cues.length>1?(current/(cues.length-1)*100)+"%":"0%";
+    playButton.textContent=paused?"▶ Resume":speaking?"Ⅱ Pause":"▶ Play";
+  }
+  async function openFloatingPlayer() {
+    if (!("documentPictureInPicture" in window)) {
+      ui.status.textContent="Floating mini-player needs a recent Chrome or Edge browser.";
+      return;
+    }
+    if (pipWindow && !pipWindow.closed) { pipWindow.focus(); return; }
+    try {
+      pipWindow=await documentPictureInPicture.requestWindow({width:420,height:290});
+      const doc=pipWindow.document;
+      doc.head.innerHTML='<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HIMYM Mini Player</title><style>*{box-sizing:border-box}body{margin:0;padding:16px;background:#0b1020;color:#edf2ff;font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}header{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#9eabc4;font-size:11px;letter-spacing:.08em;text-transform:uppercase}.pin{color:#8bb7ff}#floatSpeaker{margin-top:12px;color:#8bb7ff;font-size:11px;font-weight:700}#floatEnglish{font-size:clamp(20px,5vw,28px);font-weight:750;line-height:1.25;overflow-wrap:anywhere;margin-top:8px}#floatIpa{color:#c4b5fd;margin-top:10px;overflow-wrap:anywhere;font-size:14px}.bar{height:3px;background:#28344a;margin-top:12px;border-radius:8px;overflow:hidden}.bar span{display:block;height:100%;width:0;background:#8bb7ff}nav{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px}button{font:inherit;color:#edf2ff;background:#1b263b;border:1px solid #2a3650;border-radius:10px;padding:8px 12px;cursor:pointer}button:hover{border-color:#8bb7ff}button.primary{background:#8bb7ff;color:#0b1020;font-weight:800;min-width:92px}footer{display:flex;justify-content:space-between;gap:8px;margin-top:10px;color:#9eabc4;font-size:10px}</style>';
+      doc.body.innerHTML='<header><span>HIMYM · Listening practice</span><span class="pin">● Always on top</span></header><div id="floatSpeaker">EP1 · Pilot</div><div id="floatEnglish">Getting subtitles ready…</div><div id="floatIpa"></div><div class="bar"><span id="floatProgress"></span></div><nav><button id="floatPrev" title="Previous subtitle">⏮</button><button id="floatPlay" class="primary">▶ Play</button><button id="floatStop" title="Stop">■</button><button id="floatNext" title="Next subtitle">⏭</button></nav><footer><span>Controls work while you use other apps</span><span>Close window to hide</span></footer>';
+      doc.getElementById("floatPrev").addEventListener("click",()=>jump(current-1));
+      doc.getElementById("floatNext").addEventListener("click",()=>jump(current+1));
+      doc.getElementById("floatPlay").addEventListener("click",play);
+      doc.getElementById("floatStop").addEventListener("click",stop);
+      pipWindow.addEventListener("pagehide",()=>{pipWindow=null;});
+      syncFloatingPlayer();
+      ui.status.textContent="Floating mini-player opened. It stays above other windows.";
+    } catch(err) {
+      pipWindow=null;
+      ui.status.textContent="Could not open floating window: "+(err.message||err);
+    }
+  }
+
+  function updateState(label) { ui.mode.textContent=label; ui.play.textContent=paused?"▶ Resume":speaking?"Ⅱ Pause":"▶ Play episode"; ui.stop.disabled=!speaking&&!paused; syncFloatingPlayer(); }
   function cancelSpeech() {
     runToken++; clearTimeout(gapTimer); gapTimer=null;
     if ("speechSynthesis" in window) speechSynthesis.cancel();
@@ -377,6 +421,8 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
   ui.srtFile.addEventListener("change",async()=>{if(ui.srtFile.files[0]){loadedSrt=await readFile(ui.srtFile.files[0]);if(loadedIpa)loadSources(loadedSrt,loadedIpa);else{const parsed=parseSrt(loadedSrt);cues=parsed;current=0;ui.play.disabled=!cues.length;render();ui.status.textContent="English subtitles loaded; load IPA for pronunciation.";}}});
   ui.ipaFile.addEventListener("change",async()=>{if(ui.ipaFile.files[0]){loadedIpa=await readFile(ui.ipaFile.files[0]);if(loadedSrt)loadSources(loadedSrt,loadedIpa);else ui.status.textContent="IPA loaded; choose the English SRT too."; }});
   ui.play.addEventListener("click",play);
+  ui.float.addEventListener("click",openFloatingPlayer);
+  if (!("documentPictureInPicture" in window)) { ui.float.title="Floating mini-player requires a recent Chrome or Edge browser"; }
   ui.stop.addEventListener("click",stop);
   ui.prev.addEventListener("click",()=>jump(current-1));
   ui.next.addEventListener("click",()=>jump(current+1));
