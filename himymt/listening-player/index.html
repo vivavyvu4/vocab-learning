@@ -112,8 +112,8 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
       const meta = body.join(" ");
       const speaker = (meta.match(/\[SPEAKER:\s*([A-Z_]+)\]/i)||[])[1]?.toUpperCase() || "UNKNOWN";
       const mood = (meta.match(/\[MOOD:\s*([A-Z_]+)\]/i)||[])[1]?.toUpperCase() || "NEUTRAL";
-      const speech = body.filter(line=>!(/\[SPEAKER:|\[MOOD:/i.test(line))).join(" ");
-      const text = cleanText(speech.replace(/\[EMPH:\s*([^\]]+)\]/gi,"$1").replace(/\[PAUSE:\s*\d+\]/gi," "));
+      const speech = cleanText(body.filter(line=>!(/\[SPEAKER:|\[MOOD:/i.test(line))).join(" ").replace(/\[EMPH:\s*([^\]]+)\]/gi,"$1"));
+      const text = cleanText(speech.replace(/\[PAUSE:\s*\d+\]/gi," "));
       if (!text || end <= start) return null;
       return {start,end,text,speech,speaker,mood,ipa:""};
     }).filter(Boolean);
