@@ -30,7 +30,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
         <div class="ipa" id="ipa"></div>
         <div class="translation-note" id="tip">Press Play to hear the English subtitles read aloud by your browser.</div>
       </div>
-      <div class="timing"><span id="elapsed">00:00</span><span id="duration">--:--</span></div>
+      <div class="timing"><span id="elapsed">Cue 1</span><span id="duration">-- subtitles</span></div>
       <div class="progress-line" role="progressbar" aria-label="Episode progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress"><div class="progress-fill" id="progressFill"></div></div>
       <div class="transport">
         <button id="prevBtn" title="Previous subtitle" aria-label="Previous subtitle">⏮</button>
@@ -147,9 +147,9 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     ui.ipa.textContent = ui.showIpa.checked ? (cue.ipa || "IPA is not available for this subtitle.") : "";
     ui.ipa.classList.toggle("hidden",!ui.showIpa.checked);
     ui.cue.textContent = "SUBTITLE "+(current+1)+" / "+cues.length;
-    ui.elapsed.textContent = fmt(cue.start);
-    ui.duration.textContent = fmt(episodeDuration());
-    const pct = episodeDuration() ? cue.start/episodeDuration()*100 : 0;
+    ui.elapsed.textContent = "Cue "+(current+1);
+    ui.duration.textContent = cues.length+" subtitles";
+    const pct = cues.length > 1 ? current/(cues.length-1)*100 : 0;
     ui.fill.style.width=pct+"%"; ui.progress.setAttribute("aria-valuenow",String(Math.round(pct)));
     ui.count.textContent = cues.length+" subtitle cues loaded";
     ui.prev.disabled=current===0;
@@ -214,7 +214,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     current=0;completed=false;
     ui.play.disabled=!cues.length;ui.status.textContent=cues.length?"EP1 subtitles ready":"Could not find valid SRT cues";
     if(!cues.length){ui.sentence.textContent="Could not load subtitles. Choose the SRT file below.";return;}
-    ui.duration.textContent=fmt(episodeDuration());render();updateState("Ready to listen");
+    ui.duration.textContent=cues.length+" subtitles";render();updateState("Ready to listen");
   }
   async function autoLoad() {
     try {
