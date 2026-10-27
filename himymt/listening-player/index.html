@@ -26,6 +26,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
       </div>
       <div class="sentence-area" aria-live="polite">
         <div class="eyebrow" id="cueLabel">SUBTITLE 0 / 0</div>
+        <div class="pill" id="speakerLabel" style="align-self:flex-start;margin-top:8px">UNKNOWN · NEUTRAL</div>
         <div class="sentence" id="sentence">Getting the episode ready…</div>
         <div class="ipa" id="ipa"></div>
         <div class="translation-note" id="tip">Press Play to hear the English subtitles read aloud by your browser.</div>
@@ -47,6 +48,15 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
         <div class="field"><label for="voiceSelect">English voice</label><select id="voiceSelect"><option>Loading voices…</option></select></div>
         <div class="field"><label for="speedSelect">Speaking speed</label><select id="speedSelect"><option value=".75">0.75× · Slow</option><option value=".9" selected>0.9× · Comfortable</option><option value="1">1× · Normal</option><option value="1.1">1.1× · Faster</option></select></div>
         <div class="field"><label for="gapSelect">Pause between subtitles</label><select id="gapSelect"><option value="0">No extra pause</option><option value="350" selected>Short · 0.35 sec</option><option value="800">Longer · 0.8 sec</option></select></div>
+        <div class="hint"><strong>Expressive reading:</strong> annotated subtitles can add small pauses, word emphasis, and mood-based speed and pitch changes.</div>
+        <h2 style="margin-top:18px">Character voices</h2>
+        <div class="field"><label for="voiceFutureTed">Future Ted · narrator</label><select id="voiceFutureTed"></select></div>
+        <div class="field"><label for="voiceTed">Ted</label><select id="voiceTed"></select></div>
+        <div class="field"><label for="voiceBarney">Barney</label><select id="voiceBarney"></select></div>
+        <div class="field"><label for="voiceRobin">Robin</label><select id="voiceRobin"></select></div>
+        <div class="field"><label for="voiceMarshall">Marshall</label><select id="voiceMarshall"></select></div>
+        <div class="field"><label for="voiceLily">Lily</label><select id="voiceLily"></select></div>
+        <div class="field"><label for="voiceOther">Kids / other characters</label><select id="voiceOther"></select></div>
       </section>
       <section class="panel">
         <h2>What you see</h2>
@@ -69,7 +79,8 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
 </main>
 <script>
 (() => {
-  const SRT_URL = "https://raw.githubusercontent.com/vivavyvu4/vocab-learning/main/himymt/s01/How%20I%20Met%20Your%20Mother%20-%201x01%20-%20Pilot.en.srt";
+  const SRT_URL = "https://raw.githubusercontent.com/vivavyvu4/vocab-learning/main/himymt/s01/How%20I%20Met%20Your%20Mother%20-%201x01%20-%20Pilot.speakers.srt";
+  const PLAIN_SRT_URL = "https://raw.githubusercontent.com/vivavyvu4/vocab-learning/main/himymt/s01/How%20I%20Met%20Your%20Mother%20-%201x01%20-%20Pilot.en.srt";
   const IPA_URL = "https://raw.githubusercontent.com/vivavyvu4/vocab-learning/main/himymt/s01/How%20I%20Met%20Your%20Mother%20-%201x01%20-%20Pilot.ipa.en.srt";
   const $ = id => document.getElementById(id);
   const ui = {
@@ -77,6 +88,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     elapsed:$("elapsed"), duration:$("duration"), fill:$("progressFill"), progress:$("progress"),
     mode:$("modeLabel"), play:$("playBtn"), stop:$("stopBtn"), prev:$("prevBtn"), next:$("nextBtn"),
     restart:$("restartBtn"), voice:$("voiceSelect"), speed:$("speedSelect"), gap:$("gapSelect"),
+    speaker:$("speakerLabel"), roleVoices:{FUTURE_TED:$("voiceFutureTed"),TED:$("voiceTed"),BARNEY:$("voiceBarney"),ROBIN:$("voiceRobin"),MARSHALL:$("voiceMarshall"),LILY:$("voiceLily"),OTHER:$("voiceOther")},
     showEnglish:$("showEnglish"), showIpa:$("showIpa"), autoNext:$("autoNext"), loop:$("loopEpisode"),
     count:$("cueCount"), srtFile:$("srtFile"), ipaFile:$("ipaFile")
   };
@@ -101,9 +113,14 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
       const parts = lines[timeIndex].split("-->");
       if (parts.length !== 2) return null;
       const start = timeMs(parts[0]), end = timeMs(parts[1].trim().split(" ")[0]);
-      const text = cleanText(lines.slice(timeIndex+1).filter(line=>!/^\d+$/.test(line)).join(" "));
+      const body = lines.slice(timeIndex+1).filter(line=>!/^\d+$/.test(line));
+      const meta = body.join(" ");
+      const speaker = (meta.match(/\[SPEAKER:\s*([A-Z_]+)\]/i)||[])[1]?.toUpperCase() || "UNKNOWN";
+      const mood = (meta.match(/\[MOOD:\s*([A-Z_]+)\]/i)||[])[1]?.toUpperCase() || "NEUTRAL";
+      const speech = body.filter(line=>!(/\[SPEAKER:|\[MOOD:/i.test(line))).join(" ");
+      const text = cleanText(speech.replace(/\[EMPH:\s*([^\]]+)\]/gi,"$1").replace(/\[PAUSE:\s*\d+\]/gi," "));
       if (!text || end <= start) return null;
-      return {start,end,text,ipa:""};
+      return {start,end,text,speech,speaker,mood,ipa:""};
     }).filter(Boolean);
   }
   function parseIpa(source) {
@@ -128,22 +145,28 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
   function refreshVoiceList() {
     if (!("speechSynthesis" in window)) return;
     voices = speechSynthesis.getVoices();
-    const previous = ui.voice.value;
-    ui.voice.innerHTML = "";
+    const allSelects = [ui.voice,...Object.values(ui.roleVoices)];
+    const previous = new Map(allSelects.map(select=>[select.id,select.value]));
     const english = voices.filter(v=>/^en(-|_)/i.test(v.lang));
     const sorted = [...english.filter(v=>/en-US|en_US/i.test(v.lang)),...english.filter(v=>!/en-US|en_US/i.test(v.lang)),...voices.filter(v=>!english.includes(v))];
-    if (!sorted.length) { ui.voice.add(new Option("Default browser voice","")); return; }
-    sorted.forEach(v=>ui.voice.add(new Option(v.name+" · "+v.lang,v.name)));
-    if (sorted.some(v=>v.name===previous)) ui.voice.value=previous;
-    else {
-      const us = sorted.find(v=>/en-US|en_US/i.test(v.lang));
-      if (us) ui.voice.value=us.name;
-    }
+    allSelects.forEach((select,index)=>{
+      select.innerHTML = "";
+      if(index>0) select.add(new Option("Use default voice",""));
+      if(!sorted.length) select.add(new Option("Default browser voice",""));
+      sorted.forEach(v=>select.add(new Option(v.name+" · "+v.lang,v.name)));
+      const old = previous.get(select.id);
+      if(old && [...select.options].some(option=>option.value===old)) select.value=old;
+      else if(index===0) {
+        const us=sorted.find(v=>/en-US|en_US/i.test(v.lang));
+        if(us) select.value=us.name;
+      }
+    });
   }
   function render() {
     if (!cues.length) return;
     const cue = cues[current];
     ui.sentence.textContent = ui.showEnglish.checked ? cue.text : "English subtitle hidden";
+    ui.speaker.textContent = (cue.speaker || "UNKNOWN").replace(/_/g," ")+" · "+(cue.mood || "NEUTRAL");
     ui.ipa.textContent = ui.showIpa.checked ? (cue.ipa || "IPA is not available for this subtitle.") : "";
     ui.ipa.classList.toggle("hidden",!ui.showIpa.checked);
     ui.cue.textContent = "SUBTITLE "+(current+1)+" / "+cues.length;
@@ -161,10 +184,27 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     if ("speechSynthesis" in window) speechSynthesis.cancel();
     speaking=false; paused=false; utterance=null;
   }
-  function chooseVoice(u) {
-    const selected=voices.find(v=>v.name===ui.voice.value);
+  function chooseVoice(u,cue) {
+    const role = ["FUTURE_TED","TED","BARNEY","ROBIN","MARSHALL","LILY"].includes(cue.speaker) ? cue.speaker : "OTHER";
+    const selectedName = ui.roleVoices[role]?.value || ui.voice.value;
+    const selected=voices.find(v=>v.name===selectedName);
     if(selected) u.voice=selected;
     u.lang=selected?.lang || "en-US";
+  }
+  function speechParts(source) {
+    const parts=[];
+    const pattern=/\[(?:EMPH:\s*([^\]]+)|PAUSE:\s*(\d+))\]/gi;
+    let cursor=0,match;
+    while((match=pattern.exec(source))!==null){
+      const before=source.slice(cursor,match.index).trim();
+      if(before) parts.push({text:before,emphasis:false});
+      if(match[1]) parts.push({text:match[1].trim(),emphasis:true});
+      else parts.push({pause:Number(match[2])||0});
+      cursor=pattern.lastIndex;
+    }
+    const tail=source.slice(cursor).trim();
+    if(tail) parts.push({text:tail,emphasis:false});
+    return parts.length?parts:[{text:source,emphasis:false}];
   }
   function speakCurrent(token) {
     if(token!==runToken || !cues.length) return;
@@ -174,10 +214,17 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     }
     render();
     if(!("speechSynthesis" in window)){ui.status.textContent="This browser does not support text-to-speech.";return;}
-    const u=new SpeechSynthesisUtterance(cues[current].text);
-    utterance=u; chooseVoice(u); u.rate=Number(ui.speed.value)||.9; u.pitch=1;
-    u.onstart=()=>{if(token!==runToken)return;speaking=true;paused=false;updateState("Reading");ui.status.textContent="Reading subtitle "+(current+1)+" of "+cues.length;};
-    u.onend=()=>{
+    const cue=cues[current];
+    const parts=speechParts(cue.speech || cue.text);
+    const mood=(cue.mood||"NEUTRAL").toUpperCase();
+    const baseRate=Number(ui.speed.value)||.9;
+    const moodStyle={
+      STORYTELLING:{rate:.93,pitch:.94},EXCITED:{rate:1.08,pitch:1.12},
+      QUESTION:{rate:1,pitch:1.07},THOUGHTFUL:{rate:.91,pitch:.96},
+      WHISPER:{rate:.86,pitch:.78},SARCASTIC:{rate:1.02,pitch:1.12},NEUTRAL:{rate:1,pitch:1}
+    }[mood] || {rate:1,pitch:1};
+    let partIndex=0;
+    const finishCue=()=>{
       if(token!==runToken)return;
       utterance=null;
       if(!ui.autoNext.checked){speaking=false;paused=false;updateState("Subtitle finished");return;}
@@ -186,11 +233,25 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
       if(delay>0){speaking=true;updateState("Next subtitle soon");gapTimer=setTimeout(()=>speakCurrent(token),delay);}
       else speakCurrent(token);
     };
-    u.onerror=(event)=>{
-      if(token!==runToken || event.error==="canceled" || event.error==="interrupted")return;
-      speaking=false;paused=false;updateState("Voice error");ui.status.textContent="Text-to-speech error: "+event.error+". Try another voice.";
+    const speakPart=()=>{
+      if(token!==runToken)return;
+      if(partIndex>=parts.length){finishCue();return;}
+      const part=parts[partIndex++];
+      if(part.pause){gapTimer=setTimeout(speakPart,part.pause);return;}
+      if(!part.text){speakPart();return;}
+      const u=new SpeechSynthesisUtterance(part.text);
+      utterance=u;chooseVoice(u,cue);
+      u.rate=Math.max(.55,Math.min(1.8,baseRate*moodStyle.rate*(part.emphasis?.94:1)));
+      u.pitch=Math.max(.5,Math.min(2,moodStyle.pitch*(part.emphasis?1.12:1)));
+      u.onstart=()=>{if(token!==runToken)return;speaking=true;paused=false;updateState("Reading");ui.status.textContent="Reading subtitle "+(current+1)+" of "+cues.length;};
+      u.onend=()=>{if(token===runToken)speakPart();};
+      u.onerror=(event)=>{
+        if(token!==runToken || event.error==="canceled" || event.error==="interrupted")return;
+        speaking=false;paused=false;updateState("Voice error");ui.status.textContent="Text-to-speech error: "+event.error+". Try another voice.";
+      };
+      speechSynthesis.speak(u);
     };
-    speechSynthesis.speak(u);
+    speakPart();
   }
   function play() {
     if(!cues.length)return;
@@ -218,7 +279,14 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
   }
   async function autoLoad() {
     try {
-      const [srtResponse,ipaResponse]=await Promise.all([fetch(SRT_URL),fetch(IPA_URL)]);
+      let srtResponse;
+      try {
+        srtResponse=await fetch(SRT_URL);
+        if(!srtResponse.ok) throw new Error("Annotated subtitles unavailable");
+      } catch (_) {
+        srtResponse=await fetch(PLAIN_SRT_URL);
+      }
+      const ipaResponse=await fetch(IPA_URL);
       if(!srtResponse.ok||!ipaResponse.ok)throw new Error("Subtitle files could not be fetched");
       loadSources(await srtResponse.text(),await ipaResponse.text());
     } catch(err) {
@@ -240,6 +308,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
   ui.showEnglish.addEventListener("change",render);ui.showIpa.addEventListener("change",render);
   ui.speed.addEventListener("change",()=>{if(speaking||paused)jump(current,true);});
   ui.voice.addEventListener("change",()=>{if(speaking||paused)jump(current,true);});
+  Object.values(ui.roleVoices).forEach(select=>select.addEventListener("change",()=>{if(speaking||paused)jump(current,true);}));
   ui.autoNext.addEventListener("change",()=>{});
   ui.loop.addEventListener("change",()=>{});
   document.addEventListener("keydown",event=>{
