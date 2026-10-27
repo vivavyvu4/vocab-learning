@@ -22,7 +22,7 @@ Nếu trình duyệt không tải tự động được:
 
 ## Lưu ý về âm thanh
 
-Phiên bản này dùng giọng đọc tổng hợp (TTS) có sẵn trên máy/trình duyệt, **không phải âm thanh gốc của diễn viên trong HIMYM**. Chưa cần video hoặc audio file để sử dụng. Chất lượng giọng và các lựa chọn English (US) tùy thuộc hệ điều hành và browser.
+Phiên bản này dùng giọng đọc tổng hợp (TTS) có sẵn trên máy/trình duyệt, **không phải âm thanh gốc của diễn viên trong HIMYM**. Chưa cần video hoặc audio file để sử dụng. Chất lượng giọng và các lựa chọn English (US) tùy thuộc hệ điều hành và browser. Player hiển thị tổng số voice mà browser cung cấp, số voice tiếng Anh, danh sách đầy đủ theo ngôn ngữ và nút nghe thử từng voice. Nhấn **Refresh voice list** nếu danh sách chưa tải xong.
 
 Nội dung phụ đề và IPA không được nhúng lại vào player; player tải các file đã có trong repo. IPA được ghép theo timestamp của từng cue. File IPA hiện tại là phiên âm tự động nên có thể có chỗ chưa chính xác hoàn toàn.
 
@@ -55,9 +55,18 @@ Supported tags:
 
 - `[SPEAKER: TED]`, `[SPEAKER: BARNEY]`, `[SPEAKER: ROBIN]`, `[SPEAKER: MARSHALL]`, `[SPEAKER: LILY]`, `[SPEAKER: FUTURE_TED]` and other labels.
 - `[MOOD: STORYTELLING]`, `[MOOD: EXCITED]`, `[MOOD: QUESTION]`, `[MOOD: THOUGHTFUL]`, `[MOOD: WHISPER]`, `[MOOD: SARCASTIC]`.
-- Inline `[EMPH: word]` raises pitch slightly and slows the emphasized word.
-- Inline `[PAUSE: 400]` adds a pause in milliseconds.
+- Inline `[PAUSE: 400]` adds a pause in milliseconds. `[EMPH: ...]` không còn được dùng để tách lời nói vì khiến câu bị ngắt quãng; nếu gặp marker cũ, player giữ từ đó liền mạch trong câu.
 
 The player detects every distinct `[SPEAKER: ...]` label in the loaded SRT and creates a voice selector for each one. It attempts to assign distinct English voices by inferred character gender; voice gender is not exposed consistently by browsers, so this is a best-effort name-based heuristic. Users can change any assignment afterward. Mood changes are approximations using browser TTS rate and pitch, not the actors' original performances. Inline `[EMPH: ...]` markers were removed because splitting a sentence into separate TTS utterances made the speech sound choppy; the parser also strips such wrappers from older SRT files without splitting the sentence.
 
 **Speaker labels are a first-pass annotation, not a verified script transcript.** Most dialogue cues across EP1 now have a first-pass speaker label; 67 uncertain or mixed-speaker cues remain `UNKNOWN` rather than being confidently assigned to the wrong character. The original English SRT and IPA SRT remain unchanged. If the annotated file cannot load, the player falls back to the original English SRT.
+
+
+## Xem và bổ sung voice trên máy
+
+- Trong player, xem dòng **N voices total · M English**, bấm **Show every voice available to this browser** để xem tên, ngôn ngữ và nghe thử từng giọng.
+- Danh sách này là những voice mà browser hiện tại thật sự cung cấp; trang web không thể tự cài thêm voice hệ thống.
+- Trên Windows 10/11, mở **Settings → Time & language → Speech** để xem các voice đã cài và tìm tùy chọn thêm voice. Tùy phiên bản Windows, mục cài ngôn ngữ/voice có thể nằm trong **Time & language → Language & region**. Sau khi cài, đóng/mở lại trình duyệt hoặc nhấn **Refresh voice list**.
+- Có thể thử mở player bằng Microsoft Edge nếu Chrome không hiện những voice có sẵn trên Windows. Voice cloud/online và voice local có thể khác nhau tùy trình duyệt, hệ điều hành và kết nối mạng.
+- Nếu danh sách không có giọng English nào, player vẫn hiển thị tổng số voice mà browser báo; hãy kiểm tra lại cài đặt speech/voice của hệ điều hành.
+- `TED` và `FUTURE_TED` có selector riêng, nên có thể chọn hai giọng nam khác nhau: ví dụ giọng tự nhiên, chậm rãi hơn cho Future Ted và giọng hội thoại hơn cho Ted. Mức độ tự nhiên tùy các voice thực tế có trên máy.
