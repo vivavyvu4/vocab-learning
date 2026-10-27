@@ -76,7 +76,8 @@ The player detects every distinct `[SPEAKER: ...]` label in the loaded SRT and c
 
 Trong bản player web, nhấn **▣ Floating mini-player** để mở một cửa sổ Picture-in-Picture riêng. Cửa sổ đầy đủ hiển thị câu tiếng Anh, IPA, nhân vật, tiến độ và nút điều khiển.
 
-- Bấm **Aa Text only** để chỉ giữ lại dòng phụ đề, bỏ các nút và thông tin khác; nhấp đúp vào dòng chữ để quay lại giao diện đầy đủ.
+- Bấm **Aa Text only** để chỉ giữ lại dòng phụ đề, bỏ các nút và thông tin khác; nhấp đúp vào dòng chữ để quay lại giao diện đầy đủ. Chế độ này dùng nền đen để dễ đọc.
+- Trong chế độ Text only, bấm vào một từ tiếng Anh sẽ tự tạm dừng TTS và tra nghĩa tiếng Việt cùng định nghĩa tiếng Anh qua dịch vụ từ điển/dịch trực tuyến. Cần có internet; nếu dịch vụ không phản hồi, player sẽ báo không tra được. Di chuột chỉ làm nổi bật từ, không tự dừng lời đọc để tránh pause ngoài ý muốn.
 - Chế độ Text only đặt nền trang thành trong suốt và thêm bóng chữ để dễ đọc trên cửa sổ phía sau. Tuy nhiên, độ trong suốt thực tế của toàn bộ cửa sổ còn tùy browser/OS; web page không thể đảm bảo mọi vùng ngoài chữ đều trong suốt hoàn toàn.
 - Cần mở trang bằng HTTPS (GitHub Pages/hosting) và dùng phiên bản Chrome hoặc Edge mới có hỗ trợ Document Picture-in-Picture. Hỗ trợ tùy browser; nút sẽ báo nếu tính năng không có.
 - Cửa sổ nổi lấy nội dung từ player chính; tiếp tục dùng voice, tốc độ, SRT/IPA và cài đặt trong trang chính. Không đóng tab/player chính khi đang dùng cửa sổ nổi.
