@@ -70,3 +70,12 @@ The player detects every distinct `[SPEAKER: ...]` label in the loaded SRT and c
 - Có thể thử mở player bằng Microsoft Edge nếu Chrome không hiện những voice có sẵn trên Windows. Voice cloud/online và voice local có thể khác nhau tùy trình duyệt, hệ điều hành và kết nối mạng.
 - Nếu danh sách không có giọng English nào, player vẫn hiển thị tổng số voice mà browser báo; hãy kiểm tra lại cài đặt speech/voice của hệ điều hành.
 - `TED` và `FUTURE_TED` có selector riêng, nên có thể chọn hai giọng nam khác nhau: ví dụ giọng tự nhiên, chậm rãi hơn cho Future Ted và giọng hội thoại hơn cho Ted. Mức độ tự nhiên tùy các voice thực tế có trên máy.
+
+
+## Floating mini-player (always on top)
+
+Trong bản player web, nhấn **▣ Floating mini-player** để mở một cửa sổ Picture-in-Picture riêng. Cửa sổ nhỏ hiển thị câu tiếng Anh, IPA, nhân vật, tiến độ và nút câu trước/phát-tạm dừng/dừng/câu sau. Cửa sổ được thiết kế để nằm nổi trên các ứng dụng khác, vì vậy có thể vừa làm việc vừa nhìn phụ đề và nghe TTS.
+
+- Cần mở trang bằng HTTPS (GitHub Pages/raw hosting) và dùng phiên bản Chrome hoặc Edge mới có hỗ trợ Document Picture-in-Picture. Hỗ trợ tùy browser; nút sẽ báo nếu tính năng không có.
+- Cửa sổ nổi lấy nội dung từ player chính; tiếp tục dùng voice, tốc độ, SRT/IPA và cài đặt trong trang chính. Không đóng tab/player chính khi đang dùng cửa sổ nổi.
+- Đây là cửa sổ nổi của trình duyệt, không phải ứng dụng Windows độc lập. Nếu cần bản desktop cài đặt riêng về sau, có thể đóng gói player thành app Electron/Tauri.
