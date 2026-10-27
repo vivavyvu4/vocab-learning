@@ -36,3 +36,28 @@ Nội dung phụ đề và IPA không được nhúng lại vào player; player 
 
 - `../s01/How I Met Your Mother - 1x01 - Pilot.en.srt`
 - `../s01/How I Met Your Mother - 1x01 - Pilot.ipa.en.srt`
+
+
+## Speaker + expressive TTS (EP1)
+
+The player now prefers the annotated file:
+
+- `himymt/s01/How I Met Your Mother - 1x01 - Pilot.speakers.srt`
+
+It keeps the original cue timestamps and uses small metadata tags such as:
+
+```srt
+[SPEAKER: FUTURE_TED] [MOOD: STORYTELLING]
+Kids, I'm gonna tell you an [EMPH: incredible] story ;
+```
+
+Supported tags:
+
+- `[SPEAKER: TED]`, `[SPEAKER: BARNEY]`, `[SPEAKER: ROBIN]`, `[SPEAKER: MARSHALL]`, `[SPEAKER: LILY]`, `[SPEAKER: FUTURE_TED]` and other labels.
+- `[MOOD: STORYTELLING]`, `[MOOD: EXCITED]`, `[MOOD: QUESTION]`, `[MOOD: THOUGHTFUL]`, `[MOOD: WHISPER]`, `[MOOD: SARCASTIC]`.
+- Inline `[EMPH: word]` raises pitch slightly and slows the emphasized word.
+- Inline `[PAUSE: 400]` adds a pause in milliseconds.
+
+In the player, choose a separate browser voice for each supported character. A blank character selection uses the default English voice. Mood changes are approximations using browser TTS rate and pitch, not the actors' original performances.
+
+**Speaker labels are a first-pass annotation, not a verified script transcript.** Clear lines in the early episode are tagged; uncertain lines remain `UNKNOWN` rather than being confidently assigned to the wrong character. The original English SRT and IPA SRT remain unchanged. If the annotated file cannot load, the player falls back to the original English SRT.
