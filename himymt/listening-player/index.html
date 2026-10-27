@@ -51,7 +51,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
         <div class="file-tools"><button type="button" id="refreshVoicesBtn">↻ Refresh voice list</button><button type="button" id="testVoiceBtn">▶ Test selected voice</button></div>
         <details style="margin-top:12px"><summary class="small" style="cursor:pointer;color:var(--accent)">Show every voice available to this browser</summary><p class="muted small">All languages are listed here. Character selectors use English voices when available.</p><div id="voiceInventory" class="small"></div></details>
         <div class="field"><label for="speedSelect">Speaking speed</label><select id="speedSelect"><option value=".75">0.75× · Slow</option><option value=".9" selected>0.9× · Comfortable</option><option value="1">1× · Normal</option><option value="1.1">1.1× · Faster</option></select></div>
-        <div class="field"><label for="gapSelect">Pause between subtitles</label><select id="gapSelect"><option value="0">No extra pause</option><option value="350" selected>Short · 0.35 sec</option><option value="800">Longer · 0.8 sec</option></select></div>
+        <div class="field"><label for="gapSelect">Pause between subtitles</label><select id="gapSelect"><option value="0">0 sec · No pause</option><option value="150">0.15 sec</option><option value="300" selected>0.3 sec</option><option value="450">0.45 sec</option><option value="800">0.8 sec</option></select><div class="muted small">Same speaker: shorter pause (max 0.15 sec). Different speakers: use the selected pause.</div></div>
         <div class="hint"><strong>Expressive reading:</strong> mood labels gently adjust speed and pitch. Inline word splitting is disabled to keep sentences flowing naturally.</div>
         <h2 style="margin-top:18px">Character voices</h2>
         <p class="muted small">The player detects speakers in the loaded SRT and assigns available voices automatically. You can change any assignment below.</p>
@@ -93,7 +93,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     count:$("cueCount"), srtFile:$("srtFile"), ipaFile:$("ipaFile")
   };
   let cues = [], current = 0, speaking = false, paused = false, utterance = null, voices = [], runToken = 0;
-  let gapTimer = null, completed = false, pipWindow = null;
+  let gapTimer = null, completed = false, pipWindow = null, floatingMinimal = false;
 
   function timeMs(value) {
     const m = value.trim().match(/^(\d{2}):(\d{2}):(\d{2})[,.](\d{1,3})$/);
@@ -258,6 +258,14 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     syncFloatingPlayer();
   }
 
+  function setFloatingMinimal(enabled) {
+    floatingMinimal=Boolean(enabled);
+    if (!pipWindow || pipWindow.closed) return;
+    pipWindow.document.body.classList.toggle("minimal",floatingMinimal);
+    const viewButton=pipWindow.document.getElementById("floatView");
+    if(viewButton) viewButton.textContent=floatingMinimal?"↗ Full controls":"Aa Text only";
+    syncFloatingPlayer();
+  }
   function syncFloatingPlayer() {
     if (!pipWindow || pipWindow.closed) { pipWindow=null; return; }
     const doc=pipWindow.document;
@@ -274,6 +282,9 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     speaker.textContent=cue ? ((cue.speaker||"UNKNOWN").replace(/_/g," ")+" · "+(cue.mood||"NEUTRAL")+" · "+(current+1)+"/"+cues.length) : "HIMYM · EP1";
     progress.style.width=cues.length>1?(current/(cues.length-1)*100)+"%":"0%";
     playButton.textContent=paused?"▶ Resume":speaking?"Ⅱ Pause":"▶ Play";
+    doc.body.classList.toggle("minimal",floatingMinimal);
+    const viewButton=doc.getElementById("floatView");
+    if(viewButton) viewButton.textContent=floatingMinimal?"↗ Full controls":"Aa Text only";
   }
   async function openFloatingPlayer() {
     if (!("documentPictureInPicture" in window)) {
@@ -284,13 +295,15 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     try {
       pipWindow=await documentPictureInPicture.requestWindow({width:420,height:290});
       const doc=pipWindow.document;
-      doc.head.innerHTML='<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HIMYM Mini Player</title><style>*{box-sizing:border-box}body{margin:0;padding:16px;background:#0b1020;color:#edf2ff;font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}header{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#9eabc4;font-size:11px;letter-spacing:.08em;text-transform:uppercase}.pin{color:#8bb7ff}#floatSpeaker{margin-top:12px;color:#8bb7ff;font-size:11px;font-weight:700}#floatEnglish{font-size:clamp(20px,5vw,28px);font-weight:750;line-height:1.25;overflow-wrap:anywhere;margin-top:8px}#floatIpa{color:#c4b5fd;margin-top:10px;overflow-wrap:anywhere;font-size:14px}.bar{height:3px;background:#28344a;margin-top:12px;border-radius:8px;overflow:hidden}.bar span{display:block;height:100%;width:0;background:#8bb7ff}nav{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px}button{font:inherit;color:#edf2ff;background:#1b263b;border:1px solid #2a3650;border-radius:10px;padding:8px 12px;cursor:pointer}button:hover{border-color:#8bb7ff}button.primary{background:#8bb7ff;color:#0b1020;font-weight:800;min-width:92px}footer{display:flex;justify-content:space-between;gap:8px;margin-top:10px;color:#9eabc4;font-size:10px}</style>';
-      doc.body.innerHTML='<header><span>HIMYM · Listening practice</span><span class="pin">● Always on top</span></header><div id="floatSpeaker">EP1 · Pilot</div><div id="floatEnglish">Getting subtitles ready…</div><div id="floatIpa"></div><div class="bar"><span id="floatProgress"></span></div><nav><button id="floatPrev" title="Previous subtitle">⏮</button><button id="floatPlay" class="primary">▶ Play</button><button id="floatStop" title="Stop">■</button><button id="floatNext" title="Next subtitle">⏭</button></nav><footer><span>Controls work while you use other apps</span><span>Close window to hide</span></footer>';
+      doc.head.innerHTML='<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HIMYM Mini Player</title><style>*{box-sizing:border-box}body{margin:0;padding:16px;background:#0b1020;color:#edf2ff;font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}header{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#9eabc4;font-size:11px;letter-spacing:.08em;text-transform:uppercase}.pin{color:#8bb7ff}#floatSpeaker{margin-top:12px;color:#8bb7ff;font-size:11px;font-weight:700}#floatEnglish{font-size:clamp(20px,5vw,28px);font-weight:750;line-height:1.25;overflow-wrap:anywhere;margin-top:8px;text-shadow:0 1px 4px #000,0 0 2px #000}#floatIpa{color:#c4b5fd;margin-top:10px;overflow-wrap:anywhere;font-size:14px}.bar{height:3px;background:#28344a;margin-top:12px;border-radius:8px;overflow:hidden}.bar span{display:block;height:100%;width:0;background:#8bb7ff}nav{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px}button{font:inherit;color:#edf2ff;background:#1b263b;border:1px solid #2a3650;border-radius:10px;padding:8px 12px;cursor:pointer}button:hover{border-color:#8bb7ff}button.primary{background:#8bb7ff;color:#0b1020;font-weight:800;min-width:92px}footer{display:flex;justify-content:space-between;gap:8px;margin-top:10px;color:#9eabc4;font-size:10px}body.minimal{padding:4px;background:transparent;color:#fff;overflow:hidden}body.minimal header,body.minimal #floatSpeaker,body.minimal #floatIpa,body.minimal .bar,body.minimal nav,body.minimal footer{display:none!important}body.minimal #floatEnglish{margin:0;padding:2px 4px;font-size:clamp(22px,6vw,38px);line-height:1.2;color:#fff;text-shadow:0 1px 5px #000,1px 0 4px #000,-1px 0 4px #000;cursor:default}</style>';
+      doc.body.innerHTML='<header><span>HIMYM · Listening practice</span><span class="pin">● Always on top</span></header><div id="floatSpeaker">EP1 · Pilot</div><div id="floatEnglish" title="Double-click to restore controls in text-only mode">Getting subtitles ready…</div><div id="floatIpa"></div><div class="bar"><span id="floatProgress"></span></div><nav><button id="floatPrev" title="Previous subtitle">⏮</button><button id="floatPlay" class="primary">▶ Play</button><button id="floatStop" title="Stop">■</button><button id="floatNext" title="Next subtitle">⏭</button><button id="floatView" title="Show only subtitle text">Aa Text only</button></nav><footer><span>Controls work while you use other apps</span><span>Double-click text to restore controls</span></footer>';
       doc.getElementById("floatPrev").addEventListener("click",()=>jump(current-1));
       doc.getElementById("floatNext").addEventListener("click",()=>jump(current+1));
       doc.getElementById("floatPlay").addEventListener("click",play);
       doc.getElementById("floatStop").addEventListener("click",stop);
-      pipWindow.addEventListener("pagehide",()=>{pipWindow=null;});
+      doc.getElementById("floatView").addEventListener("click",()=>setFloatingMinimal(!floatingMinimal));
+      doc.getElementById("floatEnglish").addEventListener("dblclick",()=>setFloatingMinimal(!floatingMinimal));
+      pipWindow.addEventListener("pagehide",()=>{pipWindow=null;floatingMinimal=false;});
       syncFloatingPlayer();
       ui.status.textContent="Floating mini-player opened. It stays above other windows.";
     } catch(err) {
@@ -347,9 +360,15 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
       if(token!==runToken)return;
       utterance=null;
       if(!ui.autoNext.checked){speaking=false;paused=false;updateState("Subtitle finished");return;}
+      const previousCue=cues[current];
       current++;
-      const delay=Number(ui.gap.value)||0;
-      if(delay>0){speaking=true;updateState("Next subtitle soon");gapTimer=setTimeout(()=>speakCurrent(token),delay);}
+      const nextCue=cues[current];
+      const selectedDelay=Number(ui.gap.value)||0;
+      const previousSpeaker=(previousCue?.speaker||"UNKNOWN").toUpperCase();
+      const nextSpeaker=(nextCue?.speaker||"UNKNOWN").toUpperCase();
+      const sameKnownSpeaker=previousSpeaker!=="UNKNOWN" && previousSpeaker===nextSpeaker;
+      const delay=sameKnownSpeaker && selectedDelay>0 ? Math.min(selectedDelay,150) : selectedDelay;
+      if(delay>0){speaking=true;updateState(sameKnownSpeaker?"Same speaker · short pause":"Next subtitle soon");gapTimer=setTimeout(()=>speakCurrent(token),delay);}
       else speakCurrent(token);
     };
     const speakPart=()=>{
