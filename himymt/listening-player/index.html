@@ -100,7 +100,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
       if (timeIndex < 0) return null;
       const parts = lines[timeIndex].split("-->");
       if (parts.length !== 2) return null;
-      const start = timeMs(parts[0]), end = timeMs(parts[1].split(" ")[0]);
+      const start = timeMs(parts[0]), end = timeMs(parts[1].trim().split(/\\s+/)[0]);
       const text = cleanText(lines.slice(timeIndex+1).filter(line=>!/^\d+$/.test(line)).join(" "));
       if (!text || end <= start) return null;
       return {start,end,text,ipa:""};
