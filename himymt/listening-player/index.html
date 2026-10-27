@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#111827">
+<title>HIMYM Listening Player · S01E01</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1020;--panel:#141c2e;--panel2:#1b263b;--line:#2a3650;--text:#edf2ff;--muted:#9eabc4;--accent:#8bb7ff;--accent2:#c4b5fd;--good:#86efac}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 10% 0%,#1c2b4a 0,transparent 45%),var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,select,input{font:inherit}button,select{color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:10px 13px}button{cursor:pointer;transition:transform .12s,border-color .12s}button:hover{border-color:var(--accent)}button:active{transform:scale(.98)}button:disabled{opacity:.4;cursor:not-allowed}.primary{background:var(--accent);color:#0b1020;border-color:transparent;font-weight:750}.shell{width:min(1080px,100%);margin:0 auto;padding:26px 18px 50px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}.brand{display:flex;align-items:center;gap:12px}.logo{display:grid;place-items:center;width:46px;height:46px;border-radius:15px;background:linear-gradient(135deg,#8bb7ff,#c4b5fd);color:#10182a;font-weight:900;font-size:21px}.eyebrow{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}.top h1{font-size:clamp(21px,3vw,30px);line-height:1.15;margin:3px 0 0}.status{color:var(--muted);font-size:13px}.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.8fr);gap:18px}.panel{background:linear-gradient(155deg,rgba(24,34,55,.97),rgba(16,23,39,.97));border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 16px 50px #0002}.listen{min-height:410px;display:flex;flex-direction:column}.panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.panel h2{font-size:17px;margin:0 0 4px}.muted{color:var(--muted)}.small{font-size:13px}.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border-radius:999px;background:#23344d;color:#c7dcff;font-size:12px;font-weight:700;white-space:nowrap}.dot{width:7px;height:7px;background:var(--good);border-radius:50%}.sentence-area{flex:1;display:flex;flex-direction:column;justify-content:center;padding:38px 4px 24px}.sentence{font-size:clamp(25px,4.2vw,42px);font-weight:750;line-height:1.27;letter-spacing:-.025em;white-space:pre-wrap;overflow-wrap:anywhere}.ipa{margin-top:20px;color:var(--accent2);font-size:19px;line-height:1.8;overflow-wrap:anywhere}.translation-note{color:var(--muted);font-size:13px;margin-top:14px}.progress-line{height:5px;background:#28344a;border-radius:10px;overflow:hidden;margin:8px 0 15px}.progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .2s}.transport{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}.transport button{min-width:48px}.transport .primary{min-width:112px}.timing{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-bottom:8px}.side{display:flex;flex-direction:column;gap:18px}.field{display:flex;flex-direction:column;gap:7px;margin-top:15px}.field label{font-size:13px;color:var(--muted);font-weight:650}.field select{width:100%}.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.toggle-row:last-child{border-bottom:0}.toggle-row label{font-size:14px}.switch{width:42px;height:24px;appearance:none;background:#35435d;border-radius:20px;position:relative;cursor:pointer;flex-shrink:0}.switch:before{content:"";position:absolute;left:3px;top:3px;width:18px;height:18px;background:#fff;border-radius:50%;transition:transform .15s}.switch:checked{background:#719ef0}.switch:checked:before{transform:translateX(18px)}.hint{padding:13px 14px;border-radius:14px;background:#10192b;border:1px solid var(--line);color:var(--muted);font-size:13px;margin-top:18px}.hint strong{color:var(--text)}.footer{margin-top:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:12px}.error{color:#fca5a5}.hidden{display:none!important}.file-tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.file-tools input{max-width:100%;font-size:12px;color:var(--muted)}.keyboard{border:1px solid var(--line);padding:2px 6px;border-radius:5px;color:#c6d0e5;font-size:11px}
+@media(max-width:760px){.layout{grid-template-columns:1fr}.listen{min-height:340px}.panel{padding:18px}.top{align-items:flex-start}.status{max-width:130px;text-align:right}.sentence-area{padding:32px 2px 20px}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="top">
+    <div class="brand"><div class="logo">H</div><div><div class="eyebrow">Listening practice</div><h1>How I Met Your Mother</h1></div></div>
+    <div class="status" id="loadStatus">Loading EP1 subtitles…</div>
+  </header>
+  <div class="layout">
+    <section class="panel listen" aria-label="Listening player">
+      <div class="panel-head">
+        <div><h2>Season 1 · Episode 1</h2><div class="muted small">Pilot · Episode Mode</div></div>
+        <span class="pill"><span class="dot"></span><span id="modeLabel">Ready to listen</span></span>
+      </div>
+      <div class="sentence-area" aria-live="polite">
+        <div class="eyebrow" id="cueLabel">SUBTITLE 0 / 0</div>
+        <div class="sentence" id="sentence">Getting the episode ready…</div>
+        <div class="ipa" id="ipa"></div>
+        <div class="translation-note" id="tip">Press Play to hear the English subtitles read aloud by your browser.</div>
+      </div>
+      <div class="timing"><span id="elapsed">00:00</span><span id="duration">--:--</span></div>
+      <div class="progress-line" role="progressbar" aria-label="Episode progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress"><div class="progress-fill" id="progressFill"></div></div>
+      <div class="transport">
+        <button id="prevBtn" title="Previous subtitle" aria-label="Previous subtitle">⏮</button>
+        <button id="restartBtn" title="Replay current subtitle" aria-label="Replay current subtitle">↺</button>
+        <button class="primary" id="playBtn" disabled>▶ Play episode</button>
+        <button id="stopBtn" title="Stop" aria-label="Stop" disabled>■</button>
+        <button id="nextBtn" title="Next subtitle" aria-label="Next subtitle">⏭</button>
+      </div>
+      <div class="footer"><span>Tip: use the controls to jump between subtitle cues.</span><span><span class="keyboard">Space</span> Play / Pause</span></div>
+    </section>
+    <aside class="side">
+      <section class="panel">
+        <h2>Voice settings</h2>
+        <div class="field"><label for="voiceSelect">English voice</label><select id="voiceSelect"><option>Loading voices…</option></select></div>
+        <div class="field"><label for="speedSelect">Speaking speed</label><select id="speedSelect"><option value=".75">0.75× · Slow</option><option value=".9" selected>0.9× · Comfortable</option><option value="1">1× · Normal</option><option value="1.1">1.1× · Faster</option></select></div>
+        <div class="field"><label for="gapSelect">Pause between subtitles</label><select id="gapSelect"><option value="0">No extra pause</option><option value="350" selected>Short · 0.35 sec</option><option value="800">Longer · 0.8 sec</option></select></div>
+      </section>
+      <section class="panel">
+        <h2>What you see</h2>
+        <div class="toggle-row"><label for="showEnglish">English subtitle</label><input class="switch" type="checkbox" id="showEnglish" checked></div>
+        <div class="toggle-row"><label for="showIpa">IPA pronunciation</label><input class="switch" type="checkbox" id="showIpa" checked></div>
+        <div class="toggle-row"><label for="autoNext">Read next subtitle automatically</label><input class="switch" type="checkbox" id="autoNext" checked></div>
+        <div class="toggle-row"><label for="loopEpisode">Repeat episode when finished</label><input class="switch" type="checkbox" id="loopEpisode"></div>
+        <div class="hint"><strong>Note:</strong> this first version uses your browser's English text-to-speech voice, not the original actors' audio. No video file is needed. Voice availability depends on your browser and operating system.</div>
+      </section>
+      <section class="panel">
+        <h2>Subtitle files</h2>
+        <div class="muted small">EP1 files are loaded from this repository automatically. If automatic loading is blocked, choose the two files below.</div>
+        <div class="file-tools"><label class="small" for="srtFile">English SRT</label><input type="file" id="srtFile" accept=".srt,.txt"></div>
+        <div class="file-tools"><label class="small" for="ipaFile">IPA SRT</label><input type="file" id="ipaFile" accept=".srt,.txt"></div>
+        <div class="muted small" id="cueCount" style="margin-top:12px">Waiting for subtitles…</div>
+      </section>
+    </aside>
+  </div>
+  <div class="footer"><span>HIMYM Listening Player · built for vocab-learning</span><span>Subtitle text and IPA stay in the repository.</span></div>
+</main>
+<script>
+(() => {
+  const SRT_URL = "https://raw.githubusercontent.com/vivavyvu4/vocab-learning/main/himymt/s01/How%20I%20Met%20Your%20Mother%20-%201x01%20-%20Pilot.en.srt";
+  const IPA_URL = "https://raw.githubusercontent.com/vivavyvu4/vocab-learning/main/himymt/s01/How%20I%20Met%20Your%20Mother%20-%201x01%20-%20Pilot.ipa.en.srt";
+  const $ = id => document.getElementById(id);
+  const ui = {
+    status:$("loadStatus"), sentence:$("sentence"), ipa:$("ipa"), tip:$("tip"), cue:$("cueLabel"),
+    elapsed:$("elapsed"), duration:$("duration"), fill:$("progressFill"), progress:$("progress"),
+    mode:$("modeLabel"), play:$("playBtn"), stop:$("stopBtn"), prev:$("prevBtn"), next:$("nextBtn"),
+    restart:$("restartBtn"), voice:$("voiceSelect"), speed:$("speedSelect"), gap:$("gapSelect"),
+    showEnglish:$("showEnglish"), showIpa:$("showIpa"), autoNext:$("autoNext"), loop:$("loopEpisode"),
+    count:$("cueCount"), srtFile:$("srtFile"), ipaFile:$("ipaFile")
+  };
+  let cues = [], current = 0, speaking = false, paused = false, utterance = null, voices = [], runToken = 0;
+  let gapTimer = null, completed = false;
+
+  function timeMs(value) {
+    const m = value.trim().match(/^(\d{2}):(\d{2}):(\d{2})[,.](\d{1,3})$/);
+    if (!m) return 0;
+    return ((+m[1]*3600 + +m[2]*60 + +m[3])*1000) + +(m[4].padEnd(3,"0"));
+  }
+  function cleanText(value) {
+    return value.replace(/<[^>]*>/g," ").replace(/&nbsp;/gi," ").replace(/&amp;/gi,"&")
+      .replace(/&lt;/gi,"<").replace(/&gt;/gi,">").replace(/&quot;/gi,'"')
+      .replace(/\s+/g," ").trim();
+  }
+  function parseSrt(source) {
+    return source.replace(/^\uFEFF/,"").replace(/\r/g,"").split(/\n\s*\n/).map(block => {
+      const lines = block.split("\n").map(s=>s.trim()).filter(Boolean);
+      const timeIndex = lines.findIndex(line=>line.includes("-->"));
+      if (timeIndex < 0) return null;
+      const parts = lines[timeIndex].split("-->");
+      if (parts.length !== 2) return null;
+      const start = timeMs(parts[0]), end = timeMs(parts[1].split(" ")[0]);
+      const text = cleanText(lines.slice(timeIndex+1).filter(line=>!/^\d+$/.test(line)).join(" "));
+      if (!text || end <= start) return null;
+      return {start,end,text,ipa:""};
+    }).filter(Boolean);
+  }
+  function parseIpa(source) {
+    const blocks = source.replace(/^\uFEFF/,"").replace(/\r/g,"").split(/\n\s*\n/);
+    const map = new Map();
+    for (const block of blocks) {
+      const lines = block.split("\n").map(s=>s.trim()).filter(Boolean);
+      const ti = lines.findIndex(line=>line.includes("-->"));
+      if (ti < 0) continue;
+      const [start] = lines[ti].split("-->");
+      const key = timeMs(start);
+      const phonetics = lines.slice(ti+1).filter(line=>/^\/.+\/$/.test(line));
+      if (phonetics.length) map.set(key,phonetics.join("  "));
+    }
+    return map;
+  }
+  function fmt(ms) {
+    const seconds = Math.max(0,Math.floor(ms/1000));
+    return String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");
+  }
+  function episodeDuration() { return cues.length ? cues[cues.length-1].end : 0; }
+  function refreshVoiceList() {
+    if (!("speechSynthesis" in window)) return;
+    voices = speechSynthesis.getVoices();
+    const previous = ui.voice.value;
+    ui.voice.innerHTML = "";
+    const english = voices.filter(v=>/^en(-|_)/i.test(v.lang));
+    const sorted = [...english.filter(v=>/en-US|en_US/i.test(v.lang)),...english.filter(v=>!/en-US|en_US/i.test(v.lang)),...voices.filter(v=>!english.includes(v))];
+    if (!sorted.length) { ui.voice.add(new Option("Default browser voice","")); return; }
+    sorted.forEach(v=>ui.voice.add(new Option(v.name+" · "+v.lang,v.name)));
+    if (sorted.some(v=>v.name===previous)) ui.voice.value=previous;
+    else {
+      const us = sorted.find(v=>/en-US|en_US/i.test(v.lang));
+      if (us) ui.voice.value=us.name;
+    }
+  }
+  function render() {
+    if (!cues.length) return;
+    const cue = cues[current];
+    ui.sentence.textContent = ui.showEnglish.checked ? cue.text : "English subtitle hidden";
+    ui.ipa.textContent = ui.showIpa.checked ? (cue.ipa || "IPA is not available for this subtitle.") : "";
+    ui.ipa.classList.toggle("hidden",!ui.showIpa.checked);
+    ui.cue.textContent = "SUBTITLE "+(current+1)+" / "+cues.length;
+    ui.elapsed.textContent = fmt(cue.start);
+    ui.duration.textContent = fmt(episodeDuration());
+    const pct = episodeDuration() ? cue.start/episodeDuration()*100 : 0;
+    ui.fill.style.width=pct+"%"; ui.progress.setAttribute("aria-valuenow",String(Math.round(pct)));
+    ui.count.textContent = cues.length+" subtitle cues loaded";
+    ui.prev.disabled=current===0;
+    ui.next.disabled=current>=cues.length-1 && !ui.loop.checked;
+  }
+  function updateState(label) { ui.mode.textContent=label; ui.play.textContent=paused?"▶ Resume":speaking?"Ⅱ Pause":"▶ Play episode"; ui.stop.disabled=!speaking&&!paused; }
+  function cancelSpeech() {
+    runToken++; clearTimeout(gapTimer); gapTimer=null;
+    if ("speechSynthesis" in window) speechSynthesis.cancel();
+    speaking=false; paused=false; utterance=null;
+  }
+  function chooseVoice(u) {
+    const selected=voices.find(v=>v.name===ui.voice.value);
+    if(selected) u.voice=selected;
+    u.lang=selected?.lang || "en-US";
+  }
+  function speakCurrent(token) {
+    if(token!==runToken || !cues.length) return;
+    if(current>=cues.length) {
+      if(ui.loop.checked){current=0;render();speakCurrent(token);return;}
+      speaking=false;paused=false;completed=true;updateState("Episode complete");return;
+    }
+    render();
+    if(!("speechSynthesis" in window)){ui.status.textContent="This browser does not support text-to-speech.";return;}
+    const u=new SpeechSynthesisUtterance(cues[current].text);
+    utterance=u; chooseVoice(u); u.rate=Number(ui.speed.value)||.9; u.pitch=1;
+    u.onstart=()=>{if(token!==runToken)return;speaking=true;paused=false;updateState("Reading");ui.status.textContent="Reading subtitle "+(current+1)+" of "+cues.length;};
+    u.onend=()=>{
+      if(token!==runToken)return;
+      utterance=null;
+      if(!ui.autoNext.checked){speaking=false;paused=false;updateState("Subtitle finished");return;}
+      current++;
+      const delay=Number(ui.gap.value)||0;
+      if(delay>0){speaking=true;updateState("Next subtitle soon");gapTimer=setTimeout(()=>speakCurrent(token),delay);}
+      else speakCurrent(token);
+    };
+    u.onerror=(event)=>{
+      if(token!==runToken || event.error==="canceled" || event.error==="interrupted")return;
+      speaking=false;paused=false;updateState("Voice error");ui.status.textContent="Text-to-speech error: "+event.error+". Try another voice.";
+    };
+    speechSynthesis.speak(u);
+  }
+  function play() {
+    if(!cues.length)return;
+    if(paused){speechSynthesis.resume();paused=false;speaking=true;updateState("Reading");return;}
+    if(speaking){speechSynthesis.pause();paused=true;updateState("Paused");return;}
+    completed=false;cancelSpeech();const token=runToken;speakCurrent(token);
+  }
+  function stop() { cancelSpeech();updateState("Stopped");ui.status.textContent="Stopped. Press Play to continue from the current subtitle."; }
+  function jump(index, autoplay=false) {
+    if(!cues.length)return;
+    const wasPlaying=speaking||paused;cancelSpeech();current=Math.max(0,Math.min(cues.length-1,index));render();
+    if(autoplay||wasPlaying){const token=runToken;speakCurrent(token);}else updateState("Ready to listen");
+  }
+  function attachIpa(source) {
+    const map=parseIpa(source);
+    for(const cue of cues) cue.ipa=map.get(cue.start)||"";
+  }
+  function loadSources(srt,ipa) {
+    cancelSpeech();cues=parseSrt(srt);
+    if(ipa) attachIpa(ipa);
+    current=0;completed=false;
+    ui.play.disabled=!cues.length;ui.status.textContent=cues.length?"EP1 subtitles ready":"Could not find valid SRT cues";
+    if(!cues.length){ui.sentence.textContent="Could not load subtitles. Choose the SRT file below.";return;}
+    ui.duration.textContent=fmt(episodeDuration());render();updateState("Ready to listen");
+  }
+  async function autoLoad() {
+    try {
+      const [srtResponse,ipaResponse]=await Promise.all([fetch(SRT_URL),fetch(IPA_URL)]);
+      if(!srtResponse.ok||!ipaResponse.ok)throw new Error("Subtitle files could not be fetched");
+      loadSources(await srtResponse.text(),await ipaResponse.text());
+    } catch(err) {
+      ui.status.textContent="Choose subtitle files below";
+      ui.sentence.textContent="Load the EP1 subtitle files to begin";
+      ui.tip.textContent="Use the file selectors below if this page cannot fetch the files automatically.";
+      ui.count.textContent="Automatic loading was blocked or unavailable.";
+    }
+  }
+  function readFile(file) {return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(String(r.result));r.onerror=reject;r.readAsText(file);});}
+  let loadedSrt="",loadedIpa="";
+  ui.srtFile.addEventListener("change",async()=>{if(ui.srtFile.files[0]){loadedSrt=await readFile(ui.srtFile.files[0]);if(loadedIpa)loadSources(loadedSrt,loadedIpa);else{const parsed=parseSrt(loadedSrt);cues=parsed;current=0;ui.play.disabled=!cues.length;render();ui.status.textContent="English subtitles loaded; load IPA for pronunciation.";}}});
+  ui.ipaFile.addEventListener("change",async()=>{if(ui.ipaFile.files[0]){loadedIpa=await readFile(ui.ipaFile.files[0]);if(loadedSrt)loadSources(loadedSrt,loadedIpa);else ui.status.textContent="IPA loaded; choose the English SRT too."; }});
+  ui.play.addEventListener("click",play);
+  ui.stop.addEventListener("click",stop);
+  ui.prev.addEventListener("click",()=>jump(current-1));
+  ui.next.addEventListener("click",()=>jump(current+1));
+  ui.restart.addEventListener("click",()=>jump(current,true));
+  ui.showEnglish.addEventListener("change",render);ui.showIpa.addEventListener("change",render);
+  ui.speed.addEventListener("change",()=>{if(speaking||paused)jump(current,true);});
+  ui.voice.addEventListener("change",()=>{if(speaking||paused)jump(current,true);});
+  ui.autoNext.addEventListener("change",()=>{});
+  ui.loop.addEventListener("change",()=>{});
+  document.addEventListener("keydown",event=>{
+    if(event.code==="Space" && !["INPUT","SELECT","TEXTAREA"].includes(document.activeElement.tagName)){event.preventDefault();play();}
+    if(event.key==="ArrowRight" && !["INPUT","SELECT","TEXTAREA"].includes(document.activeElement.tagName))jump(current+1);
+    if(event.key==="ArrowLeft" && !["INPUT","SELECT","TEXTAREA"].includes(document.activeElement.tagName))jump(current-1);
+  });
+  window.addEventListener("beforeunload",()=>{if("speechSynthesis" in window)speechSynthesis.cancel();});
+  if("speechSynthesis" in window){refreshVoiceList();speechSynthesis.onvoiceschanged=refreshVoiceList;}else{ui.status.textContent="Browser text-to-speech is not supported.";ui.play.disabled=true;}
+  autoLoad();
+})();
+</script>
+</body>
+</html>
