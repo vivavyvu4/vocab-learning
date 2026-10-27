@@ -6,7 +6,7 @@ Trình luyện nghe tiếng Anh theo **Episode Mode** cho *How I Met Your Mother
 
 - Đọc lần lượt các câu trong file SRT bằng giọng English Text-to-Speech của trình duyệt.
 - Tự chuyển sang câu kế tiếp, hiển thị câu tiếng Anh và IPA tương ứng.
-- Chọn giọng đọc, tốc độ 0.75× / 0.9× / 1× / 1.1× và khoảng nghỉ giữa câu.
+- Chọn giọng đọc, tốc độ 0.75× / 0.9× / 1× / 1.1× và khoảng nghỉ giữa câu (0 / 0.15 / 0.3 / 0.45 / 0.8 giây). Nếu hai cue liên tiếp có cùng nhãn nhân vật đã xác định, player tự rút khoảng nghỉ xuống tối đa 0.15 giây; nhãn `UNKNOWN` không được xem là cùng nhân vật.
 - Ẩn/hiện phụ đề tiếng Anh và IPA độc lập.
 - Tạm dừng/tiếp tục, dừng, phát lại câu hiện tại, nhảy câu trước/sau và lặp cả tập.
 - Tải SRT và IPA từ repo khi có thể; có lựa chọn nạp file thủ công nếu trình duyệt chặn việc tải tự động.
@@ -74,8 +74,10 @@ The player detects every distinct `[SPEAKER: ...]` label in the loaded SRT and c
 
 ## Floating mini-player (always on top)
 
-Trong bản player web, nhấn **▣ Floating mini-player** để mở một cửa sổ Picture-in-Picture riêng. Cửa sổ nhỏ hiển thị câu tiếng Anh, IPA, nhân vật, tiến độ và nút câu trước/phát-tạm dừng/dừng/câu sau. Cửa sổ được thiết kế để nằm nổi trên các ứng dụng khác, vì vậy có thể vừa làm việc vừa nhìn phụ đề và nghe TTS.
+Trong bản player web, nhấn **▣ Floating mini-player** để mở một cửa sổ Picture-in-Picture riêng. Cửa sổ đầy đủ hiển thị câu tiếng Anh, IPA, nhân vật, tiến độ và nút điều khiển.
 
-- Cần mở trang bằng HTTPS (GitHub Pages/raw hosting) và dùng phiên bản Chrome hoặc Edge mới có hỗ trợ Document Picture-in-Picture. Hỗ trợ tùy browser; nút sẽ báo nếu tính năng không có.
+- Bấm **Aa Text only** để chỉ giữ lại dòng phụ đề, bỏ các nút và thông tin khác; nhấp đúp vào dòng chữ để quay lại giao diện đầy đủ.
+- Chế độ Text only đặt nền trang thành trong suốt và thêm bóng chữ để dễ đọc trên cửa sổ phía sau. Tuy nhiên, độ trong suốt thực tế của toàn bộ cửa sổ còn tùy browser/OS; web page không thể đảm bảo mọi vùng ngoài chữ đều trong suốt hoàn toàn.
+- Cần mở trang bằng HTTPS (GitHub Pages/hosting) và dùng phiên bản Chrome hoặc Edge mới có hỗ trợ Document Picture-in-Picture. Hỗ trợ tùy browser; nút sẽ báo nếu tính năng không có.
 - Cửa sổ nổi lấy nội dung từ player chính; tiếp tục dùng voice, tốc độ, SRT/IPA và cài đặt trong trang chính. Không đóng tab/player chính khi đang dùng cửa sổ nổi.
 - Đây là cửa sổ nổi của trình duyệt, không phải ứng dụng Windows độc lập. Nếu cần bản desktop cài đặt riêng về sau, có thể đóng gói player thành app Electron/Tauri.
