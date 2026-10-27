@@ -1,7 +1,7 @@
 1
 00:00:02,810 --> 00:00:06,002
 [SPEAKER: FUTURE_TED] [MOOD: EXCITED]
-Kids, I'm gonna tell you an [EMPH: incredible] story ;
+Kids, I'm gonna tell you an incredible story ;
 
 2
 00:00:06,002 --> 00:00:08,263
@@ -11,7 +11,7 @@ the story of how I met your mother.
 3
 00:00:08,263 --> 00:00:10,551
 [SPEAKER: KIDS] [MOOD: QUESTION]
-Are we being [EMPH: punished] for something ?
+Are we being punished for something ?
 
 4
 00:00:10,551 --> 00:00:11,173
@@ -61,7 +61,7 @@ And then Uncle Marshall went and screwed the whole thing up.
 13
 00:00:35,435 --> 00:00:37,112
 [SPEAKER: MARSHALL] [MOOD: QUESTION]
-Will you [EMPH: marry] me ?
+Will you marry me ?
 
 14
 00:00:37,876 --> 00:00:38,937
@@ -96,7 +96,7 @@ Got it.
 20
 00:00:46,110 --> 00:00:47,585
 [SPEAKER: MARSHALL] [MOOD: NEUTRAL]
-Thanks for helping me plan this out, [EMPH: Ted].
+Thanks for helping me plan this out, Ted.
 
 21
 00:00:47,585 --> 00:00:49,906
@@ -166,7 +166,7 @@ I'm calling up your Uncle Barney.
 34
 00:01:19,712 --> 00:01:22,858
 [SPEAKER: TED] [MOOD: QUESTION]
-Hey, so you know how I've always had a thing for [EMPH: half-Asian] girls ?
+Hey, so you know how I've always had a thing for half-Asian girls ?
 
 35
 00:01:24,041 --> 00:01:27,965
@@ -186,7 +186,7 @@ Hey, you want to do somethin' tonight ?
 38
 00:01:32,111 --> 00:01:35,218
 [SPEAKER: BARNEY] [MOOD: EXCITED]
-Okay, meet me at the bar in 15 minutes. And [EMPH: suit up] !
+Okay, meet me at the bar in 15 minutes. And suit up !
 
 39
 00:01:39,022 --> 00:01:40,213
@@ -241,7 +241,7 @@ Have you forgotten what I said to you the night we met ?
 49
 00:02:07,997 --> 00:02:10,498
 [SPEAKER: BARNEY] [MOOD: NEUTRAL]
-Ted, [PAUSE: 250] I'm gonna [EMPH: teach you how to live].
+Ted, [PAUSE: 250] I'm gonna teach you how to live.
 
 50
 00:02:11,196 --> 00:02:13,098
@@ -256,7 +256,7 @@ Oh, right. Right.
 52
 00:02:14,460 --> 00:02:16,460
 [SPEAKER: BARNEY] [MOOD: NEUTRAL]
-Lesson one : [EMPH: lose the goatee].
+Lesson one : lose the goatee.
 
 53
 00:02:16,460 --> 00:02:17,618
@@ -276,7 +276,7 @@ Suits are cool. Exhibit "A."
 56
 00:02:22,778 --> 00:02:27,140
 [SPEAKER: BARNEY] [MOOD: NEUTRAL]
-Lesson three : don't even think about getting married till you're [EMPH: 30].
+Lesson three : don't even think about getting married till you're 30.
 
 57
 00:02:27,676 --> 00:02:29,410
@@ -331,7 +331,7 @@ We're not playing "Have you met Ted ?"
 67
 00:02:45,337 --> 00:02:46,739
 [SPEAKER: BARNEY] [MOOD: QUESTION]
-Hi, have you met [EMPH: Ted] ?
+Hi, have you met Ted ?
 
 68
 00:02:47,448 --> 00:02:49,817
@@ -346,7 +346,7 @@ Yasmine.
 70
 00:02:50,701 --> 00:02:51,972
 [SPEAKER: TED] [MOOD: NEUTRAL]
-That's a very [EMPH: pretty] name.
+That's a very pretty name.
 
 71
 00:02:51,972 --> 00:02:53,779
@@ -471,7 +471,7 @@ Band, no DJ. People will dance !
 95
 00:03:49,842 --> 00:03:51,517
 [SPEAKER: TED] [MOOD: EXCITED]
-I'm [EMPH: not] gonna worry about it !
+I'm not gonna worry about it !
 
 96
 00:03:52,538 --> 00:03:54,857
@@ -511,7 +511,7 @@ Yeah.
 103
 00:04:17,064 --> 00:04:20,910
 [SPEAKER: LILY] [MOOD: NEUTRAL]
-No. You are [EMPH: too old] to be scared to open a bottle of champagne.
+No. You are too old to be scared to open a bottle of champagne.
 
 104
 00:04:20,910 --> 00:04:22,550
@@ -531,7 +531,7 @@ Please open it ?
 107
 00:04:26,791 --> 00:04:28,554
 [SPEAKER: LILY] [MOOD: EXCITED]
-You are [EMPH: unbelievable], Marshall.
+You are unbelievable, Marshall.
 
 108
 00:04:28,554 --> 00:04:31,062
@@ -551,17 +551,17 @@ The other just slips out when you're half drunk at some bar.
 111
 00:04:35,604 --> 00:04:36,934
 [SPEAKER: MARSHALL] [MOOD: QUESTION]
-Will you [EMPH: marry] me ?
+Will you marry me ?
 
 112
 00:04:36,934 --> 00:04:38,284
 [SPEAKER: TED] [MOOD: QUESTION]
-You wanna go out [EMPH: sometime] ?
+You wanna go out sometime ?
 
 113
 00:04:38,962 --> 00:04:40,856
 [SPEAKER: LILY] [MOOD: EXCITED]
-Of course, you [EMPH: idiot] !
+Of course, you idiot !
 
 114
 00:04:41,851 --> 00:04:44,495
@@ -616,7 +616,7 @@ Why am I freaking out all of a sudden ?
 124
 00:05:16,640 --> 00:05:18,910
 [SPEAKER: UNKNOWN] [MOOD: NEUTRAL]
-This is crazy. I'm [EMPH: not ready] to settle down.
+This is crazy. I'm not ready to settle down.
 
 125
 00:05:18,910 --> 00:05:21,340
@@ -651,7 +651,7 @@ but if I was, it's, like, "Okay, I'm ready. Where is she ?"
 131
 00:05:39,673 --> 00:05:41,486
 [SPEAKER: UNKNOWN] [MOOD: NEUTRAL]
-And [EMPH: there she was].
+And there she was.
 
 132
 00:05:48,240 --> 00:05:50,041
@@ -676,12 +676,12 @@ I'm gonna marry her someday."
 136
 00:05:58,477 --> 00:06:00,941
 [SPEAKER: TED] [MOOD: QUESTION]
-Hey, Barney, see [EMPH: that girl] ?
+Hey, Barney, see that girl ?
 
 137
 00:06:00,941 --> 00:06:03,721
 [SPEAKER: BARNEY] [MOOD: SARCASTIC]
-Oh, yeah. You just know she likes it [EMPH: dirty].
+Oh, yeah. You just know she likes it dirty.
 
 138
 00:06:04,364 --> 00:06:05,295
@@ -711,7 +711,7 @@ then I'll strategically place myself by the jukebox...
 143
 00:06:12,359 --> 00:06:13,764
 [SPEAKER: BARNEY] [MOOD: QUESTION]
-Hi, have you met [EMPH: Ted] ?
+Hi, have you met Ted ?
 
 144
 00:06:17,656 --> 00:06:20,393
@@ -856,7 +856,7 @@ And it does look fun in the movies.
 172
 00:07:27,898 --> 00:07:29,427
 [SPEAKER: TED] [MOOD: QUESTION]
-Hey, you wanna have dinner with me [EMPH: Saturday night] ?
+Hey, you wanna have dinner with me Saturday night ?
 
 173
 00:07:29,427 --> 00:07:30,632
@@ -946,7 +946,7 @@ The next night, I took her out to this little bistro in Brooklyn.
 190
 00:08:17,448 --> 00:08:19,673
 [SPEAKER: ROBIN] [MOOD: NEUTRAL]
-That is one badass [EMPH: blue French horn].
+That is one badass blue French horn.
 
 191
 00:08:19,673 --> 00:08:20,298
@@ -1021,7 +1021,7 @@ She drinks scotch ?
 205
 00:08:59,798 --> 00:09:02,680
 [SPEAKER: ROBIN] [MOOD: NEUTRAL]
-I love a [EMPH: scotch] that's old enough to order its own scotch.
+I love a scotch that's old enough to order its own scotch.
 
 206
 00:09:02,680 --> 00:09:04,679
@@ -1046,7 +1046,7 @@ Do you want these ? I hate olives.
 210
 00:09:14,112 --> 00:09:16,052
 [SPEAKER: TED] [MOOD: EXCITED]
-She hates olives ! [EMPH: Awesome] !
+She hates olives ! Awesome !
 
 211
 00:09:16,052 --> 00:09:17,822
@@ -1131,7 +1131,7 @@ Come on. No purple tuba ?
 227
 00:09:54,588 --> 00:09:56,635
 [SPEAKER: UNKNOWN] [MOOD: SARCASTIC]
-It's a Smurf penis or [EMPH: no dice].
+It's a Smurf penis or no dice.
 
 228
 00:09:57,904 --> 00:09:58,833
@@ -1191,7 +1191,7 @@ Look, this woman could actually be my future wife.
 239
 00:10:19,807 --> 00:10:21,320
 [SPEAKER: TED] [MOOD: NEUTRAL]
-I want our first kiss to be [EMPH: amazing].
+I want our first kiss to be amazing.
 
 240
 00:10:21,320 --> 00:10:24,030
@@ -1271,7 +1271,7 @@ Okay, meet me at the bar in 15 minutes.
 255
 00:10:55,251 --> 00:10:56,332
 [SPEAKER: BARNEY] [MOOD: EXCITED]
-And [EMPH: suit up] !
+And suit up !
 
 256
 00:10:57,614 --> 00:10:59,657
@@ -1351,7 +1351,7 @@ Well, maybe in a week when she gets back from Orlando.
 271
 00:11:34,367 --> 00:11:36,627
 [SPEAKER: BARNEY] [MOOD: NEUTRAL]
-A week ? That's like a [EMPH: year] in hot girl time.
+A week ? That's like a year in hot girl time.
 
 272
 00:11:36,627 --> 00:11:37,837
@@ -1441,7 +1441,7 @@ I gotta do what that guy couldn't.
 289
 00:12:13,038 --> 00:12:14,727
 [SPEAKER: TED] [MOOD: EXCITED]
-I gotta take the [EMPH: leap] !
+I gotta take the leap !
 
 290
 00:12:15,684 --> 00:12:16,905
@@ -1496,7 +1496,7 @@ All right, but under one condition.
 300
 00:12:38,579 --> 00:12:41,147
 [SPEAKER: BARNEY] [MOOD: EXCITED]
-Look at you, you beautiful bastard. You [EMPH: suited up] !
+Look at you, you beautiful bastard. You suited up !
 
 301
 00:12:41,147 --> 00:12:42,913
@@ -1566,12 +1566,12 @@ Ted's gonna get it on with a TV reporter.
 314
 00:13:22,441 --> 00:13:24,303
 [SPEAKER: BARNEY] [MOOD: EXCITED]
-[EMPH: Kiss her], Ted ! Kiss her good !
+Kiss her, Ted ! Kiss her good !
 
 315
 00:13:24,303 --> 00:13:25,667
 [SPEAKER: BARNEY] [MOOD: EXCITED]
-[EMPH: Kiss the crap] outta that girl !
+Kiss the crap outta that girl !
 
 316
 00:13:25,667 --> 00:13:27,787
@@ -1596,7 +1596,7 @@ Why does he get to be the best man ?
 320
 00:13:35,387 --> 00:13:37,434
 [SPEAKER: BARNEY] [MOOD: EXCITED]
-I'm your [EMPH: best friend] !
+I'm your best friend !
 
 321
 00:13:38,369 --> 00:13:41,825
@@ -1886,7 +1886,7 @@ doesn't scare me at all.
 378
 00:16:36,526 --> 00:16:38,496
 [SPEAKER: MARSHALL] [MOOD: NEUTRAL]
-I'm [EMPH: marrying] that girl.
+I'm marrying that girl.
 
 379
 00:16:39,895 --> 00:16:41,075
@@ -1896,7 +1896,7 @@ Lilly.
 380
 00:16:41,984 --> 00:16:43,689
 [SPEAKER: MARSHALL] [MOOD: NEUTRAL]
-Lilly, I like [EMPH: olives].
+Lilly, I like olives.
 
 381
 00:16:44,445 --> 00:16:46,177
@@ -1946,7 +1946,7 @@ Promised you these.
 390
 00:17:16,385 --> 00:17:19,366
 [SPEAKER: ROBIN] [MOOD: NEUTRAL]
-Olives. Thanks. [EMPH: I love you].
+Olives. Thanks. I love you.
 
 391
 00:17:19,366 --> 00:17:21,344
@@ -2106,7 +2106,7 @@ were to bear with me through all this,
 422
 00:18:42,325 --> 00:18:43,908
 [SPEAKER: TED] [MOOD: NEUTRAL]
-I think I'd make a damn [EMPH: good husband].
+I think I'd make a damn good husband.
 
 423
 00:18:43,908 --> 00:18:45,707
@@ -2171,7 +2171,7 @@ What ?
 435
 00:19:23,260 --> 00:19:24,444
 [SPEAKER: FUTURE_TED] [MOOD: NEUTRAL]
-That was the [EMPH: signal].
+That was the signal.
 
 436
 00:19:24,444 --> 00:19:28,175
@@ -2296,7 +2296,7 @@ to see the picture that was forming.
 460
 00:20:23,525 --> 00:20:27,880
 [SPEAKER: FUTURE_TED] [MOOD: NEUTRAL]
-Because, that, kids, is the [EMPH: true story] of how I met your Aunt Robin.
+Because, that, kids, is the true story of how I met your Aunt Robin.
 
 461
 00:20:29,209 --> 00:20:30,481
@@ -2311,7 +2311,7 @@ I thought this was how you met mom !
 463
 00:20:32,472 --> 00:20:34,509
 [SPEAKER: FUTURE_TED] [MOOD: NEUTRAL]
-Will you [EMPH: relax] ? I'm getting to it.
+Will you relax ? I'm getting to it.
 
 464
 00:20:34,838 --> 00:20:38,540
