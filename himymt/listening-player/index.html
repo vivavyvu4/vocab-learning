@@ -46,6 +46,9 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
       <section class="panel">
         <h2>Voice settings</h2>
         <div class="field"><label for="voiceSelect">English voice</label><select id="voiceSelect"><option>Loading voices…</option></select></div>
+        <div class="small muted" id="voiceCount">Checking available voices…</div>
+        <div class="file-tools"><button type="button" id="refreshVoicesBtn">↻ Refresh voice list</button><button type="button" id="testVoiceBtn">▶ Test selected voice</button></div>
+        <details style="margin-top:12px"><summary class="small" style="cursor:pointer;color:var(--accent)">Show every voice available to this browser</summary><p class="muted small">All languages are listed here. Character selectors use English voices when available.</p><div id="voiceInventory" class="small"></div></details>
         <div class="field"><label for="speedSelect">Speaking speed</label><select id="speedSelect"><option value=".75">0.75× · Slow</option><option value=".9" selected>0.9× · Comfortable</option><option value="1">1× · Normal</option><option value="1.1">1.1× · Faster</option></select></div>
         <div class="field"><label for="gapSelect">Pause between subtitles</label><select id="gapSelect"><option value="0">No extra pause</option><option value="350" selected>Short · 0.35 sec</option><option value="800">Longer · 0.8 sec</option></select></div>
         <div class="hint"><strong>Expressive reading:</strong> mood labels gently adjust speed and pitch. Inline word splitting is disabled to keep sentences flowing naturally.</div>
@@ -80,6 +83,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
   const $ = id => document.getElementById(id);
   const ui = {
     status:$("loadStatus"), sentence:$("sentence"), ipa:$("ipa"), tip:$("tip"), cue:$("cueLabel"),
+    voiceCount:$("voiceCount"), refreshVoices:$("refreshVoicesBtn"), testVoice:$("testVoiceBtn"), voiceInventory:$("voiceInventory"),
     elapsed:$("elapsed"), duration:$("duration"), fill:$("progressFill"), progress:$("progress"),
     mode:$("modeLabel"), play:$("playBtn"), stop:$("stopBtn"), prev:$("prevBtn"), next:$("nextBtn"),
     restart:$("restartBtn"), voice:$("voiceSelect"), speed:$("speedSelect"), gap:$("gapSelect"),
@@ -202,9 +206,34 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
       select.addEventListener("change",()=>{if(speaking||paused)jump(current,true);});
     });
   }
+  function renderVoiceInventory() {
+    const english=voices.filter(v=>/^en(-|_)/i.test(v.lang));
+    ui.voiceCount.textContent=voices.length ? (voices.length+" voices total · "+english.length+" English") : "No voices reported yet; try refreshing."; 
+    ui.voiceInventory.innerHTML="";
+    voices.forEach((voice,index)=>{
+      const row=document.createElement("div"); row.style.cssText="display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-bottom:1px solid var(--line)";
+      const label=document.createElement("div"); label.style.cssText="min-width:0;overflow-wrap:anywhere";
+      const name=document.createElement("div"); name.textContent=voice.name||"Unnamed voice";
+      const meta=document.createElement("div"); meta.className="muted"; meta.textContent=[voice.lang||"unknown language",voice.default?"default":null,voice.localService?"local":"network"].filter(Boolean).join(" · ");
+      label.append(name,meta);
+      const test=document.createElement("button"); test.type="button"; test.textContent="Test"; test.addEventListener("click",()=>testVoice(voice));
+      row.append(label,test); ui.voiceInventory.appendChild(row);
+    });
+  }
+  function testVoice(voice) {
+    if (!("speechSynthesis" in window) || !voice) return;
+    cancelSpeech(); updateState("Testing voice");
+    const sample=new SpeechSynthesisUtterance("Hi! This is a sample of this voice. How are you doing today.");
+    sample.voice=voice; sample.lang=voice.lang||"en-US"; sample.rate=.9;
+    sample.onstart=()=>{ui.status.textContent="Testing voice: "+voice.name;};
+    sample.onend=()=>{ui.status.textContent="Voice test finished.";updateState("Ready to listen");};
+    sample.onerror=event=>{ui.status.textContent="Voice test failed: "+event.error;updateState("Ready to listen");};
+    speechSynthesis.speak(sample);
+  }
   function refreshVoiceList() {
     if (!("speechSynthesis" in window)) return;
     voices = speechSynthesis.getVoices();
+    renderVoiceInventory();
     const options=voiceOptions();
     const previous=ui.voice.value;
     fillVoiceSelect(ui.voice,options,previous || options.find(v=>/en-US|en_US/i.test(v.lang))?.name || "");
@@ -355,6 +384,8 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
   ui.showEnglish.addEventListener("change",render);ui.showIpa.addEventListener("change",render);
   ui.speed.addEventListener("change",()=>{if(speaking||paused)jump(current,true);});
   ui.voice.addEventListener("change",()=>{if(speaking||paused)jump(current,true);});
+  ui.refreshVoices.addEventListener("click",()=>{refreshVoiceList();ui.status.textContent="Voice list refreshed.";});
+  ui.testVoice.addEventListener("click",()=>{const selected=voices.find(v=>v.name===ui.voice.value)||voiceOptions()[0];if(selected)testVoice(selected);else ui.status.textContent="No voice available to test yet.";});
   ui.autoNext.addEventListener("change",()=>{});
   ui.loop.addEventListener("change",()=>{});
   document.addEventListener("keydown",event=>{
