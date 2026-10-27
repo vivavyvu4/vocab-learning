@@ -58,6 +58,6 @@ Supported tags:
 - Inline `[EMPH: word]` raises pitch slightly and slows the emphasized word.
 - Inline `[PAUSE: 400]` adds a pause in milliseconds.
 
-In the player, choose a separate browser voice for each supported character. A blank character selection uses the default English voice. Mood changes are approximations using browser TTS rate and pitch, not the actors' original performances.
+The player detects every distinct `[SPEAKER: ...]` label in the loaded SRT and creates a voice selector for each one. It attempts to assign distinct English voices by inferred character gender; voice gender is not exposed consistently by browsers, so this is a best-effort name-based heuristic. Users can change any assignment afterward. Mood changes are approximations using browser TTS rate and pitch, not the actors' original performances. Inline `[EMPH: ...]` markers were removed because splitting a sentence into separate TTS utterances made the speech sound choppy; the parser also strips such wrappers from older SRT files without splitting the sentence.
 
 **Speaker labels are a first-pass annotation, not a verified script transcript.** Most dialogue cues across EP1 now have a first-pass speaker label; 67 uncertain or mixed-speaker cues remain `UNKNOWN` rather than being confidently assigned to the wrong character. The original English SRT and IPA SRT remain unchanged. If the annotated file cannot load, the player falls back to the original English SRT.
