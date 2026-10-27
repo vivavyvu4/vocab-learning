@@ -266,6 +266,39 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     if(viewButton) viewButton.textContent=floatingMinimal?"↗ Full controls":"Aa Text only";
     syncFloatingPlayer();
   }
+  function renderFloatingWords(container,text) {
+    if(!container)return;
+    container.replaceChildren();
+    const parts=String(text||"").match(/[A-Za-z]+(?:['’][A-Za-z]+)*|[^A-Za-z]+/g)||[];
+    for(const part of parts){
+      if(/^[A-Za-z]+(?:['’][A-Za-z]+)*$/.test(part)){
+        const span=container.ownerDocument.createElement("span");
+        span.className="word";span.textContent=part;span.dataset.word=part;
+        span.title="Click to pause and see meaning";
+        container.appendChild(span);
+      } else container.appendChild(container.ownerDocument.createTextNode(part));
+    }
+  }
+  async function lookupWord(word,doc) {
+    const panel=doc.getElementById("wordMeaning");
+    if(!panel)return;
+    panel.style.display="block";
+    panel.innerHTML="<strong>"+word.replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]))+"</strong><div>Looking up meaning…</div>";
+    try{
+      const response=await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/"+encodeURIComponent(word.toLowerCase()));
+      if(!response.ok)throw new Error("not found");
+      const data=await response.json();
+      const meanings=[];
+      for(const entry of data.slice(0,1))for(const meaning of (entry.meanings||[]).slice(0,2)){
+        const definition=meaning.definitions?.[0]?.definition;
+        if(definition)meanings.push((meaning.partOfSpeech?meaning.partOfSpeech+": ":"")+definition);
+      }
+      if(!meanings.length)throw new Error("no definition");
+      panel.innerHTML="<strong>"+word.replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]))+"</strong><div>"+meanings.map(s=>s.replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]))).join("<br>")+"</div><div class=\"meaningHint\">English definition · click another word to look it up</div>";
+    }catch{
+      panel.innerHTML="<strong>"+word.replace(/[&<>"]/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[ch]))+"</strong><div>Couldn't find a definition right now. Check your internet connection or try another word.</div><div class=\"meaningHint\">This lookup uses a free online English dictionary.</div>";
+    }
+  }
   function syncFloatingPlayer() {
     if (!pipWindow || pipWindow.closed) { pipWindow=null; return; }
     const doc=pipWindow.document;
@@ -276,7 +309,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     const progress=doc.getElementById("floatProgress");
     const playButton=doc.getElementById("floatPlay");
     if (!english || !ipa || !speaker || !progress || !playButton) return;
-    english.textContent=cue ? (ui.showEnglish.checked?cue.text:"English subtitle hidden") : "Load subtitles in the main player";
+    renderFloatingWords(english,cue ? (ui.showEnglish.checked?cue.text:"English subtitle hidden") : "Load subtitles in the main player");
     ipa.textContent=cue && ui.showIpa.checked ? (cue.ipa || "IPA not available for this subtitle") : "";
     ipa.style.display=ui.showIpa.checked?"block":"none";
     speaker.textContent=cue ? ((cue.speaker||"UNKNOWN").replace(/_/g," ")+" · "+(cue.mood||"NEUTRAL")+" · "+(current+1)+"/"+cues.length) : "HIMYM · EP1";
@@ -295,13 +328,19 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     try {
       pipWindow=await documentPictureInPicture.requestWindow({width:420,height:290});
       const doc=pipWindow.document;
-      doc.head.innerHTML='<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HIMYM Mini Player</title><style>*{box-sizing:border-box}body{margin:0;padding:16px;background:#0b1020;color:#edf2ff;font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}header{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#9eabc4;font-size:11px;letter-spacing:.08em;text-transform:uppercase}.pin{color:#8bb7ff}#floatSpeaker{margin-top:12px;color:#8bb7ff;font-size:11px;font-weight:700}#floatEnglish{font-size:clamp(20px,5vw,28px);font-weight:750;line-height:1.25;overflow-wrap:anywhere;margin-top:8px;text-shadow:0 1px 4px #000,0 0 2px #000}#floatIpa{color:#c4b5fd;margin-top:10px;overflow-wrap:anywhere;font-size:14px}.bar{height:3px;background:#28344a;margin-top:12px;border-radius:8px;overflow:hidden}.bar span{display:block;height:100%;width:0;background:#8bb7ff}nav{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px}button{font:inherit;color:#edf2ff;background:#1b263b;border:1px solid #2a3650;border-radius:10px;padding:8px 12px;cursor:pointer}button:hover{border-color:#8bb7ff}button.primary{background:#8bb7ff;color:#0b1020;font-weight:800;min-width:92px}footer{display:flex;justify-content:space-between;gap:8px;margin-top:10px;color:#9eabc4;font-size:10px}body.minimal{padding:4px;background:transparent;color:#fff;overflow:hidden}body.minimal header,body.minimal #floatSpeaker,body.minimal #floatIpa,body.minimal .bar,body.minimal nav,body.minimal footer{display:none!important}body.minimal #floatEnglish{margin:0;padding:2px 4px;font-size:clamp(22px,6vw,38px);line-height:1.2;color:#fff;text-shadow:0 1px 5px #000,1px 0 4px #000,-1px 0 4px #000;cursor:default}</style>';
-      doc.body.innerHTML='<header><span>HIMYM · Listening practice</span><span class="pin">● Always on top</span></header><div id="floatSpeaker">EP1 · Pilot</div><div id="floatEnglish" title="Double-click to restore controls in text-only mode">Getting subtitles ready…</div><div id="floatIpa"></div><div class="bar"><span id="floatProgress"></span></div><nav><button id="floatPrev" title="Previous subtitle">⏮</button><button id="floatPlay" class="primary">▶ Play</button><button id="floatStop" title="Stop">■</button><button id="floatNext" title="Next subtitle">⏭</button><button id="floatView" title="Show only subtitle text">Aa Text only</button></nav><footer><span>Controls work while you use other apps</span><span>Double-click text to restore controls</span></footer>';
+      doc.head.innerHTML='<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HIMYM Mini Player</title><style>*{box-sizing:border-box}body{margin:0;padding:16px;background:#0b1020;color:#edf2ff;font:14px/1.45 system-ui,-apple-system,"Segoe UI",sans-serif}header{display:flex;justify-content:space-between;align-items:center;gap:8px;color:#9eabc4;font-size:11px;letter-spacing:.08em;text-transform:uppercase}.pin{color:#8bb7ff}#floatSpeaker{margin-top:12px;color:#8bb7ff;font-size:11px;font-weight:700}#floatEnglish{font-size:clamp(20px,5vw,28px);font-weight:750;line-height:1.25;overflow-wrap:anywhere;margin-top:8px;text-shadow:0 1px 4px #000,0 0 2px #000}#floatIpa{color:#c4b5fd;margin-top:10px;overflow-wrap:anywhere;font-size:14px}.bar{height:3px;background:#28344a;margin-top:12px;border-radius:8px;overflow:hidden}.bar span{display:block;height:100%;width:0;background:#8bb7ff}nav{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px}button{font:inherit;color:#edf2ff;background:#1b263b;border:1px solid #2a3650;border-radius:10px;padding:8px 12px;cursor:pointer}button:hover{border-color:#8bb7ff}button.primary{background:#8bb7ff;color:#0b1020;font-weight:800;min-width:92px}footer{display:flex;justify-content:space-between;gap:8px;margin-top:10px;color:#9eabc4;font-size:10px}body.minimal{padding:8px;background:#080b12;color:#fff;overflow:auto}body.minimal header,body.minimal #floatSpeaker,body.minimal #floatIpa,body.minimal .bar,body.minimal nav,body.minimal footer{display:none!important}body.minimal #floatEnglish{margin:0;padding:2px 4px;font-size:clamp(22px,6vw,38px);line-height:1.35;color:#fff;cursor:default}#floatEnglish .word{display:inline;border-radius:4px;cursor:pointer}#floatEnglish .word:hover{background:#34445f;color:#fff}#wordMeaning{display:none;margin:12px 2px 2px;padding:10px 12px;border:1px solid #34445f;border-radius:8px;background:#111827;color:#f3f4f6;font-size:14px;line-height:1.45;overflow-wrap:anywhere}#wordMeaning strong{color:#8bb7ff}#wordMeaning .meaningHint{color:#9ca3af;font-size:11px;margin-top:5px}body.minimal #wordMeaning{display:block}</style>';
+      doc.body.innerHTML='<header><span>HIMYM · Listening practice</span><span class="pin">● Always on top</span></header><div id="floatSpeaker">EP1 · Pilot</div><div id="floatEnglish" title="Click a word to pause and look up its meaning; double-click to restore controls">Getting subtitles ready…</div><div id="wordMeaning" role="status"></div><div id="floatIpa"></div><div class="bar"><span id="floatProgress"></span></div><nav><button id="floatPrev" title="Previous subtitle">⏮</button><button id="floatPlay" class="primary">▶ Play</button><button id="floatStop" title="Stop">■</button><button id="floatNext" title="Next subtitle">⏭</button><button id="floatView" title="Show only subtitle text">Aa Text only</button></nav><footer><span>Controls work while you use other apps</span><span>Double-click text to restore controls</span></footer>';
       doc.getElementById("floatPrev").addEventListener("click",()=>jump(current-1));
       doc.getElementById("floatNext").addEventListener("click",()=>jump(current+1));
       doc.getElementById("floatPlay").addEventListener("click",play);
       doc.getElementById("floatStop").addEventListener("click",stop);
       doc.getElementById("floatView").addEventListener("click",()=>setFloatingMinimal(!floatingMinimal));
+      doc.getElementById("floatEnglish").addEventListener("click",event=>{
+        const wordNode=event.target.closest("[data-word]");
+        if(!wordNode)return;
+        if(speaking&&!paused){speechSynthesis.pause();paused=true;updateState("Paused to look up word");}
+        lookupWord(wordNode.dataset.word,doc);
+      });
       doc.getElementById("floatEnglish").addEventListener("dblclick",()=>setFloatingMinimal(!floatingMinimal));
       pipWindow.addEventListener("pagehide",()=>{pipWindow=null;floatingMinimal=false;});
       syncFloatingPlayer();
