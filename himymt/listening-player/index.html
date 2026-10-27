@@ -48,15 +48,10 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
         <div class="field"><label for="voiceSelect">English voice</label><select id="voiceSelect"><option>Loading voices…</option></select></div>
         <div class="field"><label for="speedSelect">Speaking speed</label><select id="speedSelect"><option value=".75">0.75× · Slow</option><option value=".9" selected>0.9× · Comfortable</option><option value="1">1× · Normal</option><option value="1.1">1.1× · Faster</option></select></div>
         <div class="field"><label for="gapSelect">Pause between subtitles</label><select id="gapSelect"><option value="0">No extra pause</option><option value="350" selected>Short · 0.35 sec</option><option value="800">Longer · 0.8 sec</option></select></div>
-        <div class="hint"><strong>Expressive reading:</strong> annotated subtitles can add small pauses, word emphasis, and mood-based speed and pitch changes.</div>
+        <div class="hint"><strong>Expressive reading:</strong> mood labels gently adjust speed and pitch. Inline word splitting is disabled to keep sentences flowing naturally.</div>
         <h2 style="margin-top:18px">Character voices</h2>
-        <div class="field"><label for="voiceFutureTed">Future Ted · narrator</label><select id="voiceFutureTed"></select></div>
-        <div class="field"><label for="voiceTed">Ted</label><select id="voiceTed"></select></div>
-        <div class="field"><label for="voiceBarney">Barney</label><select id="voiceBarney"></select></div>
-        <div class="field"><label for="voiceRobin">Robin</label><select id="voiceRobin"></select></div>
-        <div class="field"><label for="voiceMarshall">Marshall</label><select id="voiceMarshall"></select></div>
-        <div class="field"><label for="voiceLily">Lily</label><select id="voiceLily"></select></div>
-        <div class="field"><label for="voiceOther">Kids / other characters</label><select id="voiceOther"></select></div>
+        <p class="muted small">The player detects speakers in the loaded SRT and assigns available voices automatically. You can change any assignment below.</p>
+        <div id="characterVoices"><div class="muted small">Waiting for speaker labels…</div></div>
       </section>
       <section class="panel">
         <h2>What you see</h2>
@@ -88,7 +83,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     elapsed:$("elapsed"), duration:$("duration"), fill:$("progressFill"), progress:$("progress"),
     mode:$("modeLabel"), play:$("playBtn"), stop:$("stopBtn"), prev:$("prevBtn"), next:$("nextBtn"),
     restart:$("restartBtn"), voice:$("voiceSelect"), speed:$("speedSelect"), gap:$("gapSelect"),
-    speaker:$("speakerLabel"), roleVoices:{FUTURE_TED:$("voiceFutureTed"),TED:$("voiceTed"),BARNEY:$("voiceBarney"),ROBIN:$("voiceRobin"),MARSHALL:$("voiceMarshall"),LILY:$("voiceLily"),OTHER:$("voiceOther")},
+    speaker:$("speakerLabel"), characterVoices:$("characterVoices"), roleVoices:{},
     showEnglish:$("showEnglish"), showIpa:$("showIpa"), autoNext:$("autoNext"), loop:$("loopEpisode"),
     count:$("cueCount"), srtFile:$("srtFile"), ipaFile:$("ipaFile")
   };
@@ -142,25 +137,78 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     return String(Math.floor(seconds/60)).padStart(2,"0")+":"+String(seconds%60).padStart(2,"0");
   }
   function episodeDuration() { return cues.length ? cues[cues.length-1].end : 0; }
+  function voiceGender(voice) {
+    if (voice.gender === "female" || voice.gender === "male") return voice.gender;
+    const name = (voice.name || "").toLowerCase();
+    if (/\b(jenny|aria|zira|samantha|karen|tessa|susan|hazel|sara|sonia|libby|emma|joanna|michelle|catherine|ava|allison|victoria|natasha|linda|helen|female)\b/.test(name)) return "female";
+    if (/\b(david|mark|guy|tony|christopher|eric|andrew|thomas|ryan|jason|daniel|george|james|richard|brian|alex|male)\b/.test(name)) return "male";
+    return "unknown";
+  }
+  function speakerGender(speaker) {
+    const s=(speaker||"").toUpperCase();
+    if (["TED","FUTURE_TED","BARNEY","MARSHALL","CARL","RANJIT"].includes(s)) return "male";
+    if (["ROBIN","LILY","YASMINE"].includes(s)) return "female";
+    return "unknown";
+  }
+  function voiceOptions() {
+    const english=voices.filter(v=>/^en(-|_)/i.test(v.lang));
+    const pool=english.length?english:voices;
+    return [...pool.filter(v=>/en-US|en_US/i.test(v.lang)),...pool.filter(v=>!/en-US|en_US/i.test(v.lang))];
+  }
+  function fillVoiceSelect(select, options, selectedName) {
+    select.innerHTML="";
+    select.add(new Option("Use default English voice",""));
+    options.forEach(v=>select.add(new Option(v.name+" · "+v.lang,v.name)));
+    if(selectedName && options.some(v=>v.name===selectedName)) select.value=selectedName;
+  }
+  function renderCharacterVoiceSettings() {
+    if (!ui.characterVoices || !cues.length) return;
+    const speakers=[...new Set(cues.map(c=>c.speaker||"UNKNOWN"))].sort((a,b)=>{
+      const order=["FUTURE_TED","TED","BARNEY","ROBIN","MARSHALL","LILY","RANJIT","YASMINE","CARL","KIDS","UNKNOWN"];
+      const ai=order.indexOf(a),bi=order.indexOf(b);
+      return (ai<0?99:ai)-(bi<0?99:bi)||a.localeCompare(b);
+    });
+    const options=voiceOptions();
+    const previous={...ui.roleVoices};
+    const used={male:new Set(),female:new Set(),unknown:new Set()};
+    ui.characterVoices.innerHTML="";
+    ui.roleVoices={};
+    speakers.forEach((speaker,index)=>{
+      const field=document.createElement("div");
+      field.className="field";
+      const label=document.createElement("label");
+      const select=document.createElement("select");
+      const id="speakerVoice"+index;
+      select.id=id;
+      label.htmlFor=id;
+      const gender=speakerGender(speaker);
+      label.textContent=speaker.replace(/_/g," ") + (gender!=="unknown" ? " · "+gender : "");
+      field.append(label,select);
+      ui.characterVoices.appendChild(field);
+      ui.roleVoices[speaker]=select;
+      const old=previous[speaker]?.value || "";
+      let chosen=old;
+      if(!chosen && options.length){
+        const matching=gender==="unknown"?options:options.filter(v=>voiceGender(v)===gender);
+        const pool=matching.length?matching:options;
+        const group=gender==="unknown"?"unknown":gender;
+        const available=pool.filter(v=>!used[group].has(v.name));
+        const preferred=available.length?available:pool;
+        const candidate=preferred[index % preferred.length];
+        chosen=candidate?.name || "";
+        if(candidate) used[group].add(candidate.name);
+      }
+      fillVoiceSelect(select,options,chosen);
+      select.addEventListener("change",()=>{if(speaking||paused)jump(current,true);});
+    });
+  }
   function refreshVoiceList() {
     if (!("speechSynthesis" in window)) return;
     voices = speechSynthesis.getVoices();
-    const allSelects = [ui.voice,...Object.values(ui.roleVoices)];
-    const previous = new Map(allSelects.map(select=>[select.id,select.value]));
-    const english = voices.filter(v=>/^en(-|_)/i.test(v.lang));
-    const sorted = [...english.filter(v=>/en-US|en_US/i.test(v.lang)),...english.filter(v=>!/en-US|en_US/i.test(v.lang)),...voices.filter(v=>!english.includes(v))];
-    allSelects.forEach((select,index)=>{
-      select.innerHTML = "";
-      if(index>0) select.add(new Option("Use default voice",""));
-      if(!sorted.length) select.add(new Option("Default browser voice",""));
-      sorted.forEach(v=>select.add(new Option(v.name+" · "+v.lang,v.name)));
-      const old = previous.get(select.id);
-      if(old && [...select.options].some(option=>option.value===old)) select.value=old;
-      else if(index===0) {
-        const us=sorted.find(v=>/en-US|en_US/i.test(v.lang));
-        if(us) select.value=us.name;
-      }
-    });
+    const options=voiceOptions();
+    const previous=ui.voice.value;
+    fillVoiceSelect(ui.voice,options,previous || options.find(v=>/en-US|en_US/i.test(v.lang))?.name || "");
+    renderCharacterVoiceSettings();
   }
   function render() {
     if (!cues.length) return;
@@ -185,21 +233,19 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     speaking=false; paused=false; utterance=null;
   }
   function chooseVoice(u,cue) {
-    const role = ["FUTURE_TED","TED","BARNEY","ROBIN","MARSHALL","LILY"].includes(cue.speaker) ? cue.speaker : "OTHER";
-    const selectedName = ui.roleVoices[role]?.value || ui.voice.value;
+    const selectedName = ui.roleVoices[cue.speaker]?.value || ui.voice.value;
     const selected=voices.find(v=>v.name===selectedName);
     if(selected) u.voice=selected;
     u.lang=selected?.lang || "en-US";
   }
   function speechParts(source) {
     const parts=[];
-    const pattern=/\[(?:EMPH:\s*([^\]]+)|PAUSE:\s*(\d+))\]/gi;
+    const pattern=/\[PAUSE:\s*(\d+)\]/gi;
     let cursor=0,match;
     while((match=pattern.exec(source))!==null){
       const before=source.slice(cursor,match.index).trim();
       if(before) parts.push({text:before,emphasis:false});
-      if(match[1]) parts.push({text:match[1].trim(),emphasis:true});
-      else parts.push({pause:Number(match[2])||0});
+      parts.push({pause:Number(match[1])||0});
       cursor=pattern.lastIndex;
     }
     const tail=source.slice(cursor).trim();
@@ -241,8 +287,8 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
       if(!part.text){speakPart();return;}
       const u=new SpeechSynthesisUtterance(part.text);
       utterance=u;chooseVoice(u,cue);
-      u.rate=Math.max(.55,Math.min(1.8,baseRate*moodStyle.rate*(part.emphasis?.94:1)));
-      u.pitch=Math.max(.5,Math.min(2,moodStyle.pitch*(part.emphasis?1.12:1)));
+      u.rate=Math.max(.55,Math.min(1.8,baseRate*moodStyle.rate));
+      u.pitch=Math.max(.5,Math.min(2,moodStyle.pitch));
       u.onstart=()=>{if(token!==runToken)return;speaking=true;paused=false;updateState("Reading");ui.status.textContent="Reading subtitle "+(current+1)+" of "+cues.length;};
       u.onend=()=>{if(token===runToken)speakPart();};
       u.onerror=(event)=>{
@@ -273,6 +319,7 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
     cancelSpeech();cues=parseSrt(srt);
     if(ipa) attachIpa(ipa);
     current=0;completed=false;
+    renderCharacterVoiceSettings();
     ui.play.disabled=!cues.length;ui.status.textContent=cues.length?"EP1 subtitles ready":"Could not find valid SRT cues";
     if(!cues.length){ui.sentence.textContent="Could not load subtitles. Choose the SRT file below.";return;}
     ui.duration.textContent=cues.length+" subtitles";render();updateState("Ready to listen");
@@ -308,7 +355,6 @@ button,select,input{font:inherit}button,select{color:var(--text);background:var(
   ui.showEnglish.addEventListener("change",render);ui.showIpa.addEventListener("change",render);
   ui.speed.addEventListener("change",()=>{if(speaking||paused)jump(current,true);});
   ui.voice.addEventListener("change",()=>{if(speaking||paused)jump(current,true);});
-  Object.values(ui.roleVoices).forEach(select=>select.addEventListener("change",()=>{if(speaking||paused)jump(current,true);}));
   ui.autoNext.addEventListener("change",()=>{});
   ui.loop.addEventListener("change",()=>{});
   document.addEventListener("keydown",event=>{
