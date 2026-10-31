@@ -342,7 +342,11 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     $("currentName").textContent = state.videos[index].file.name;
     applySubtitles();
     renderPlaylist();
-    $("status").textContent = "Video ready · " + (episodeKey(state.videos[index].file.name) || "episode not detected");
+    const fileName = state.videos[index].file.name;
+    const isAvi = /\.avi$/i.test(fileName);
+    $("status").textContent = isAvi
+      ? "AVI selected. Browser playback depends on the codecs inside this file; convert to MP4 (H.264/AAC) if it will not play."
+      : "Video ready · " + (episodeKey(fileName) || "episode not detected");
   }
 
   function setLibrarySummary(id, files, language) {
