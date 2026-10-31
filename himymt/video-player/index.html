@@ -27,9 +27,27 @@ h1{font-size:clamp(22px,3vw,30px);line-height:1.15;margin:3px 0 0}h2{font-size:1
 video{display:block;width:100%;height:100%;max-height:74vh;object-fit:contain;background:#03060c}
 .placeholder{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:22px;color:var(--muted);pointer-events:none}
 .placeholder strong{display:block;color:var(--text);font-size:18px;margin-bottom:6px}
-.caption-layer{position:absolute;left:4%;right:4%;bottom:9%;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;pointer-events:none}
+.caption-layer{position:absolute;left:4%;right:4%;bottom:9%;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;pointer-events:auto}
 .caption{max-width:100%;width:max-content;padding:4px 13px;border-radius:8px;background:rgba(0,0,0,.78);color:#fff;text-shadow:0 1px 2px #000;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.28;font-weight:650}
 .caption.vi{color:#ffe7a8;font-weight:550}
+.word-token{appearance:none;border:0!important;border-radius:3px!important;background:transparent!important;color:inherit!important;padding:0!important;margin:0!important;font:inherit!important;line-height:inherit!important;cursor:pointer;border-bottom:1px dotted rgba(174,205,255,.8)!important;touch-action:manipulation}
+.word-token:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.word-popup{position:fixed;z-index:10000;right:18px;bottom:18px;width:min(410px,calc(100vw - 24px));max-height:min(72vh,620px);overflow:auto;background:linear-gradient(155deg,#1c2b43,#101a2c);border:1px solid #526987;border-radius:18px;padding:17px;box-shadow:0 22px 70px #0009}
+.word-popup[hidden]{display:none}
+.word-popup-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.word-popup-title{font-size:22px;font-weight:800;margin:2px 0 0;overflow-wrap:anywhere}
+.word-popup-close{flex:none;width:34px;height:34px;padding:0;border-radius:10px;font-size:20px;line-height:1}
+.word-translation{font-size:19px;font-weight:750;color:#ffe7a8;margin:12px 0 9px}
+.word-ipa{font-size:15px;color:#c9bcff;font-weight:650;margin:6px 0}
+.word-audio-label,.word-source{font-size:11px;color:var(--muted);margin-top:7px}
+.word-audio{display:block;width:100%;height:38px;margin:7px 0}
+.word-speak{margin-top:8px;font-size:12px}
+.word-definitions{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
+.word-pos{font-size:12px;color:var(--accent);font-weight:750;text-transform:capitalize;margin:8px 0 3px}
+.word-definition{font-size:13px;margin:4px 0;color:#e7edf9}
+.word-example{font-size:12px;color:var(--muted);font-style:italic;margin:3px 0 7px}
+.word-loading,.word-error{font-size:13px;color:var(--muted);margin-top:14px}
+@media(max-width:600px){.word-popup{right:10px;left:10px;bottom:calc(10px + env(safe-area-inset-bottom));width:auto;max-height:68vh;padding:15px}.caption-layer{left:2%;right:2%}}
 .video-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 4px 2px}.video-name{font-weight:700;overflow-wrap:anywhere}
 .playlist{display:flex;flex-direction:column;gap:6px;margin-top:12px;max-height:210px;overflow:auto}
 .episode{display:flex;align-items:center;gap:9px;text-align:left;width:100%;background:#111b2c;border:1px solid transparent;padding:9px 11px}
@@ -142,6 +160,23 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
       </section>
     </aside>
   </div>
+  <section id="wordPopup" class="word-popup" role="dialog" aria-labelledby="wordPopupTitle" aria-live="polite" hidden>
+    <div class="word-popup-head">
+      <div><div class="eyebrow">WORD LOOKUP</div><div class="word-popup-title" id="wordPopupTitle"></div></div>
+      <button type="button" class="word-popup-close" id="closeWordPopup" aria-label="Close word lookup">×</button>
+    </div>
+    <div class="word-loading" id="wordLoading">Looking up word…</div>
+    <div id="wordDetails" hidden>
+      <div class="word-translation" id="wordTranslation"></div>
+      <div class="word-ipa" id="wordIpa"></div>
+      <div class="word-audio-label" id="wordAudioLabel"></div>
+      <audio class="word-audio" id="wordAudio" controls preload="none" hidden></audio>
+      <button type="button" class="word-speak" id="wordSpeak">🔊 Listen with browser voice</button>
+      <div class="word-definitions" id="wordDefinitions"></div>
+      <div class="word-source">Meaning: Google Translate · IPA and definitions: Free Dictionary API · audio source is shown when available.</div>
+    </div>
+    <div class="word-error" id="wordError" hidden></div>
+  </section>
   <footer><span>HIMYM Video Player · local files stay on your device</span><span>Videos are not uploaded to GitHub or any server.</span></footer>
 </main>
 
@@ -157,7 +192,11 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     bilingual: [],
     activeEnglish: [],
     activeVietnamese: [],
-    objectUrls: []
+    objectUrls: [],
+    dictionaryCache: new Map(),
+    lookupSequence: 0,
+    currentLookupWord: "",
+    lastEnglishText: null
   };
   const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
 
@@ -293,12 +332,203 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     return time < cue.end ? cue : null;
   }
 
+  function renderClickableEnglish(element, text) {
+    element.replaceChildren();
+    if (!text) return;
+    const wordPattern = /[A-Za-z]+(?:['’][A-Za-z]+)*/g;
+    let cursor = 0;
+    let match;
+    while ((match = wordPattern.exec(text)) !== null) {
+      if (match.index > cursor) element.append(document.createTextNode(text.slice(cursor, match.index)));
+      const word = match[0];
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "word-token";
+      button.textContent = word;
+      button.setAttribute("aria-label", "Look up " + word);
+      button.title = "Tap to see meaning and pronunciation";
+      button.addEventListener("click", event => {
+        event.preventDefault();
+        event.stopPropagation();
+        lookupWord(word);
+      });
+      element.append(button);
+      cursor = match.index + word.length;
+    }
+    if (cursor < text.length) element.append(document.createTextNode(text.slice(cursor)));
+  }
+
+  function extractGoogleTranslation(payload) {
+    if (!Array.isArray(payload)) return "";
+    if (typeof payload[0] === "string") {
+      const candidate = payload[0].trim();
+      return candidate && !/^[a-z]{2}(?:-[A-Z]{2})?$/.test(candidate) ? candidate : "";
+    }
+    for (const item of payload) {
+      const translated = extractGoogleTranslation(item);
+      if (translated) return translated;
+    }
+    return "";
+  }
+
+  async function fetchVietnameseMeaning(word) {
+    const params = new URLSearchParams({
+      client: "dict-chrome-ex",
+      sl: "en",
+      tl: "vi",
+      q: word
+    });
+    const response = await fetch("https://translate.googleapis.com/translate_a/t?" + params.toString());
+    if (!response.ok) throw new Error("Google Translate is unavailable");
+    const data = await response.json();
+    const translation = extractGoogleTranslation(data);
+    if (!translation) throw new Error("No Vietnamese translation returned");
+    return translation;
+  }
+
+  async function fetchDictionaryEntry(word) {
+    const response = await fetch("https://api.dictionaryapi.dev/api/v2/entries/en/" + encodeURIComponent(word));
+    if (!response.ok) throw new Error("No dictionary entry found");
+    const data = await response.json();
+    if (!Array.isArray(data) || !data.length) throw new Error("No dictionary entry found");
+    return data[0];
+  }
+
+  function closeWordLookup() {
+    $("wordPopup").hidden = true;
+    $("wordAudio").pause();
+    $("wordAudio").removeAttribute("src");
+    $("wordAudio").load();
+    if ("speechSynthesis" in window) speechSynthesis.cancel();
+  }
+
+  function appendDictionaryDefinitions(entry) {
+    const container = $("wordDefinitions");
+    container.replaceChildren();
+    const meanings = entry && Array.isArray(entry.meanings) ? entry.meanings : [];
+    meanings.slice(0, 3).forEach(meaning => {
+      const part = document.createElement("div");
+      part.className = "word-pos";
+      part.textContent = meaning.partOfSpeech || "Meaning";
+      container.append(part);
+      const definitions = Array.isArray(meaning.definitions) ? meaning.definitions : [];
+      definitions.slice(0, 2).forEach(item => {
+        if (item.definition) {
+          const definition = document.createElement("div");
+          definition.className = "word-definition";
+          definition.textContent = item.definition;
+          container.append(definition);
+        }
+        if (item.example) {
+          const example = document.createElement("div");
+          example.className = "word-example";
+          example.textContent = "“" + item.example + "”";
+          container.append(example);
+        }
+      });
+    });
+    if (!container.childElementCount) {
+      const empty = document.createElement("div");
+      empty.className = "word-definition";
+      empty.textContent = "No English definition is available for this word.";
+      container.append(empty);
+    }
+  }
+
+  function renderWordResult(word, entry, translation) {
+    $("wordTranslation").textContent = translation || "Vietnamese meaning is not available right now.";
+    const phonetics = entry && Array.isArray(entry.phonetics) ? entry.phonetics : [];
+    const ipa = [];
+    if (entry && entry.phonetic) ipa.push(entry.phonetic);
+    phonetics.forEach(item => {
+      if (item.text && !ipa.includes(item.text)) ipa.push(item.text);
+    });
+    $("wordIpa").textContent = ipa.length ? "IPA · " + ipa.slice(0, 3).join("   /   ") : "IPA is not available for this word.";
+    const audioItem = phonetics.find(item => item.audio && item.audio.trim());
+    const audioUrl = audioItem ? (audioItem.audio.startsWith("//") ? "https:" + audioItem.audio : audioItem.audio) : "";
+    if (audioUrl) {
+      $("wordAudio").src = audioUrl;
+      $("wordAudio").hidden = false;
+      $("wordAudioLabel").textContent = audioUrl.includes("ssl.gstatic.com")
+        ? "Google Dictionary pronunciation sample"
+        : "Dictionary pronunciation sample";
+      $("wordSpeak").hidden = true;
+    } else {
+      $("wordAudio").removeAttribute("src");
+      $("wordAudio").hidden = true;
+      $("wordAudioLabel").textContent = "No dictionary audio is available; use the browser voice below.";
+      $("wordSpeak").hidden = false;
+    }
+    appendDictionaryDefinitions(entry);
+    $("wordLoading").hidden = true;
+    $("wordError").hidden = false;
+    $("wordError").textContent = entry ? "" : "Dictionary entry not found. The Vietnamese translation may still be available.";
+    $("wordDetails").hidden = false;
+  }
+
+  async function lookupWord(rawWord) {
+    const word = rawWord.toLowerCase().replace(/[’]/g, "'");
+    if (!/^[a-z]+(?:['-][a-z]+)*$/i.test(word)) return;
+    const requestId = ++state.lookupSequence;
+    state.currentLookupWord = word;
+    $("wordPopupTitle").textContent = rawWord;
+    $("wordPopup").hidden = false;
+    $("wordLoading").hidden = false;
+    $("wordLoading").textContent = "Looking up meaning, IPA and pronunciation…";
+    $("wordDetails").hidden = true;
+    $("wordError").hidden = true;
+    $("wordAudio").pause();
+    $("wordAudio").removeAttribute("src");
+    $("wordAudio").hidden = true;
+    $("wordSpeak").hidden = false;
+
+    try {
+      let result = state.dictionaryCache.get(word);
+      if (!result) {
+        const [dictionaryResult, translationResult] = await Promise.allSettled([
+          fetchDictionaryEntry(word),
+          fetchVietnameseMeaning(word)
+        ]);
+        result = {
+          entry: dictionaryResult.status === "fulfilled" ? dictionaryResult.value : null,
+          translation: translationResult.status === "fulfilled" ? translationResult.value : ""
+        };
+        state.dictionaryCache.set(word, result);
+      }
+      if (requestId !== state.lookupSequence || $("wordPopup").hidden) return;
+      renderWordResult(rawWord, result.entry, result.translation);
+    } catch (error) {
+      if (requestId !== state.lookupSequence) return;
+      $("wordLoading").hidden = true;
+      $("wordError").hidden = false;
+      $("wordError").textContent = "Could not look up this word. Please check your internet connection and try again.";
+      $("wordDetails").hidden = true;
+    }
+  }
+
+  function speakCurrentWord() {
+    if (!state.currentLookupWord || !("speechSynthesis" in window)) {
+      $("wordError").hidden = false;
+      $("wordError").textContent = "Browser speech is not supported on this device.";
+      return;
+    }
+    speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(state.currentLookupWord);
+    utterance.lang = "en-US";
+    utterance.rate = 0.9;
+    speechSynthesis.speak(utterance);
+  }
+
   function renderCaptions() {
     const enabled = $("showSubtitles").checked;
     const time = video.currentTime - (Number($("offset").value) || 0) / 1000;
     const en = enabled && $("showEnglish").checked ? findCue(state.activeEnglish, time) : null;
     const vi = enabled && $("showVietnamese").checked ? findCue(state.activeVietnamese, time) : null;
-    $("captionEn").textContent = en ? en.text : "";
+    const englishText = en ? en.text : "";
+    if (state.lastEnglishText !== englishText) {
+      renderClickableEnglish($("captionEn"), englishText);
+      state.lastEnglishText = englishText;
+    }
     $("captionVi").textContent = vi ? vi.text : "";
     $("captionEn").style.display = en ? "block" : "none";
     $("captionVi").style.display = vi ? "block" : "none";
@@ -416,7 +646,15 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     if (video.currentSrc) $("status").textContent = "This video format may not be supported by your browser. Try MP4 (H.264).";
   });
 
+  $("closeWordPopup").addEventListener("click", closeWordLookup);
+  $("wordSpeak").addEventListener("click", speakCurrentWord);
+  $("wordPopup").addEventListener("click", event => event.stopPropagation());
+
   document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && !$("wordPopup").hidden) {
+      closeWordLookup();
+      return;
+    }
     const tag = document.activeElement && document.activeElement.tagName;
     if (["INPUT", "SELECT", "TEXTAREA", "BUTTON"].includes(tag)) return;
     if (event.code === "Space") { event.preventDefault(); if (video.paused) video.play().catch(() => {}); else video.pause(); }
