@@ -50,6 +50,15 @@ video{display:block;width:100%;height:100%;max-height:74vh;object-fit:contain;ba
 .word-loading,.word-error{font-size:13px;color:var(--muted);margin-top:14px}
 @media(max-width:600px){.word-popup{right:10px;left:10px;bottom:calc(10px + env(safe-area-inset-bottom));width:auto;max-height:68vh;padding:15px}.caption-layer{left:2%;right:2%}}
 .video-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 4px 2px}.video-name{font-weight:700;overflow-wrap:anywhere}
+.progress-status{margin:11px 4px 2px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:#101a2b}
+.progress-status[hidden]{display:none}
+.progress-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;font-weight:700}
+.progress-percent{color:var(--accent);font-variant-numeric:tabular-nums}
+.progress-track{height:7px;margin-top:8px;border-radius:99px;background:#2a3850;overflow:hidden}
+.progress-fill{height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,#82b3ff,#bca8ff);transition:width .16s ease}
+.progress-fill.indeterminate{width:32%;animation:progressSlide 1.15s ease-in-out infinite}
+.progress-detail{font-size:11px;color:var(--muted);margin-top:6px}
+@keyframes progressSlide{0%{transform:translateX(-110%)}100%{transform:translateX(420%)}}
 .playlist{display:flex;flex-direction:column;gap:6px;margin-top:12px;max-height:210px;overflow:auto}
 .episode{display:flex;align-items:center;gap:9px;text-align:left;width:100%;background:#111b2c;border:1px solid transparent;padding:9px 11px}
 .episode.active{border-color:var(--accent);background:#1a2b46}
@@ -102,6 +111,16 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
         <div class="video-meta">
           <div><div class="eyebrow">Now playing</div><div class="video-name" id="currentName">No video selected</div></div>
           <span class="pill" id="subtitleStatus">No subtitles loaded</span>
+        </div>
+        <div class="progress-status" id="playlistProgress" hidden aria-live="polite">
+          <div class="progress-heading"><span id="playlistProgressLabel">Adding videos to playlist…</span><span class="progress-percent" id="playlistProgressPercent">0%</span></div>
+          <div class="progress-track" id="playlistProgressBar" role="progressbar" aria-label="Adding videos to playlist" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill" id="playlistProgressFill"></div></div>
+          <div class="progress-detail" id="playlistProgressDetail"></div>
+        </div>
+        <div class="progress-status" id="mediaProgress" hidden aria-live="polite">
+          <div class="progress-heading"><span id="mediaProgressLabel">Preparing video…</span><span class="progress-percent" id="mediaProgressPercent">…</span></div>
+          <div class="progress-track" id="mediaProgressBar" role="progressbar" aria-label="Preparing video playback" aria-valuemin="0" aria-valuemax="100"><div class="progress-fill indeterminate" id="mediaProgressFill"></div></div>
+          <div class="progress-detail" id="mediaProgressDetail">Waiting for the browser to read video information.</div>
         </div>
       </div>
 
@@ -197,7 +216,9 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     dictionaryCache: new Map(),
     lookupSequence: 0,
     currentLookupWord: "",
-    lastEnglishText: null
+    lastEnglishText: null,
+    videoLoadSequence: 0,
+    mediaWaiting: false
   };
   const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
 
@@ -567,6 +588,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
   function selectVideo(index) {
     if (index < 0 || index >= state.videos.length) return;
     closeWordLookup();
+    state.mediaWaiting = false;
+    hideProgress("media");
     state.currentVideo = index;
     video.src = state.videos[index].url;
     video.load();
@@ -606,16 +629,77 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     });
   }
 
-  $("videoFiles").addEventListener("change", event => {
-    const files = Array.from(event.target.files || []).filter(file => file.type.startsWith("video/") || /\.(mp4|m4v|mov|webm|mkv|avi)$/i.test(file.name));
+  function updateProgress(prefix, percent, label, detail, indeterminate = false) {
+    const root = $(prefix + "Progress");
+    const fill = $(prefix + "ProgressFill");
+    const bar = $(prefix + "ProgressBar");
+    const percentLabel = $(prefix + "ProgressPercent");
+    root.hidden = false;
+    $(prefix + "ProgressLabel").textContent = label;
+    $(prefix + "ProgressDetail").textContent = detail || "";
+    fill.classList.toggle("indeterminate", indeterminate);
+    if (indeterminate) {
+      percentLabel.textContent = "…";
+      bar.removeAttribute("aria-valuenow");
+      fill.style.width = "";
+    } else {
+      const safePercent = Math.max(0, Math.min(100, Math.round(percent || 0)));
+      percentLabel.textContent = safePercent + "%";
+      bar.setAttribute("aria-valuenow", String(safePercent));
+      fill.style.width = safePercent + "%";
+    }
+  }
+
+  function hideProgress(prefix) {
+    $(prefix + "Progress").hidden = true;
+  }
+
+  function nextPaint() {
+    return new Promise(resolve => requestAnimationFrame(() => resolve()));
+  }
+
+  async function addVideoFiles(fileList) {
+    const requestId = ++state.videoLoadSequence;
+    const files = Array.from(fileList || []).filter(file =>
+      file.type.startsWith("video/") || /\.(mp4|m4v|mov|webm|mkv|avi)$/i.test(file.name)
+    );
     files.sort((a, b) => collator.compare(a.name, b.name));
+
     for (const item of state.videos) URL.revokeObjectURL(item.url);
-    state.videos = files.map(file => {
+    state.objectUrls = [];
+    state.videos = [];
+    state.currentVideo = -1;
+
+    if (!files.length) {
+      hideProgress("playlist");
+      hideProgress("media");
+      video.removeAttribute("src");
+      video.load();
+      $("placeholder").style.display = "grid";
+      $("currentName").textContent = "No video selected";
+      renderPlaylist();
+      applySubtitles();
+      return;
+    }
+
+    updateProgress("playlist", 0, "Đang thêm video vào playlist…", "0 / " + files.length + " video");
+    for (let index = 0; index < files.length; index++) {
+      if (requestId !== state.videoLoadSequence) return;
+      const file = files[index];
       const url = URL.createObjectURL(file);
       state.objectUrls.push(url);
-      return { file, url };
-    });
-    state.currentVideo = -1;
+      state.videos.push({ file, url });
+      const completed = index + 1;
+      updateProgress(
+        "playlist",
+        completed / files.length * 100,
+        "Đang thêm video vào playlist…",
+        completed + " / " + files.length + " video · Không upload file lên server"
+      );
+      if (completed % 4 === 0 && completed < files.length) await nextPaint();
+    }
+
+    if (requestId !== state.videoLoadSequence) return;
     renderPlaylist();
     if (state.videos.length) selectVideo(0);
     else {
@@ -625,6 +709,15 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
       $("currentName").textContent = "No video selected";
       applySubtitles();
     }
+
+    updateProgress("playlist", 100, "Đã thêm video vào playlist", files.length + " video đã sẵn sàng trong danh sách.");
+    setTimeout(() => {
+      if (requestId === state.videoLoadSequence) hideProgress("playlist");
+    }, 1400);
+  }
+
+  $("videoFiles").addEventListener("change", event => {
+    addVideoFiles(event.target.files);
   });
 
   handleSubtitleInput("englishFiles", "english", "english", "englishSummary");
@@ -641,10 +734,70 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
   $("back5").addEventListener("click", () => { video.currentTime = Math.max(0, video.currentTime - 5); });
   $("forward5").addEventListener("click", () => { video.currentTime = Math.min(video.duration || Infinity, video.currentTime + 5); });
   $("playbackRate").addEventListener("change", () => { video.playbackRate = Number($("playbackRate").value); });
+  function getBufferedPercent() {
+    if (!Number.isFinite(video.duration) || video.duration <= 0) return null;
+    let bufferedEnd = 0;
+    for (let index = 0; index < video.buffered.length; index++) {
+      bufferedEnd = Math.max(bufferedEnd, video.buffered.end(index));
+    }
+    return Math.min(100, Math.round(bufferedEnd / video.duration * 100));
+  }
+
+  function showMediaBufferProgress(label) {
+    const percent = getBufferedPercent();
+    const detail = percent === null
+      ? "Trình duyệt đang chuẩn bị dữ liệu video."
+      : "Đã nạp đến khoảng " + percent + "% thời lượng video (không phải % upload).";
+    updateProgress("media", percent, label, detail, percent === null);
+  }
+
+  video.addEventListener("loadstart", () => {
+    state.mediaWaiting = false;
+    updateProgress("media", 0, "Đang đọc thông tin video…", "Đây là bước chuẩn bị phát video từ file trên thiết bị.", true);
+  });
+  video.addEventListener("loadedmetadata", () => {
+    renderCaptions();
+    updateProgress("media", 100, "Đã đọc thông tin video", "Đang chuẩn bị khung hình đầu tiên.", false);
+  });
+  video.addEventListener("loadeddata", () => {
+    updateProgress("media", 100, "Video đã sẵn sàng", "Bạn có thể nhấn Play để xem.", false);
+    setTimeout(() => {
+      if (!state.mediaWaiting && video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) hideProgress("media");
+    }, 900);
+  });
+  video.addEventListener("progress", () => {
+    if (state.mediaWaiting) showMediaBufferProgress("Đang nạp dữ liệu phát…");
+  });
+  video.addEventListener("waiting", () => {
+    state.mediaWaiting = true;
+    showMediaBufferProgress("Đang nạp thêm dữ liệu video…");
+  });
+  video.addEventListener("seeking", () => {
+    state.mediaWaiting = true;
+    showMediaBufferProgress("Đang nạp đoạn video cần tua đến…");
+  });
+  video.addEventListener("canplay", () => {
+    state.mediaWaiting = false;
+    updateProgress("media", 100, "Đã nạp đủ dữ liệu để tiếp tục phát", "Đang chờ hoặc tiếp tục phát video.", false);
+    setTimeout(() => {
+      if (!state.mediaWaiting && video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) hideProgress("media");
+    }, 700);
+  });
+  video.addEventListener("playing", () => {
+    state.mediaWaiting = false;
+    hideProgress("media");
+  });
+  video.addEventListener("seeked", () => {
+    renderCaptions();
+    if (!video.paused && video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+      state.mediaWaiting = false;
+      hideProgress("media");
+    }
+  });
   video.addEventListener("timeupdate", renderCaptions);
-  video.addEventListener("seeked", renderCaptions);
-  video.addEventListener("loadedmetadata", renderCaptions);
   video.addEventListener("error", () => {
+    state.mediaWaiting = false;
+    hideProgress("media");
     if (video.currentSrc) $("status").textContent = "This video format may not be supported by your browser. Try MP4 (H.264).";
   });
 
