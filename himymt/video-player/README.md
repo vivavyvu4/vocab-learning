@@ -30,6 +30,10 @@ You can select multiple subtitle files at once. The player matches each subtitle
 
 For a single subtitle file without an episode number, that file is used as the fallback for every selected video. If you have several subtitle files, include the episode number in each filename for reliable matching.
 
+## Word lookup and playback
+
+When you tap an English subtitle word, the player pauses the video if it was playing. Close the word card (or press Escape) to resume from the same position. If the video was already paused before opening the card, closing the card keeps it paused. Selecting another episode closes the card without resuming the previous episode.
+
 ## Loading and progress indicators
 
 - **Adding videos:** the playlist progress bar counts how many local file references have been added to the playlist. It does not upload or copy the video file.
