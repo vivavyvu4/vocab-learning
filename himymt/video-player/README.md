@@ -43,5 +43,27 @@ For a single subtitle file without an episode number, that file is used as the f
 
 - This player does not depend on the existing TTS-based `listening-player`; both tools are kept separate.
 - Subtitle files are read locally in the browser. Nothing is uploaded.
-- MP4 (H.264/AAC) has the broadest browser support. MKV and AVI playback depends on the codecs supported by the browser and operating system.
+- MP4 (H.264/AAC) has the broadest browser support. AVI is accepted by the file picker, but the browser may not decode its container/codecs. If an AVI file does not play, convert it to MP4 (H.264/AAC). The subtitle files do not need to be changed.
+
+### Convert AVI files on macOS with FFmpeg
+
+Install FFmpeg once with Homebrew:
+
+```bash
+brew install ffmpeg
+```
+
+In Terminal, go to the folder containing the AVI files and run:
+
+```bash
+mkdir -p mp4
+for f in ./*.avi; do
+  [ -e "$f" ] || continue
+  name="${f##*/}"
+  name="${name%.*}"
+  ffmpeg -i "$f" -map 0:v:0 -map '0:a?' -c:v libx264 -crf 20 -preset fast -c:a aac -b:a 192k -movflags +faststart "mp4/${name}.mp4"
+done
+```
+
+This creates MP4 copies inside an `mp4` subfolder and leaves the original AVI files untouched. Then load those MP4 files in this player with the same SRT files.
 - Bilingual SRT splitting uses Vietnamese diacritics and italic tags to distinguish Vietnamese lines from English lines. If a subtitle file has unusual formatting, load its English and Vietnamese tracks separately for the most reliable result.
