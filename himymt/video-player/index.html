@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>HIMYM Video Subtitle Player</title>
+<style>
+:root{color-scheme:dark;--bg:#0b1120;--panel:#141e30;--panel2:#1c2940;--line:#2b3a54;--text:#eef3ff;--muted:#9eacc5;--accent:#8bb7ff;--accent2:#c5b5ff;--green:#81d9ac}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at 12% 0%,#203352 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.5 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select{font:inherit}
+button,select,.file-label{color:var(--text);background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:9px 12px}
+button{cursor:pointer}button:hover,.file-label:hover{border-color:var(--accent)}button:disabled{opacity:.4;cursor:not-allowed}
+input[type=file]{max-width:100%;color:var(--muted);font-size:12px}
+input[type=number]{width:100%;background:#0e1728;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:8px}
+.shell{width:min(1320px,100%);margin:0 auto;padding:26px 18px 48px}
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:20px}
+.brand{display:flex;align-items:center;gap:12px}.logo{width:45px;height:45px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#8bb7ff,#c5b5ff);color:#111827;font-size:22px;font-weight:900}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:800}
+h1{font-size:clamp(22px,3vw,30px);line-height:1.15;margin:3px 0 0}h2{font-size:16px;margin:0 0 4px}
+.muted{color:var(--muted)}.small{font-size:12px}.status{font-size:12px;color:var(--muted);text-align:right}
+.main-grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:18px;align-items:start}
+.panel{background:linear-gradient(155deg,rgba(24,36,57,.97),rgba(16,25,42,.97));border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:0 16px 50px #0002}
+.video-panel{padding:14px}
+.video-wrap{position:relative;background:#03060c;border-radius:14px;overflow:hidden;min-height:240px;aspect-ratio:16/9;display:grid;place-items:center}
+video{display:block;width:100%;height:100%;max-height:74vh;object-fit:contain;background:#03060c}
+.placeholder{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:22px;color:var(--muted);pointer-events:none}
+.placeholder strong{display:block;color:var(--text);font-size:18px;margin-bottom:6px}
+.caption-layer{position:absolute;left:4%;right:4%;bottom:9%;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;pointer-events:none}
+.caption{max-width:100%;width:max-content;padding:4px 13px;border-radius:8px;background:rgba(0,0,0,.78);color:#fff;text-shadow:0 1px 2px #000;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.28;font-weight:650}
+.caption.vi{color:#ffe7a8;font-weight:550}
+.video-meta{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 4px 2px}.video-name{font-weight:700;overflow-wrap:anywhere}
+.playlist{display:flex;flex-direction:column;gap:6px;margin-top:12px;max-height:210px;overflow:auto}
+.episode{display:flex;align-items:center;gap:9px;text-align:left;width:100%;background:#111b2c;border:1px solid transparent;padding:9px 11px}
+.episode.active{border-color:var(--accent);background:#1a2b46}
+.episode-index{flex:none;color:var(--accent);font-size:11px;font-weight:800;min-width:48px}
+.episode-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+.sidebar{display:flex;flex-direction:column;gap:14px}
+.section-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.file-group{padding:12px 0;border-top:1px solid var(--line)}
+.file-group:first-of-type{border-top:0;padding-top:2px}
+.file-title{font-size:13px;font-weight:750;margin-bottom:5px}
+.file-desc{color:var(--muted);font-size:11px;margin-bottom:8px}
+.file-summary{font-size:11px;color:var(--green);margin-top:6px;overflow-wrap:anywhere}
+.grid-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.control{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.control label{font-size:12px;color:var(--muted);font-weight:650}
+.control select{width:100%}
+.check-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:13px}
+.check-row:last-child{border-bottom:0}
+input[type=checkbox]{accent-color:#8bb7ff;width:17px;height:17px}
+.note{padding:11px 12px;border-radius:12px;background:#101a2b;border:1px solid var(--line);color:var(--muted);font-size:11px;margin-top:12px}
+.note strong{color:var(--text)}
+.pill{display:inline-flex;align-items:center;padding:4px 8px;border-radius:100px;background:#22344e;color:#c8dcff;font-size:11px;font-weight:750}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.actions button{font-size:12px}
+.kbd{border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:#d5def1;font-size:10px}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:16px;color:var(--muted);font-size:11px}
+.empty{padding:14px;text-align:center;color:var(--muted);font-size:12px;border:1px dashed var(--line);border-radius:12px}
+@media(max-width:900px){.main-grid{grid-template-columns:1fr}.sidebar{display:grid;grid-template-columns:1fr 1fr}.sidebar .panel:last-child{grid-column:1/-1}}
+@media(max-width:600px){.shell{padding:16px 10px 32px}.sidebar{display:flex}.panel{padding:14px}.video-wrap{min-height:190px}.video-meta{align-items:flex-start;flex-direction:column}.status{max-width:130px}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <header>
+    <div class="brand"><div class="logo">H</div><div><div class="eyebrow">HIMYM · Season 1</div><h1>Video & Subtitle Player</h1></div></div>
+    <div class="status" id="status">Choose your videos to get started.</div>
+  </header>
+
+  <div class="main-grid">
+    <section>
+      <div class="panel video-panel">
+        <div class="video-wrap" id="videoWrap">
+          <video id="video" controls playsinline preload="metadata"></video>
+          <div class="placeholder" id="placeholder"><div><strong>Load your HIMYM videos</strong>Select one or several video files from your computer.</div></div>
+          <div class="caption-layer" id="captionLayer" aria-live="off">
+            <div class="caption en" id="captionEn"></div>
+            <div class="caption vi" id="captionVi"></div>
+          </div>
+        </div>
+        <div class="video-meta">
+          <div><div class="eyebrow">Now playing</div><div class="video-name" id="currentName">No video selected</div></div>
+          <span class="pill" id="subtitleStatus">No subtitles loaded</span>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-top:14px">
+        <div class="section-top"><div><h2>Episode playlist</h2><div class="muted small" id="videoCount">No videos selected</div></div><label class="file-label" for="videoFiles">＋ Add videos</label></div>
+        <input id="videoFiles" type="file" accept="video/*,.mkv,.avi,.mp4,.mov,.webm" multiple hidden>
+        <div class="playlist" id="playlist"><div class="empty">Your selected episodes will appear here.</div></div>
+      </div>
+    </section>
+
+    <aside class="sidebar">
+      <section class="panel">
+        <h2>Subtitle files</h2>
+        <p class="muted small">You can load English only, English + Vietnamese, or one bilingual SRT file.</p>
+
+        <div class="file-group">
+          <div class="file-title">🇬🇧 English SRT</div>
+          <div class="file-desc">Select one or multiple English subtitle files.</div>
+          <input id="englishFiles" type="file" accept=".srt,.txt" multiple>
+          <div class="file-summary" id="englishSummary">Not loaded</div>
+        </div>
+        <div class="file-group">
+          <div class="file-title">🇻🇳 Vietnamese SRT <span class="muted">(optional)</span></div>
+          <div class="file-desc">Select the matching Vietnamese files. Episode numbers are matched automatically.</div>
+          <input id="vietnameseFiles" type="file" accept=".srt,.txt" multiple>
+          <div class="file-summary" id="vietnameseSummary">Not loaded</div>
+        </div>
+        <div class="file-group">
+          <div class="file-title">🇬🇧🇻🇳 Bilingual SRT <span class="muted">(alternative)</span></div>
+          <div class="file-desc">For files containing English and Vietnamese lines in the same cue, e.g. <code>.en-vn.srt</code>.</div>
+          <input id="bilingualFiles" type="file" accept=".srt,.txt" multiple>
+          <div class="file-summary" id="bilingualSummary">Not loaded</div>
+        </div>
+        <div class="note"><strong>Automatic episode matching:</strong> filenames can contain <code>1x01</code> or <code>S01E01</code>. The player uses that number to pair subtitles with each video. If a subtitle filename has no episode number, it is used when it is the only file in that group.</div>
+      </section>
+
+      <section class="panel">
+        <h2>Subtitle display</h2>
+        <div class="check-row"><label for="showEnglish">Show English</label><input id="showEnglish" type="checkbox" checked></div>
+        <div class="check-row"><label for="showVietnamese">Show Vietnamese</label><input id="showVietnamese" type="checkbox" checked></div>
+        <div class="check-row"><label for="showSubtitles">Show subtitles</label><input id="showSubtitles" type="checkbox" checked></div>
+
+        <div class="control"><label for="fontSize">Subtitle size</label><select id="fontSize"><option value="18">Small</option><option value="23" selected>Medium</option><option value="29">Large</option><option value="35">Extra large</option></select></div>
+        <div class="control"><label for="subtitlePosition">Subtitle position</label><select id="subtitlePosition"><option value="9">Bottom</option><option value="18">A little higher</option><option value="30">Middle-lower</option></select></div>
+        <div class="control"><label for="offset">Sync offset (milliseconds)</label><input id="offset" type="number" step="100" value="0"></div>
+        <div class="actions"><button id="minusOffset">− 500 ms</button><button id="resetOffset">Reset</button><button id="plusOffset">＋ 500 ms</button></div>
+        <div class="note">A positive offset delays subtitles. A negative offset displays them earlier. Use the same offset for both languages.</div>
+      </section>
+
+      <section class="panel">
+        <h2>Quick controls</h2>
+        <div class="grid-two">
+          <button id="back5">↶ 5 seconds</button><button id="forward5">5 seconds ↷</button>
+        </div>
+        <div class="control"><label for="playbackRate">Playback speed</label><select id="playbackRate"><option value=".75">0.75×</option><option value=".9">0.9×</option><option value="1" selected>1× Normal</option><option value="1.1">1.1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></div>
+        <div class="note">Keyboard: <span class="kbd">Space</span> play / pause · <span class="kbd">←</span> / <span class="kbd">→</span> seek 5 seconds.</div>
+      </section>
+    </aside>
+  </div>
+  <footer><span>HIMYM Video Player · local files stay on your device</span><span>Videos are not uploaded to GitHub or any server.</span></footer>
+</main>
+
+<script>
+(() => {
+  const $ = id => document.getElementById(id);
+  const video = $("video");
+  const state = {
+    videos: [],
+    currentVideo: -1,
+    english: [],
+    vietnamese: [],
+    bilingual: [],
+    activeEnglish: [],
+    activeVietnamese: [],
+    objectUrls: []
+  };
+  const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
+
+  function episodeKey(name) {
+    let match = name.match(/\bS(\d{1,2})[ ._-]*E(\d{1,2})\b/i);
+    if (!match) match = name.match(/\b(\d{1,2})x(\d{1,2})\b/i);
+    if (!match) return "";
+    return String(Number(match[1])) + "x" + String(Number(match[2]));
+  }
+
+  function parseTimestamp(value) {
+    const match = value.trim().match(/(?:(\d+):)?(\d{2}):(\d{2})[,.](\d{1,3})/);
+    if (!match) return NaN;
+    const hours = Number(match[1] || 0);
+    const minutes = Number(match[2]);
+    const seconds = Number(match[3]);
+    const millis = Number((match[4] + "00").slice(0, 3));
+    return hours * 3600 + minutes * 60 + seconds + millis / 1000;
+  }
+
+  function cleanLine(line) {
+    return line.replace(/<br\s*\/?>/gi, "\n")
+      .replace(/<\/?[^>]+>/g, "")
+      .replace(/&nbsp;/gi, " ")
+      .replace(/&amp;/gi, "&")
+      .replace(/&lt;/gi, "<")
+      .replace(/&gt;/gi, ">")
+      .replace(/&quot;/gi, '"')
+      .trim();
+  }
+
+  function parseSrt(source) {
+    const normalized = source.replace(/^\uFEFF/, "").replace(/\r/g, "").trim();
+    if (!normalized) return [];
+    const blocks = normalized.split(/\n\s*\n/);
+    const cues = [];
+    for (const block of blocks) {
+      const lines = block.split("\n");
+      const timeIndex = lines.findIndex(line => line.includes("-->"));
+      if (timeIndex < 0) continue;
+      const times = lines[timeIndex].split("-->");
+      if (times.length < 2) continue;
+      const start = parseTimestamp(times[0]);
+      const end = parseTimestamp(times[1]);
+      if (!Number.isFinite(start) || !Number.isFinite(end) || end <= start) continue;
+      const text = lines.slice(timeIndex + 1).map(cleanLine).filter(Boolean).join("\n");
+      if (text) cues.push({ start, end, text });
+    }
+    return cues.sort((a, b) => a.start - b.start);
+  }
+
+  function isVietnamese(line) {
+    return /<i[\s>]/i.test(line) || /[À-ỹĐđ]/.test(line);
+  }
+
+  function splitBilingual(source) {
+    const blocks = parseSrt(source);
+    const english = [];
+    const vietnamese = [];
+    for (const cue of blocks) {
+      const lines = cue.text.split("\n").map(line => line.trim()).filter(Boolean);
+      const enLines = [];
+      const viLines = [];
+      for (const line of lines) {
+        if (isVietnamese(line)) viLines.push(cleanLine(line));
+        else enLines.push(cleanLine(line));
+      }
+      if (enLines.length) english.push({ start: cue.start, end: cue.end, text: enLines.join("\n") });
+      if (viLines.length) vietnamese.push({ start: cue.start, end: cue.end, text: viLines.join("\n") });
+    }
+    return { english, vietnamese };
+  }
+
+  async function readSubtitleFiles(fileList, type) {
+    const files = Array.from(fileList || []);
+    const result = [];
+    for (const file of files) {
+      const source = await file.text();
+      const key = episodeKey(file.name);
+      if (type === "bilingual") {
+        const tracks = splitBilingual(source);
+        result.push({ name: file.name, key, english: tracks.english, vietnamese: tracks.vietnamese });
+      } else {
+        result.push({ name: file.name, key, cues: parseSrt(source) });
+      }
+    }
+    return result.sort((a, b) => collator.compare(a.name, b.name));
+  }
+
+  function matchFile(files, videoName) {
+    if (!files.length) return null;
+    const key = episodeKey(videoName);
+    if (key) {
+      const exact = files.find(file => file.key === key);
+      if (exact) return exact;
+    }
+    if (files.length === 1) return files[0];
+    return null;
+  }
+
+  function applySubtitles() {
+    if (state.currentVideo < 0) {
+      state.activeEnglish = [];
+      state.activeVietnamese = [];
+      updateSubtitleStatus();
+      renderCaptions();
+      return;
+    }
+    const videoName = state.videos[state.currentVideo].file.name;
+    const englishFile = matchFile(state.english, videoName);
+    const vietnameseFile = matchFile(state.vietnamese, videoName);
+    const bilingualFile = matchFile(state.bilingual, videoName);
+    state.activeEnglish = englishFile ? englishFile.cues : (bilingualFile ? bilingualFile.english : []);
+    state.activeVietnamese = vietnameseFile ? vietnameseFile.cues : (bilingualFile ? bilingualFile.vietnamese : []);
+    updateSubtitleStatus();
+    renderCaptions();
+  }
+
+  function updateSubtitleStatus() {
+    const count = state.activeEnglish.length + state.activeVietnamese.length;
+    $("subtitleStatus").textContent = count ? (state.activeEnglish.length && state.activeVietnamese.length ? "EN + VI subtitles" : state.activeEnglish.length ? "English subtitles" : "Vietnamese subtitles") : "No subtitles for this episode";
+  }
+
+  function findCue(cues, time) {
+    let low = 0, high = cues.length - 1, candidate = -1;
+    while (low <= high) {
+      const mid = (low + high) >> 1;
+      if (cues[mid].start <= time) { candidate = mid; low = mid + 1; }
+      else high = mid - 1;
+    }
+    if (candidate < 0) return null;
+    const cue = cues[candidate];
+    return time < cue.end ? cue : null;
+  }
+
+  function renderCaptions() {
+    const enabled = $("showSubtitles").checked;
+    const time = video.currentTime - (Number($("offset").value) || 0) / 1000;
+    const en = enabled && $("showEnglish").checked ? findCue(state.activeEnglish, time) : null;
+    const vi = enabled && $("showVietnamese").checked ? findCue(state.activeVietnamese, time) : null;
+    $("captionEn").textContent = en ? en.text : "";
+    $("captionVi").textContent = vi ? vi.text : "";
+    $("captionEn").style.display = en ? "block" : "none";
+    $("captionVi").style.display = vi ? "block" : "none";
+    $("captionEn").style.fontSize = $("fontSize").value + "px";
+    $("captionVi").style.fontSize = Math.max(15, Number($("fontSize").value) - 3) + "px";
+    $("captionLayer").style.bottom = $("subtitlePosition").value + "%";
+  }
+
+  function renderPlaylist() {
+    const playlist = $("playlist");
+    playlist.replaceChildren();
+    if (!state.videos.length) {
+      playlist.innerHTML = '<div class="empty">Your selected episodes will appear here.</div>';
+      $("videoCount").textContent = "No videos selected";
+      return;
+    }
+    $("videoCount").textContent = state.videos.length + " video(s) · select an episode to play";
+    state.videos.forEach((item, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "episode" + (index === state.currentVideo ? " active" : "");
+      const ep = episodeKey(item.file.name);
+      const indexNode = document.createElement("span");
+      indexNode.className = "episode-index";
+      indexNode.textContent = ep ? ep.toUpperCase() : String(index + 1).padStart(2, "0");
+      const nameNode = document.createElement("span");
+      nameNode.className = "episode-name";
+      nameNode.textContent = item.file.name;
+      button.append(indexNode, nameNode);
+      button.addEventListener("click", () => selectVideo(index));
+      playlist.append(button);
+    });
+  }
+
+  function selectVideo(index) {
+    if (index < 0 || index >= state.videos.length) return;
+    state.currentVideo = index;
+    video.src = state.videos[index].url;
+    video.load();
+    $("placeholder").style.display = "none";
+    $("currentName").textContent = state.videos[index].file.name;
+    applySubtitles();
+    renderPlaylist();
+    $("status").textContent = "Video ready · " + (episodeKey(state.videos[index].file.name) || "episode not detected");
+  }
+
+  function setLibrarySummary(id, files, language) {
+    if (!files.length) {
+      $(id).textContent = "Not loaded";
+      return;
+    }
+    const keyed = files.filter(file => file.key).length;
+    $(id).textContent = files.length + " file(s) loaded · " + keyed + " with episode numbers";
+  }
+
+  async function handleSubtitleInput(inputId, type, stateKey, summaryId) {
+    const input = $(inputId);
+    input.addEventListener("change", async () => {
+      try {
+        const files = await readSubtitleFiles(input.files, type);
+        state[stateKey] = files;
+        setLibrarySummary(summaryId, files, type);
+        applySubtitles();
+        $("status").textContent = files.length + " " + type + " subtitle file(s) loaded.";
+      } catch (error) {
+        $(summaryId).textContent = "Could not read subtitle file.";
+        $("status").textContent = "Subtitle error: " + error.message;
+      }
+    });
+  }
+
+  $("videoFiles").addEventListener("change", event => {
+    const files = Array.from(event.target.files || []).filter(file => file.type.startsWith("video/") || /\.(mp4|m4v|mov|webm|mkv|avi)$/i.test(file.name));
+    files.sort((a, b) => collator.compare(a.name, b.name));
+    for (const item of state.videos) URL.revokeObjectURL(item.url);
+    state.videos = files.map(file => {
+      const url = URL.createObjectURL(file);
+      state.objectUrls.push(url);
+      return { file, url };
+    });
+    state.currentVideo = -1;
+    renderPlaylist();
+    if (state.videos.length) selectVideo(0);
+    else {
+      video.removeAttribute("src");
+      video.load();
+      $("placeholder").style.display = "grid";
+      $("currentName").textContent = "No video selected";
+      applySubtitles();
+    }
+  });
+
+  handleSubtitleInput("englishFiles", "english", "english", "englishSummary");
+  handleSubtitleInput("vietnameseFiles", "vietnamese", "vietnamese", "vietnameseSummary");
+  handleSubtitleInput("bilingualFiles", "bilingual", "bilingual", "bilingualSummary");
+
+  ["showEnglish", "showVietnamese", "showSubtitles", "fontSize", "subtitlePosition", "offset"].forEach(id => {
+    $(id).addEventListener("input", renderCaptions);
+    $(id).addEventListener("change", renderCaptions);
+  });
+  $("minusOffset").addEventListener("click", () => { $("offset").value = (Number($("offset").value) || 0) - 500; renderCaptions(); });
+  $("plusOffset").addEventListener("click", () => { $("offset").value = (Number($("offset").value) || 0) + 500; renderCaptions(); });
+  $("resetOffset").addEventListener("click", () => { $("offset").value = 0; renderCaptions(); });
+  $("back5").addEventListener("click", () => { video.currentTime = Math.max(0, video.currentTime - 5); });
+  $("forward5").addEventListener("click", () => { video.currentTime = Math.min(video.duration || Infinity, video.currentTime + 5); });
+  $("playbackRate").addEventListener("change", () => { video.playbackRate = Number($("playbackRate").value); });
+  video.addEventListener("timeupdate", renderCaptions);
+  video.addEventListener("seeked", renderCaptions);
+  video.addEventListener("loadedmetadata", renderCaptions);
+  video.addEventListener("error", () => {
+    if (video.currentSrc) $("status").textContent = "This video format may not be supported by your browser. Try MP4 (H.264).";
+  });
+
+  document.addEventListener("keydown", event => {
+    const tag = document.activeElement && document.activeElement.tagName;
+    if (["INPUT", "SELECT", "TEXTAREA", "BUTTON"].includes(tag)) return;
+    if (event.code === "Space") { event.preventDefault(); if (video.paused) video.play().catch(() => {}); else video.pause(); }
+    if (event.key === "ArrowLeft") { event.preventDefault(); video.currentTime = Math.max(0, video.currentTime - 5); }
+    if (event.key === "ArrowRight") { event.preventDefault(); video.currentTime = Math.min(video.duration || Infinity, video.currentTime + 5); }
+  });
+
+  window.addEventListener("beforeunload", () => {
+    for (const url of state.objectUrls) URL.revokeObjectURL(url);
+  });
+})();
+</script>
+</body>
+</html>
