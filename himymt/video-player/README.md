@@ -39,6 +39,31 @@ For a single subtitle file without an episode number, that file is used as the f
 - Playback speed and 5-second skip buttons.
 - Keyboard: `Space` toggles play/pause; `←` and `→` seek 5 seconds.
 
+## Use on a phone (iPhone / Android)
+
+The layout is responsive and the player reads video and subtitle files directly from the phone. First publish the folder with GitHub Pages:
+
+1. Open the repository **Settings → Pages**.
+2. Under **Build and deployment**, choose **Deploy from a branch**.
+3. Select branch **main** and folder **/(root)**, then click **Save**.
+4. After GitHub finishes publishing, open this address in Safari or Chrome:
+
+   `https://vivavyvu4.github.io/vocab-learning/himymt/video-player/`
+
+The repository is public, so the published website and repository files are publicly accessible. Your personal video files stay on your phone and are not uploaded by this player.
+
+### On the phone
+
+1. Keep the MP4 video(s) and SRT file(s) in the Files app (iPhone) or Downloads / File Manager (Android). On iPhone, download the video from iCloud Drive or save it to Files first.
+2. Open the player URL above.
+3. Tap **Add videos** and select an episode (or multiple episodes if your phone's file picker allows it).
+4. Pick the matching English SRT and, optionally, the Vietnamese SRT. You can also use the bilingual SRT input.
+5. Turn the phone sideways for a larger player; use the video controls for full screen.
+
+For phone browsers, use MP4 with H.264 video and AAC audio. AVI/MKV files are not reliably supported by mobile browsers; convert them to MP4 before copying them to the phone. If selecting a whole season at once is awkward, load one episode and its subtitle files at a time.
+
+You can use the browser's **Add to Home Screen** / **Install** option as a shortcut to the player.
+
 ## Notes
 
 - This player does not depend on the existing TTS-based `listening-player`; both tools are kept separate.
