@@ -67,6 +67,10 @@ video{display:block;width:100%;height:100%;max-height:74vh;object-fit:contain;ba
 .sidebar{display:flex;flex-direction:column;gap:14px}
 .section-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
 .file-group{padding:12px 0;border-top:1px solid var(--line)}
+.drive-link-tools{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.drive-link-tools input{width:100%;background:#0e1728;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:10px;font:inherit;font-size:13px}
+.drive-link-tools button{width:100%}
+.drive-link-note{font-size:11px;line-height:1.5;color:var(--muted)}
 .file-group:first-of-type{border-top:0;padding-top:2px}
 .file-title{font-size:13px;font-weight:750;margin-bottom:5px}
 .file-desc{color:var(--muted);font-size:11px;margin-bottom:8px}
@@ -127,6 +131,14 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
       <div class="panel" style="margin-top:14px">
         <div class="section-top"><div><h2>Episode playlist</h2><div class="muted small" id="videoCount">No videos selected</div></div><label class="file-label" for="videoFiles">＋ Add videos</label></div>
         <input id="videoFiles" type="file" accept="video/*,.mkv,.avi,.mp4,.mov,.webm" multiple hidden>
+        <div class="drive-link-tools">
+          <div class="file-title">Or load from Google Drive</div>
+          <input id="driveVideoUrl" type="url" inputmode="url" autocomplete="off" placeholder="Paste a Google Drive share link">
+          <input id="driveVideoName" type="text" autocomplete="off" placeholder="Video name, e.g. HIMYM - 1x01 - Pilot.mp4">
+          <button type="button" id="addDriveVideo">↗ Add Google Drive video</button>
+          <div class="drive-link-note">Works with files shared as “Anyone with the link – Viewer”. Add the episode number (1x01 / S01E01) to the video name so the matching SRT can be found. Private Drive files need Google sign-in integration, which is not enabled yet.</div>
+          <div class="file-summary" id="driveLinkStatus" aria-live="polite"></div>
+        </div>
         <div class="playlist" id="playlist"><div class="empty">Your selected episodes will appear here.</div></div>
       </div>
     </section>
@@ -683,7 +695,9 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     );
     files.sort((a, b) => collator.compare(a.name, b.name));
 
-    for (const item of state.videos) URL.revokeObjectURL(item.url);
+    for (const item of state.videos) {
+      if (item.url.startsWith("blob:")) URL.revokeObjectURL(item.url);
+    }
     state.objectUrls = [];
     state.videos = [];
     state.currentVideo = -1;
@@ -733,6 +747,80 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
       if (requestId === state.videoLoadSequence) hideProgress("playlist");
     }, 1400);
   }
+
+  function parseGoogleDriveFileId(rawUrl) {
+    let parsed;
+    try {
+      parsed = new URL(rawUrl.trim());
+    } catch (_) {
+      throw new Error("Paste a valid Google Drive sharing URL.");
+    }
+
+    const host = parsed.hostname.toLowerCase();
+    if (host !== "drive.google.com" && host !== "docs.google.com") {
+      throw new Error("Only Google Drive file links are supported.");
+    }
+
+    let fileId = "";
+    const pathMatch = parsed.pathname.match(/\/file\/d\/([A-Za-z0-9_-]+)/i);
+    if (pathMatch) fileId = pathMatch[1];
+    if (!fileId) fileId = parsed.searchParams.get("id") || "";
+    if (!fileId || !/^[A-Za-z0-9_-]{10,}$/.test(fileId)) {
+      throw new Error("Could not find a Drive file ID. Use a file share link, not a folder link.");
+    }
+    return fileId;
+  }
+
+  function addGoogleDriveVideo() {
+    const link = $("driveVideoUrl").value.trim();
+    const displayName = $("driveVideoName").value.trim();
+    $("driveLinkStatus").textContent = "";
+
+    try {
+      if (!link) throw new Error("Paste a Google Drive share link first.");
+      if (!displayName) throw new Error("Enter a video name with its episode number, e.g. HIMYM - 1x01 - Pilot.mp4.");
+
+      const fileId = parseGoogleDriveFileId(link);
+      const normalizedName = /\.[a-z0-9]{2,5}$/i.test(displayName) ? displayName : displayName + ".mp4";
+      const duplicate = state.videos.find(item => item.driveFileId === fileId);
+      if (duplicate) {
+        $("driveLinkStatus").textContent = "This Google Drive file is already in the playlist.";
+        return;
+      }
+
+      const driveUrl = "https://drive.google.com/uc?export=download&id=" + encodeURIComponent(fileId);
+      const item = {
+        file: { name: normalizedName },
+        url: driveUrl,
+        sourceType: "google-drive",
+        driveFileId: fileId
+      };
+      state.videos.push(item);
+      state.videos.sort((a, b) => collator.compare(a.file.name, b.file.name));
+      const index = state.videos.indexOf(item);
+      renderPlaylist();
+      selectVideo(index);
+      $("driveLinkStatus").textContent = "Google Drive link added. The browser is attempting to open the shared video.";
+      $("driveVideoUrl").value = "";
+      $("driveVideoName").value = "";
+    } catch (error) {
+      $("driveLinkStatus").textContent = error.message;
+    }
+  }
+
+  $("addDriveVideo").addEventListener("click", addGoogleDriveVideo);
+  $("driveVideoUrl").addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      $("driveVideoName").focus();
+    }
+  });
+  $("driveVideoName").addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      addGoogleDriveVideo();
+    }
+  });
 
   $("videoFiles").addEventListener("change", event => {
     addVideoFiles(event.target.files);
@@ -816,7 +904,12 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
   video.addEventListener("error", () => {
     state.mediaWaiting = false;
     hideProgress("media");
-    if (video.currentSrc) $("status").textContent = "This video format may not be supported by your browser. Try MP4 (H.264).";
+    const activeVideo = state.videos[state.currentVideo];
+    if (activeVideo && activeVideo.sourceType === "google-drive") {
+      $("status").textContent = "Google Drive could not stream this file. Check “Anyone with the link – Viewer” and download permission, or download the MP4 to your device and add it locally.";
+    } else if (video.currentSrc) {
+      $("status").textContent = "This video format may not be supported by your browser. Try MP4 (H.264).";
+    }
   });
 
   $("closeWordPopup").addEventListener("click", closeWordLookup);
