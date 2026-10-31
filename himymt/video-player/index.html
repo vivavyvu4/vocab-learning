@@ -789,7 +789,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
   });
   video.addEventListener("seeked", () => {
     renderCaptions();
-    if (!video.paused && video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) {
+    if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
       state.mediaWaiting = false;
       hideProgress("media");
     }
