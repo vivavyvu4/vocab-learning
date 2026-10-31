@@ -30,6 +30,14 @@ You can select multiple subtitle files at once. The player matches each subtitle
 
 For a single subtitle file without an episode number, that file is used as the fallback for every selected video. If you have several subtitle files, include the episode number in each filename for reliable matching.
 
+## Loading and progress indicators
+
+- **Adding videos:** the playlist progress bar counts how many local file references have been added to the playlist. It does not upload or copy the video file.
+- **Preparing playback:** the player shows when the browser is reading video metadata and preparing the first frame.
+- **Buffering / seeking:** when playback needs more data, the second bar estimates how much of the video's duration is currently buffered by the browser. This is time coverage, not an upload percentage; a local file may become playable before the entire video is buffered.
+
+The browser uses `URL.createObjectURL(file)` to read the selected file locally. Large videos are not sent to GitHub Pages.
+
 ## Controls
 
 - Native video controls: play, pause, volume, fullscreen and seeking.
