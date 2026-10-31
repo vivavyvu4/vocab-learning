@@ -49,6 +49,10 @@ video{display:block;width:100%;height:100%;max-height:74vh;object-fit:contain;ba
 .word-popup-title{font-size:22px;font-weight:800;margin:2px 0 0;overflow-wrap:anywhere}
 .word-popup-close{flex:none;width:34px;height:34px;padding:0;border-radius:10px;font-size:20px;line-height:1}
 .word-translation{font-size:19px;font-weight:750;color:#ffe7a8;margin:12px 0 9px}
+.word-sentence{border-top:1px solid var(--line);margin-top:12px;padding-top:10px}
+.word-sentence-label{font-size:11px;color:var(--accent);font-weight:800;letter-spacing:.04em}
+.word-sentence-original{font-size:13px;color:var(--text);margin:5px 0;line-height:1.5}
+.word-sentence-translation{font-size:13px;color:#ffe7a8;line-height:1.5;margin:5px 0 0}
 .word-ipa{font-size:15px;color:#c9bcff;font-weight:650;margin:6px 0}
 .word-audio-label,.word-source{font-size:11px;color:var(--muted);margin-top:7px}
 .word-audio{display:block;width:100%;height:38px;margin:7px 0}
@@ -212,6 +216,11 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     <div class="word-loading" id="wordLoading">Looking up word…</div>
     <div id="wordDetails" hidden>
       <div class="word-translation" id="wordTranslation"></div>
+      <div class="word-sentence" id="wordSentence">
+        <div class="word-sentence-label">CÂU TRONG PHỤ ĐỀ</div>
+        <div class="word-sentence-original" id="wordSentenceOriginal"></div>
+        <div class="word-sentence-translation" id="wordSentenceTranslation">Đang dịch cả câu…</div>
+      </div>
       <div class="word-ipa" id="wordIpa"></div>
       <div class="word-audio-label" id="wordAudioLabel"></div>
       <audio class="word-audio" id="wordAudio" controls preload="none" hidden></audio>
@@ -238,6 +247,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     activeVietnamese: [],
     objectUrls: [],
     dictionaryCache: new Map(),
+    sentenceTranslationCache: new Map(),
+    currentLookupSentence: "",
     lookupSequence: 0,
     currentLookupWord: "",
     lastEnglishText: null,
@@ -397,7 +408,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
       button.addEventListener("click", event => {
         event.preventDefault();
         event.stopPropagation();
-        lookupWord(word);
+        lookupWord(word, text);
       });
       element.append(button);
       cursor = match.index + word.length;
@@ -493,8 +504,10 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     }
   }
 
-  function renderWordResult(word, entry, translation) {
+  function renderWordResult(word, entry, translation, sentence, sentenceTranslation) {
     $("wordTranslation").textContent = translation || "Vietnamese meaning is not available right now.";
+    $("wordSentenceOriginal").textContent = sentence || "No English subtitle sentence is available.";
+    $("wordSentenceTranslation").textContent = sentenceTranslation || "Chưa dịch được câu này. Bạn thử lại khi có kết nối mạng nhé.";
     const phonetics = entry && Array.isArray(entry.phonetics) ? entry.phonetics : [];
     const ipa = [];
     if (entry && entry.phonetic) ipa.push(entry.phonetic);
@@ -524,7 +537,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     $("wordDetails").hidden = false;
   }
 
-  async function lookupWord(rawWord) {
+  async function lookupWord(rawWord, sentence) {
     const word = rawWord.toLowerCase().replace(/[’]/g, "'");
     if (!/^[a-z]+(?:['-][a-z]+)*$/i.test(word)) return;
 
@@ -535,10 +548,13 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
 
     const requestId = ++state.lookupSequence;
     state.currentLookupWord = word;
+    state.currentLookupSentence = String(sentence || "").trim();
     $("wordPopupTitle").textContent = rawWord;
     $("wordPopup").hidden = false;
     $("wordLoading").hidden = false;
     $("wordLoading").textContent = "Looking up meaning, IPA and pronunciation…";
+    $("wordSentenceOriginal").textContent = state.currentLookupSentence;
+    $("wordSentenceTranslation").textContent = "Đang dịch cả câu…";
     $("wordDetails").hidden = true;
     $("wordError").hidden = true;
     $("wordAudio").pause();
@@ -560,7 +576,21 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
         state.dictionaryCache.set(word, result);
       }
       if (requestId !== state.lookupSequence || $("wordPopup").hidden) return;
-      renderWordResult(rawWord, result.entry, result.translation);
+      const sentence = state.currentLookupSentence;
+      let sentenceTranslation = "";
+      if (sentence) {
+        sentenceTranslation = state.sentenceTranslationCache.get(sentence) || "";
+        if (!sentenceTranslation) {
+          try {
+            sentenceTranslation = await fetchVietnameseMeaning(sentence);
+            state.sentenceTranslationCache.set(sentence, sentenceTranslation);
+          } catch (_) {
+            sentenceTranslation = "";
+          }
+        }
+      }
+      if (requestId !== state.lookupSequence || $("wordPopup").hidden) return;
+      renderWordResult(rawWord, result.entry, result.translation, sentence, sentenceTranslation);
     } catch (error) {
       if (requestId !== state.lookupSequence) return;
       $("wordLoading").hidden = true;
