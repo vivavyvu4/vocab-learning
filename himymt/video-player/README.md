@@ -51,6 +51,20 @@ The browser uses `URL.createObjectURL(file)` to read the selected file locally. 
 - Playback speed and 5-second skip buttons.
 - Keyboard: `Space` toggles play/pause; `←` and `→` seek 5 seconds.
 
+## Load a video from Google Drive
+
+The playlist also accepts a Google Drive **file share link**:
+
+1. In Google Drive, open the video's **Share** settings and set **General access → Anyone with the link → Viewer**. Make sure downloading is allowed.
+2. Copy the file link, for example `https://drive.google.com/file/d/FILE_ID/view?usp=sharing`.
+3. In the player, paste the link into **Load from Google Drive**.
+4. Enter a display filename containing the episode number, such as `HIMYM - 1x01 - Pilot.mp4`. This name is used to match the SRT file.
+5. Click **Add Google Drive video**.
+
+This first version uses a direct Drive download URL for public shared files. It is a best-effort browser streaming method, not the authenticated Drive API. Google Drive may block direct streaming, show a download confirmation page, throttle a file, or reject range requests depending on the file and browser. If the video does not start, download it from Drive to your device and use **Add videos** instead. The SRT overlay and click-to-lookup controls work only when the video is playing in this player.
+
+Private files are not supported by this link field. To choose private Drive files securely, the player needs a Google Cloud project, the Google Picker API, and user OAuth authorization. Do not paste OAuth access tokens or API secrets into this public page.
+
 ## Click an English word to learn it
 
 Tap/click any English word in the subtitle to open its word card. The card can show:
