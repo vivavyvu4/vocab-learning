@@ -39,6 +39,19 @@ For a single subtitle file without an episode number, that file is used as the f
 - Playback speed and 5-second skip buttons.
 - Keyboard: `Space` toggles play/pause; `←` and `→` seek 5 seconds.
 
+## Click an English word to learn it
+
+Tap/click any English word in the subtitle to open its word card. The card can show:
+
+- Vietnamese meaning from Google Translate.
+- IPA and English definitions from Free Dictionary API.
+- A dictionary audio sample when available. If the audio URL is hosted on `ssl.gstatic.com`, the card identifies it as Google Dictionary audio.
+- A browser text-to-speech fallback when the dictionary does not provide an audio file.
+
+Google does not provide a supported public Google Dictionary API for querying IPA. Therefore IPA comes from Free Dictionary API; the player uses Google-hosted dictionary audio when that source is included in the API response. Google Translate's web endpoint is also undocumented and may be rate-limited or changed by Google.
+
+Only the selected word is sent to the translation and dictionary services. Local video and SRT files remain in the browser and are not uploaded. Word lookups are cached in memory while the page is open.
+
 ## Use on a phone (iPhone / Android)
 
 The layout is responsive and the player reads video and subtitle files directly from the phone. First publish the folder with GitHub Pages:
