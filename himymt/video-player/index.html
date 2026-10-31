@@ -565,6 +565,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
 
   function selectVideo(index) {
     if (index < 0 || index >= state.videos.length) return;
+    closeWordLookup();
     state.currentVideo = index;
     video.src = state.videos[index].url;
     video.load();
@@ -648,6 +649,12 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
 
   $("closeWordPopup").addEventListener("click", closeWordLookup);
   $("wordSpeak").addEventListener("click", speakCurrentWord);
+  $("wordAudio").addEventListener("error", () => {
+    if (!$("wordAudio").hidden && $("wordAudio").currentSrc) {
+      $("wordAudioLabel").textContent = "Dictionary audio could not be loaded on this device; use the browser voice below.";
+      $("wordSpeak").hidden = false;
+    }
+  });
   $("wordPopup").addEventListener("click", event => event.stopPropagation());
 
   document.addEventListener("keydown", event => {
