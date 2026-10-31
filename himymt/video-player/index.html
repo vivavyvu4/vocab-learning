@@ -749,22 +749,25 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
   }
 
   function parseGoogleDriveFileId(rawUrl) {
-    let parsed;
-    try {
-      parsed = new URL(rawUrl.trim());
-    } catch (_) {
-      throw new Error("Paste a valid Google Drive sharing URL.");
-    }
-
-    const host = parsed.hostname.toLowerCase();
-    if (host !== "drive.google.com") {
+    const value = String(rawUrl || "").trim();
+    const hostMatch = value.match(/^https?:\/\/([^/?#]+)/i);
+    if (!hostMatch) throw new Error("Paste a valid Google Drive sharing URL.");
+    if (hostMatch[1].toLowerCase() !== "drive.google.com") {
       throw new Error("Paste a Google Drive file link from drive.google.com.");
     }
 
     let fileId = "";
-    const pathMatch = parsed.pathname.match(/\/file\/d\/([A-Za-z0-9_-]+)/i);
+    const pathMatch = value.match(/\/file\/d\/([A-Za-z0-9_-]+)/i);
     if (pathMatch) fileId = pathMatch[1];
-    if (!fileId) fileId = parsed.searchParams.get("id") || "";
+
+    if (!fileId) {
+      const queryMatch = value.match(/[?&]id=([^&#]+)/i);
+      if (queryMatch) {
+        try { fileId = decodeURIComponent(queryMatch[1]); }
+        catch (_) { fileId = queryMatch[1]; }
+      }
+    }
+
     if (!fileId || !/^[A-Za-z0-9_-]{10,}$/.test(fileId)) {
       throw new Error("Could not find a Drive file ID. Use a file share link, not a folder link.");
     }
