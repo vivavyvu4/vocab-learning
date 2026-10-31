@@ -757,8 +757,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     }
 
     const host = parsed.hostname.toLowerCase();
-    if (host !== "drive.google.com" && host !== "docs.google.com") {
-      throw new Error("Only Google Drive file links are supported.");
+    if (host !== "drive.google.com") {
+      throw new Error("Paste a Google Drive file link from drive.google.com.");
     }
 
     let fileId = "";
