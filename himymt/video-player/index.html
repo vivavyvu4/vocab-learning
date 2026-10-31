@@ -30,6 +30,11 @@ video::-webkit-media-controls-fullscreen-button{display:none}
 .video-wrap:fullscreen video,.video-wrap:-webkit-full-screen video{width:100%;height:100%;max-height:none}
 .video-wrap:fullscreen .caption-layer,.video-wrap:-webkit-full-screen .caption-layer{z-index:4}
 .video-wrap:fullscreen .video-fullscreen,.video-wrap:-webkit-full-screen .video-fullscreen{top:calc(10px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right))}
+.video-wrap.pseudo-fullscreen{position:fixed;z-index:9999;inset:0;width:100vw;height:100vh;height:100dvh;max-height:none;min-height:0;aspect-ratio:auto;border-radius:0;display:grid;place-items:center;background:#000;overflow:hidden}
+.video-wrap.pseudo-fullscreen video{width:100%;height:100%;max-height:none;object-fit:contain}
+.video-wrap.pseudo-fullscreen .caption-layer{z-index:4}
+.video-wrap.pseudo-fullscreen .video-fullscreen{top:calc(10px + env(safe-area-inset-top));right:calc(10px + env(safe-area-inset-right))}
+body.pseudo-fullscreen-active{overflow:hidden;overscroll-behavior:none}
 video{display:block;width:100%;height:100%;max-height:74vh;object-fit:contain;background:#03060c}
 .placeholder{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:22px;color:var(--muted);pointer-events:none}
 .placeholder strong{display:block;color:var(--text);font-size:18px;margin-bottom:6px}
@@ -833,26 +838,36 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
   });
 
   const fullscreenButton = $("fullscreenButton");
+  const videoWrap = $("videoWrap");
+  function isPlayerFullscreen() {
+    return videoWrap.classList.contains("pseudo-fullscreen") ||
+      document.fullscreenElement === videoWrap ||
+      document.webkitFullscreenElement === videoWrap;
+  }
   async function toggleVideoFullscreen() {
-    const wrapper = $("videoWrap");
-    const isFullscreen = document.fullscreenElement === wrapper || document.webkitFullscreenElement === wrapper;
-    if (isFullscreen) {
+    if (isPlayerFullscreen()) {
+      if (videoWrap.classList.contains("pseudo-fullscreen")) {
+        videoWrap.classList.remove("pseudo-fullscreen");
+        document.body.classList.remove("pseudo-fullscreen-active");
+        syncFullscreenButton();
+        return;
+      }
       if (document.exitFullscreen) await document.exitFullscreen();
       else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
       return;
     }
-    try {
-      if (wrapper.requestFullscreen) await wrapper.requestFullscreen();
-      else if (wrapper.webkitRequestFullscreen) wrapper.webkitRequestFullscreen();
-      else {
-        $("status").textContent = "Fullscreen with subtitles is not supported by this browser. Keep the video in the player to see subtitles.";
-      }
-    } catch (error) {
-      $("status").textContent = "Could not enter fullscreen. Please use the video in the player so subtitles remain visible.";
-    }
+
+    // iOS Safari does not consistently support fullscreen on a wrapper element.
+    // CSS fullscreen keeps the video and custom subtitle layer together.
+    videoWrap.classList.add("pseudo-fullscreen");
+    document.body.classList.add("pseudo-fullscreen-active");
+    syncFullscreenButton();
+
+    // Use native fullscreen only when the browser explicitly supports wrapper fullscreen.
+    // On iPhone, prefer the CSS mode above so subtitles remain visible.
   }
   function syncFullscreenButton() {
-    const active = document.fullscreenElement === $("videoWrap") || document.webkitFullscreenElement === $("videoWrap");
+    const active = isPlayerFullscreen();
     fullscreenButton.textContent = active ? "⤢" : "⛶";
     fullscreenButton.setAttribute("aria-label", active ? "Exit fullscreen" : "Enter fullscreen");
     fullscreenButton.title = active ? "Exit fullscreen" : "Fullscreen";
@@ -860,6 +875,13 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
   fullscreenButton.addEventListener("click", toggleVideoFullscreen);
   document.addEventListener("fullscreenchange", syncFullscreenButton);
   document.addEventListener("webkitfullscreenchange", syncFullscreenButton);
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && videoWrap.classList.contains("pseudo-fullscreen")) {
+      videoWrap.classList.remove("pseudo-fullscreen");
+      document.body.classList.remove("pseudo-fullscreen-active");
+      syncFullscreenButton();
+    }
+  });
 
   $("videoFiles").addEventListener("change", event => {
     addVideoFiles(event.target.files);
