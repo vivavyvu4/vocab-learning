@@ -736,18 +736,18 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
   $("playbackRate").addEventListener("change", () => { video.playbackRate = Number($("playbackRate").value); });
   function getBufferedPercent() {
     if (!Number.isFinite(video.duration) || video.duration <= 0) return null;
-    let bufferedEnd = 0;
+    let bufferedDuration = 0;
     for (let index = 0; index < video.buffered.length; index++) {
-      bufferedEnd = Math.max(bufferedEnd, video.buffered.end(index));
+      bufferedDuration += video.buffered.end(index) - video.buffered.start(index);
     }
-    return Math.min(100, Math.round(bufferedEnd / video.duration * 100));
+    return Math.min(100, Math.round(bufferedDuration / video.duration * 100));
   }
 
   function showMediaBufferProgress(label) {
     const percent = getBufferedPercent();
     const detail = percent === null
       ? "Trình duyệt đang chuẩn bị dữ liệu video."
-      : "Đã nạp đến khoảng " + percent + "% thời lượng video (không phải % upload).";
+      : "Đã nạp khoảng " + percent + "% tổng thời lượng video (không phải % upload).";
     updateProgress("media", percent, label, detail, percent === null);
   }
 
