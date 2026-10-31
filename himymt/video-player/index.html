@@ -443,7 +443,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     phonetics.forEach(item => {
       if (item.text && !ipa.includes(item.text)) ipa.push(item.text);
     });
-    $("wordIpa").textContent = ipa.length ? "IPA · " + ipa.slice(0, 3).join("   /   ") : "IPA is not available for this word.";
+    $("wordIpa").textContent = ipa.length ? "IPA · " + ipa.slice(0, 3).map(value => { const clean = value.trim(); return clean.startsWith("/") && clean.endsWith("/") ? clean : "/" + clean.replace(/^\/+|\/+$/g, "") + "/"; }).join("   ·   ") : "IPA is not available for this word.";
     const audioItem = phonetics.find(item => item.audio && item.audio.trim());
     const audioUrl = audioItem ? (audioItem.audio.startsWith("//") ? "https:" + audioItem.audio : audioItem.audio) : "";
     if (audioUrl) {
@@ -461,7 +461,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     }
     appendDictionaryDefinitions(entry);
     $("wordLoading").hidden = true;
-    $("wordError").hidden = false;
+    $("wordError").hidden = !!entry;
     $("wordError").textContent = entry ? "" : "Dictionary entry not found. The Vietnamese translation may still be available.";
     $("wordDetails").hidden = false;
   }
