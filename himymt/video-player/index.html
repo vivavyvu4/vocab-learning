@@ -218,7 +218,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     currentLookupWord: "",
     lastEnglishText: null,
     videoLoadSequence: 0,
-    mediaWaiting: false
+    mediaWaiting: false,
+    wordLookupWasPlaying: false
   };
   const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
 
@@ -416,12 +417,23 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     return data[0];
   }
 
-  function closeWordLookup() {
+  function closeWordLookup(resumePlayback = true) {
+    const shouldResume = state.wordLookupWasPlaying;
+    state.wordLookupWasPlaying = false;
     $("wordPopup").hidden = true;
     $("wordAudio").pause();
     $("wordAudio").removeAttribute("src");
     $("wordAudio").load();
     if ("speechSynthesis" in window) speechSynthesis.cancel();
+
+    if (resumePlayback && shouldResume && state.currentVideo >= 0 && !video.ended) {
+      const playAttempt = video.play();
+      if (playAttempt && typeof playAttempt.catch === "function") {
+        playAttempt.catch(() => {
+          $("status").textContent = "Tap Play to continue the episode.";
+        });
+      }
+    }
   }
 
   function appendDictionaryDefinitions(entry) {
@@ -491,6 +503,12 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
   async function lookupWord(rawWord) {
     const word = rawWord.toLowerCase().replace(/[’]/g, "'");
     if (!/^[a-z]+(?:['-][a-z]+)*$/i.test(word)) return;
+
+    if ($("wordPopup").hidden) {
+      state.wordLookupWasPlaying = !video.paused && !video.ended;
+      if (state.wordLookupWasPlaying) video.pause();
+    }
+
     const requestId = ++state.lookupSequence;
     state.currentLookupWord = word;
     $("wordPopupTitle").textContent = rawWord;
@@ -587,7 +605,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
 
   function selectVideo(index) {
     if (index < 0 || index >= state.videos.length) return;
-    closeWordLookup();
+    closeWordLookup(false);
     state.mediaWaiting = false;
     hideProgress("media");
     state.currentVideo = index;
