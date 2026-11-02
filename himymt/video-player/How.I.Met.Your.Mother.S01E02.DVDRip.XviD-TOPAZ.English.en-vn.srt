@@ -60,7 +60,7 @@ Hi, have you met Ted? ;
 00:00:47,847 --> 00:00:50,281
 <i>but after just one date</i>
 <i>I was in love with her,</i> ;
-<i>Và ta đã nói một điều ngu ngốc.</i>
+<i>nhưng chỉ sau một buổi hẹn, tớ đã yêu cô ấy,</i>
 
 12
 00:00:50,383 --> 00:00:52,317
@@ -113,7 +113,7 @@ You went from
 21
 00:01:09,235 --> 00:01:10,395
 to "I'm not gonna call her"? ;
-<i>Cậu đi từ "Anh nghĩ anh yêu em". Đến "Tớ sẽ không gọi cho cô ấy"?</i>
+<i>sang “Tớ sẽ không gọi cho cô ấy” á?</i>
 
 22
 00:01:10,503 --> 00:01:11,868
@@ -135,7 +135,7 @@ It had absolutely nothing to do with Robin. ;
 00:01:18,078 --> 00:01:19,204
 - Robin?
 - Hey. ;
-<i>- Chào.</i>
+<i>- Robin? - Chào.</i>
 
 26
 00:01:19,312 --> 00:01:20,711
@@ -178,7 +178,7 @@ See you guys. ;
 33
 00:01:39,365 --> 00:01:40,332
 Thanks. ;
-<i>- Rất vui khi gặp anh, Ted. - Yeah, anh cũng thế.</i>
+<i>Cảm ơn.</i>
 
 34
 00:01:41,935 --> 00:01:43,061
@@ -265,13 +265,13 @@ But that's part of my charm. ;
 00:02:17,437 --> 00:02:19,905
 - But that's part of his charm.
 - Oh, totally. ;
-<i>Nhưng đó là một phần hấp dẫn của cậu ấy. - Oh, chắc rồi.</i>
+<i>Nhưng đó là một phần hấp dẫn của cậu ấy.</i>
 
 50
 00:02:20,006 --> 00:02:22,941
 I mean, he's sweet, he's charming,
 he's just looking for something ;
-<i>Ý tớ là, anh ấy ngọt ngào, hấp dẫn,</i>
+<i>- Oh, chắc rồi. Ý tớ là, anh ấy ngọt ngào, hấp dẫn,</i>
 
 51
 00:02:23,042 --> 00:02:24,771
@@ -511,7 +511,7 @@ Boundaries. ;
 94
 00:04:35,808 --> 00:04:37,935
 <i>on 75th and Columbus...</i> ;
-<i>Tôi đang tường thuật trực tiếp từ siêu thị Razzle Dazzle ở số 75 Columbus...</i>
+<i>ở giao lộ đường 75 và đại lộ Columbus...</i>
 
 95
 00:04:38,077 --> 00:04:40,170
@@ -526,7 +526,7 @@ Game on! ;
 97
 00:04:42,448 --> 00:04:44,143
 ...where four-year-old Leroy Ellenberg ;
-<i>Trò chơi bắt đầu!</i>
+<i>...nơi cậu bé Leroy Ellenberg bốn tuổi</i>
 
 98
 00:04:44,250 --> 00:04:47,777
@@ -575,7 +575,7 @@ I love dip. No, I don't love dip. I like dip. ;
 106
 00:05:14,080 --> 00:05:16,173
 As a friend, you know. ;
-<i>Anh yêu nước sốt. Không, anh không yêu nước sốt. Anh thích chúng. Như một người bạn, em biết đấy.</i>
+<i>Với tư cách bạn bè thôi nhé.</i>
 
 107
 00:05:16,282 --> 00:05:18,842
@@ -726,12 +726,12 @@ Okay, I got it all planned out. ;
 00:06:35,895 --> 00:06:39,661
 <i>So, Robin strolls over,</i>
 <i>and I casually give her one of these,</i> ;
-<i>Rồi, Robin bước tới, và tớ sẽ bình thảnh lên tiếng. "Chào, thế nào rồi?"</i>
+<i>Rồi, Robin bước tới, và tớ sẽ bình thảnh lên tiếng.</i>
 
 134
 00:06:39,766 --> 00:06:41,597
 <i>"Hey, what's up?"</i> ;
-<i>Rồi, Robin bước tới, và tớ sẽ bình thảnh lên tiếng. "Chào, thế nào rồi?"</i>
+<i>"Chào, thế nào rồi?"</i>
 
 135
 00:06:42,034 --> 00:06:45,800
@@ -828,7 +828,7 @@ But may I suggest one little modification? ;
 00:07:29,615 --> 00:07:31,242
 <i>BARNEY; That foxy young thing</i>
 <i>you were chatting up?</i> ;
-<i>Nhưng tớ có thể đề xuất một thay đổi nho nhỏ?</i>
+<i>BARNEY: Cô nàng nóng bỏng mà cậu đang tán tỉnh ấy?</i>
 
 153
 00:07:31,350 --> 00:07:33,011
@@ -846,19 +846,19 @@ But may I suggest one little modification? ;
 00:07:35,288 --> 00:07:38,189
 <i>It should be the plan, I mean, look at her,</i>
 <i>Ted, look at her,</i> ;
-<i>Nó nên là kế hoạch, ý tớ là, nhìn cô ấy đi, Ted, nhìn cô ấy đi.</i>
+<i>Nó nên là kế hoạch, ý tớ là, nhìn cô ấy đi,</i>
 
 156
 00:07:38,291 --> 00:07:40,657
 <i>- She's smoking,</i>
 - Thank you. ;
-<i>- Cô ta rất khêu gợi. - Cám ơn.</i>
+<i>Ted, nhìn cô ấy đi. - Cô ta rất khêu gợi.</i>
 
 157
 00:07:40,927 --> 00:07:42,986
 <i>- Yeah,</i>
 - But she's not Robin. ;
-<i>- Yeah. Nhưng đó không phải là Robin.</i>
+<i>- Cám ơn. - Yeah. Nhưng đó không phải là Robin.</i>
 
 158
 00:07:43,095 --> 00:07:44,357
@@ -873,7 +873,7 @@ Ted, let's rap. ;
 160
 00:07:46,098 --> 00:07:47,065
 Statistic. ;
-<i>Ted, thử nghĩ xem.</i>
+<i>Thống kê này.</i>
 
 161
 00:07:47,166 --> 00:07:48,895
@@ -884,7 +884,7 @@ there's always a girl ;
 162
 00:07:49,001 --> 00:07:50,696
 who has no idea whose party she's at. ;
-<i>Theo thống kê. Tại bất kỳ buổi tiệc nào ở New York luôn có một cô gái, người mà không hề biết cô ta đang ở đâu.</i>
+<i>chẳng biết mình đang dự tiệc của ai.</i>
 
 163
 00:07:50,803 --> 00:07:53,897
@@ -907,12 +907,12 @@ Barney, I don't think so. ;
 00:08:00,112 --> 00:08:04,549
 - Scoping, bip, scoping, bip.
 - Man, you're a dork. ;
-<i>- Mục tiêu, bip. - Anh bạn, cậu là một con gà.</i>
+<i>- Mục tiêu, bip. - Mục tiêu, bip.</i>
 
 167
 00:08:04,650 --> 00:08:07,414
 Bip, bip, bip, bip. Target acquired! ;
-<i>Bip, bip, bip, bip. Phát hiện mục tiêu!</i>
+<i>- Anh bạn, cậu là một con gà. Bip, bip, bip, bip. Phát hiện mục tiêu!</i>
 
 168
 00:08:07,520 --> 00:08:09,852
@@ -930,13 +930,13 @@ I like to call, ;
 00:08:12,492 --> 00:08:14,357
 - Hi, have you met Ted?
 - No. ;
-<i>- Chào, em đã gặp Ted chưa? Chưa.</i>
+<i>- Chào, em đã gặp Ted chưa?</i>
 
 171
 00:08:14,460 --> 00:08:15,552
 - Hi.
 - Hi. ;
-<i>- Chào.</i>
+<i>Chưa. - Chào. - Chào.</i>
 
 172
 00:08:15,661 --> 00:08:17,629
@@ -959,12 +959,12 @@ Excuse me. Anyone know a Carlos? ;
 00:08:24,237 --> 00:08:25,204
 - No.
 - No. ;
-<i>- Không.</i>
+<i>- Không. - Không.</i>
 
 176
 00:08:25,304 --> 00:08:28,933
 On a silver platter. <i>Bon appétit,</i> ;
-<i>Trên một cái đĩa bạc luôn nhé.</i>
+<i>Trên một cái đĩa bạc luôn nhé. Chúc ngon miệng.</i>
 
 177
 00:08:29,342 --> 00:08:31,037
@@ -975,19 +975,19 @@ I don't think so. ;
 00:08:31,143 --> 00:08:34,874
 Your loss, her gain.
 Excuse me, can I show you the roof? ;
-<i>Cậu thật vô dụng, lại lần nữa này. Xin lỗi. - Em có muốn lên sân thượng không?</i>
+<i>Cậu thật vô dụng, lại lần nữa này. Xin lỗi.</i>
 
 179
 00:08:34,981 --> 00:08:36,642
 - It's magical up there.
 - Sure. ;
-<i>- Đó là một nơi đầy phép thuật. - Chắc rồi.</i>
+<i>- Em có muốn lên sân thượng không? - Đó là một nơi đầy phép thuật.</i>
 
 180
 00:08:36,749 --> 00:08:38,580
 Wait, wait, wait.
 Hey, I got that roof reserved. ;
-<i>Chờ đã, chờ đã, chờ đã. Hey, tớ đã đặt chỗ cho cái sân thượng rồi.</i>
+<i>- Chắc rồi. Chờ đã, chờ đã, chờ đã. Hey, tớ đã đặt chỗ cho cái sân thượng rồi.</i>
 
 181
 00:08:38,684 --> 00:08:42,120
@@ -1024,13 +1024,13 @@ You always know what to say, old friend. ;
 00:09:01,908 --> 00:09:03,842
 - It's Robin.
 - Answer it. ;
-<i>Đó là Robin. Trả lời đi.</i>
+<i>Đó là Robin.</i>
 
 188
 00:09:03,943 --> 00:09:07,071
 No, no, no, not right away.
 I gotta seem casual. ;
-<i>Không, không, không, không phải cách này. Tớ phải tỏ ra thật tự nhiên.</i>
+<i>Trả lời đi. Không, không, không, không phải cách này. Tớ phải tỏ ra thật tự nhiên.</i>
 
 189
 00:09:08,514 --> 00:09:11,278
@@ -1052,13 +1052,13 @@ Oh, Robin. ;
 192
 00:09:15,855 --> 00:09:17,720
 Hey, yeah, ;
-<i>Oh, Robin.</i>
+<i>À, ừ...</i>
 
 193
 00:09:17,823 --> 00:09:20,656
 - I guess you never showed up, did you?
 - No, I got stuck at work. ;
-<i>- Anh đoán là em đã không đến phải không? - Không, em bị kẹt ở đài.</i>
+<i>Hey, yeah, - Anh đoán là em đã không đến phải không? - Không, em bị kẹt ở đài.</i>
 
 194
 00:09:20,760 --> 00:09:23,228
@@ -1109,13 +1109,13 @@ See you. ;
 00:09:52,291 --> 00:09:54,623
 - So that was Robin.
 - What are you doing to me, man? ;
-<i>Vậy đó là Robin. - Cậu đang làm gì với tớ thế này?</i>
+<i>Vậy đó là Robin.</i>
 
 203
 00:09:54,727 --> 00:09:57,560
 - I got a paper to write.
 - I know, I'm sorry. It's terrible. ;
-<i>- Tớ còn cả một bài luận. - Tớ biết, tớ xin lỗi. Thật tệ.</i>
+<i>- Cậu đang làm gì với tớ thế này? - Tớ còn cả một bài luận. - Tớ biết, tớ xin lỗi. Thật tệ.</i>
 
 204
 00:09:57,663 --> 00:10:00,598
@@ -1138,85 +1138,85 @@ I got a paper to write. ;
 00:10:11,477 --> 00:10:14,674
 Okay, fine.
 But it's gotta be, like, super quick. ;
-<i>Thôi được rồi. Nhưng nó phải diễn ra thật nhanh đấy. Và sau đó không có ôm ấp gì đâu.</i>
+<i>Thôi được rồi.</i>
 
 208
 00:10:14,780 --> 00:10:18,716
 - And no cuddling after.
 - I'm the luckiest girl alive. ;
-<i>Em đúng là cô gái may mắn nhất.</i>
+<i>Nhưng nó phải diễn ra thật nhanh đấy. Và sau đó không có ôm ấp gì đâu. Em đúng là cô gái may mắn nhất.</i>
 
 209
 00:10:24,957 --> 00:10:27,152
 Oh, you were so right about the roof. ;
-<i>Oh, cậu quá đúng về cái sân thượng.</i>
+<i>Oh, cậu quá đúng về cái sân thượng. Sân thượng!</i>
 
 210
 00:10:27,259 --> 00:10:29,352
 That girl from last night,
 I took her back to my place, ;
-<i>Cô gái tối qua, tớ đã đem cô ấy về chỗ tớ,</i>
+<i>Sân thượng rực lửa, Ted!</i>
 
 211
 00:10:29,462 --> 00:10:31,862
 then this morning took her outside,
 spun her around a couple times ;
-<i>rồi sáng nay tớ đưa cô ấy ra ngoài, quay cô ấy vài vòng.</i>
+<i>Cô gái tối qua, tớ đã đem cô ấy về chỗ tớ,</i>
 
 212
 00:10:31,964 --> 00:10:32,931
 and sent her walking. ;
-<i>Và để cô ấy tự đi bộ về.</i>
+<i>rồi để cô ấy tự tìm đường về.</i>
 
 213
 00:10:33,032 --> 00:10:36,229
 She will never find her way back
 and there she is. ;
-<i>Cô ấy sẽ không bao giờ trở lại và kia là cô ấy.</i>
+<i>rồi sáng nay tớ đưa cô ấy ra ngoài, quay cô ấy vài vòng.</i>
 
 214
 00:10:36,902 --> 00:10:39,564
 - How did she get here? Did you invite her?
 - I have no idea who that is. ;
-<i>- Sao cô ấy lại ở đây? Cậu mời à? Tớ không hề biết đó là ai.</i>
+<i>Và để cô ấy tự đi bộ về. Cô ấy sẽ không bao giờ trở lại và kia là cô ấy.</i>
 
 215
 00:10:39,672 --> 00:10:41,264
 She said she works with Carlos.
 Who's Carlos? ;
-<i>Cô ấy nói làm việc cùng Carlos. Carlos là ai?</i>
+<i>- Sao cô ấy lại ở đây? Cậu mời à?</i>
 
 216
 00:10:41,374 --> 00:10:42,341
 I don't know any Carlos. ;
-<i>Tớ chẳng biết Carlos nào cả.</i>
+<i>Tớ không hề biết đó là ai.</i>
 
 217
 00:10:43,509 --> 00:10:47,445
 - Hi, you. You're back.
 - I sure am. ;
-<i>- Chào, em. Em quay lại rồi. Đúng là em đấy.</i>
+<i>Cô ấy nói làm việc cùng Carlos. Carlos là ai? Tớ chẳng biết Carlos nào cả. - Chào, em.</i>
 
 218
 00:10:50,049 --> 00:10:53,212
 - Come on, sweetie, I need a drink.
 - Sweetie. Really? ;
-<i>- Đi nào anh yêu, em cần uống một tí. - Anh yêu. Thật đấy à? - Cứu.</i>
+<i>Đúng là em đấy.</i>
 
 219
 00:10:54,353 --> 00:10:55,320
 Help. ;
-<i>- Đi nào anh yêu, em cần uống một tí. - Anh yêu. Thật đấy à? - Cứu.</i>
+<i>- Đi nào anh yêu, em cần uống một tí.</i>
 
 220
 00:10:56,822 --> 00:10:58,517
 Whoa, whoa, rabbits. ;
-<i>Whoa, whoa, các cậu.</i>
+<i>- Anh yêu. Thật đấy à? - Cứu.</i>
 
 221
 00:10:58,624 --> 00:11:00,785
 Come on, I got that roof reserved. ;
-<i>Thôi đi, tớ đã đặt chỗ cái sân thượng rồi.</i>
+<i>Whoa, whoa, các cậu.</i>
 
 222
 00:11:00,893 --> 00:11:02,019
@@ -1227,218 +1227,218 @@ All right. ;
 00:11:03,162 --> 00:11:06,461
 So, it's over between me
 and Works with Carlos Girl. ;
-<i>Vậy là, kết thúc giữa tớ với cô gái làm việc cùng Carlos.</i>
+<i>Thôi đi, tớ đã đặt chỗ cái sân thượng rồi. Được rồi.</i>
 
 224
 00:11:06,565 --> 00:11:08,533
 - Oh, that was fast.
 - Yeah. ;
-<i>- Oh, nhanh thật đấy. - Yeah.</i>
+<i>Vậy là, kết thúc giữa tớ với cô gái làm việc cùng Carlos.</i>
 
 225
 00:11:08,768 --> 00:11:10,793
 I was trying to think,
 what's the quickest way ;
-<i>Tớ đã cố gắng suy nghĩ, làm cách nào nhanh nhất để cậu đá một cô nàng vừa mới gặp?</i>
+<i>- Oh, nhanh thật đấy.</i>
 
 226
 00:11:10,903 --> 00:11:12,530
 to get rid of a girl you just met? ;
-<i>Tớ đã cố gắng suy nghĩ, làm cách nào nhanh nhất để cậu đá một cô nàng vừa mới gặp?</i>
+<i>để tống khứ một cô gái cậu vừa mới gặp?</i>
 
 227
 00:11:13,572 --> 00:11:15,665
 - I think I'm in love with you.
 - What? ;
-<i>Anh nghĩ anh yêu em mất rồi. Cái gì?</i>
+<i>- Yeah. Tớ đã cố gắng suy nghĩ, làm cách nào nhanh nhất để cậu đá một cô nàng vừa mới gặp?</i>
 
 228
 00:11:16,108 --> 00:11:18,406
 - Thanks, bro.
 - Glad I could help. ;
-<i>- Cám ơn, anh bạn. Rất vui vì tớ có thể giúp.</i>
+<i>Anh nghĩ anh yêu em mất rồi. Cái gì?</i>
 
 229
 00:11:20,646 --> 00:11:23,046
 What the... No, no, no, no, come on. ;
-<i>Cái quái... không, không, không, không thôi nào.</i>
+<i>Rất vui vì tớ có thể giúp.</i>
 
 230
 00:11:23,349 --> 00:11:24,680
 Sorry, Ted. ;
-<i>Xin lỗi, Ted.</i>
+<i>Cái quái...</i>
 
 231
 00:11:26,152 --> 00:11:28,712
 Great. What am I gonna do
 when Robin shows up? ;
-<i>Tuyệt thật. Thế tớ phải làm gì khi Robin xuất hiện đây?</i>
+<i>không, không, không, không thôi nào. Xin lỗi, Ted.</i>
 
 232
 00:11:29,255 --> 00:11:30,745
 She'll show up. ;
-<i>Cô ấy sẽ đến.</i>
+<i>Tuyệt thật. Thế tớ phải làm gì khi Robin xuất hiện đây?</i>
 
 233
 00:11:31,123 --> 00:11:33,023
 <i>She didn't show up,</i> ;
-<i>Cô ấy đã không đến.</i>
+<i>Cô ấy sẽ đến.</i>
 
 234
 00:11:33,426 --> 00:11:37,192
 All right, we threw two parties,
 everybody had fun, ;
-<i>Được rồi, chúng ta đã trải qua 2 bữa tiệc rồi, và ai cũng cảm thấy vui vẻ cả,</i>
+<i>Cô ấy đã không đến.</i>
 
 235
 00:11:37,830 --> 00:11:40,196
 everybody Wang-ed, everybody Chung-ed. ;
-<i>ai cũng say sưa, ai cũng thỏa mản.</i>
+<i>Được rồi, chúng ta đã trải qua 2 bữa tiệc rồi, và ai cũng cảm thấy vui vẻ cả,</i>
 
 236
 00:11:41,267 --> 00:11:44,725
 Now the kid has got to get to work.
 And the kid is not to be disturbed. ;
-<i>Giờ cậu nhóc phải đi làm việc. Và cậu nhóc sẽ không bị quấy rầy.</i>
+<i>ai cũng say sưa, ai cũng thỏa mản.</i>
 
 237
 00:11:44,837 --> 00:11:48,136
 Repeat after me,
 "I will not have sex with Marshall." ;
-<i>Lặp lại theo tớ: tôi sẽ không xếp hình với Marshall.</i>
+<i>Giờ cậu nhóc phải đi làm việc. Và cậu nhóc sẽ không bị quấy rầy.</i>
 
 238
 00:11:48,240 --> 00:11:51,209
 - I will not have sex with Marshall.
 - I will not have sex with Marshall. ;
-<i>Tôi sẽ không xếp hình với Marshall.</i>
+<i>Lặp lại theo tớ: tôi sẽ không xếp hình với Marshall.</i>
 
 239
 00:11:54,146 --> 00:11:55,272
 It's Robin. ;
-<i>Đó là Robin.</i>
+<i>Tôi sẽ không xếp hình với Marshall.</i>
 
 240
 00:11:57,383 --> 00:11:58,680
 - Hello?
 - Hi, Ted. ;
-<i>Hello? - Chào, Ted.</i>
+<i>Đó là Robin.</i>
 
 241
 00:11:58,784 --> 00:12:03,221
 Amanda? Oh, Denise, sorry.
 You totally sounded like Amanda. ;
-<i>- Amanda? Oh, denise, xin lỗi. Giọng của em nghe giống với Amanda.</i>
+<i>Hello? - Chào, Ted. - Amanda?</i>
 
 242
 00:12:03,322 --> 00:12:05,085
 - It's Robin.
 - Oh, Robin. ;
-<i>Robin đây. - Oh, Robin.</i>
+<i>Oh, denise, xin lỗi. Giọng của em nghe giống với Amanda.</i>
 
 243
 00:12:05,591 --> 00:12:08,025
 - Hi.
 <i>- I totally wanted to come,</i> ;
-<i>Hi. - Em thực sự muốn đến.</i>
+<i>Robin đây. - Oh, Robin.</i>
 
 244
 00:12:08,127 --> 00:12:11,028
 I got stuck at work again.
 I feel like I live there. ;
-<i>Em lại bị kẹt công việc. Em cảm giác như là em phải sống ở đó.</i>
+<i>Hi.</i>
 
 245
 00:12:11,130 --> 00:12:12,961
 Sorry I missed your party, again. ;
-<i>Em xin lỗi lại bỏ lỡ buổi tiệc của anh, một lần nữa.</i>
+<i>- Em thực sự muốn đến. Em lại bị kẹt công việc. Em cảm giác như là em phải sống ở đó.</i>
 
 246
 00:12:13,065 --> 00:12:15,863
 Hey, ain't no thing, but a chicken wing,
 <i>mamacita,</i> ;
-<i>Hey, không có gì đâu. mamacita,</i>
+<i>Em xin lỗi lại bỏ lỡ buổi tiệc của anh, một lần nữa.</i>
 
 247
 00:12:16,335 --> 00:12:17,802
 Who am I? ;
-<i>tớ là ai thế này?</i>
+<i>Hey, không có gì đâu. mamacita,</i>
 
 248
 00:12:18,637 --> 00:12:22,733
 I guess there's no chance your two-dayer
 turned into a three-dayer? ;
-<i>Em đoán là sẽ không có chuyện bữa tiệc 2 ngày của anh chuyển thành bữa tiệc 3 ngày đâu nhỉ?</i>
+<i>tớ là ai thế này?</i>
 
 249
 00:12:22,908 --> 00:12:25,240
 It did indeed. The party continues tonight. ;
-<i>Nó là vậy đấy. Bữa tiệc vẫn tiếp tục đến đêm nay.</i>
+<i>Em đoán là sẽ không có chuyện bữa tiệc 2 ngày của anh chuyển thành bữa tiệc 3 ngày đâu nhỉ?</i>
 
 250
 00:12:25,344 --> 00:12:27,539
 Yeah, last night people were, like, ;
-<i>Yeah, đêm qua mọi người ở đây, giống như, "Tiếp tục đi, anh bạn! Bữa tiệc thứ ba!"</i>
+<i>Nó là vậy đấy. Bữa tiệc vẫn tiếp tục đến đêm nay.</i>
 
 251
 00:12:27,646 --> 00:12:30,080
 "Keep it going, bro! Party trifecta!" ;
-<i>Yeah, đêm qua mọi người ở đây, giống như, "Tiếp tục đi, anh bạn! Bữa tiệc thứ ba!"</i>
+<i>“Quẩy tiếp đi, anh bạn! Tiệc ba ngày liên tiếp!”</i>
 
 252
 00:12:30,449 --> 00:12:32,883
 Wow, okay. Well, I'll be there. ;
-<i>Wow, được rồi. Well, em sẽ đến.</i>
+<i>Yeah, đêm qua mọi người ở đây, giống như, "Tiếp tục đi, anh bạn! Bữa tiệc thứ ba!"</i>
 
 253
 00:12:32,985 --> 00:12:34,782
 Great. See you tonight. ;
-<i>Tuyệt. Gặp em tối nay.</i>
+<i>Wow, được rồi. Well, em sẽ đến.</i>
 
 254
 00:12:38,057 --> 00:12:39,524
 So that was Robin. ;
-<i>Vậy đó là Robin.</i>
+<i>Tuyệt. Gặp em tối nay.</i>
 
 255
 00:12:41,460 --> 00:12:45,692
 <i>So I threw a third party</i>
 <i>for Robin, on a Sunday night,</i> ;
-<i>Vậy nên ta tổ chức buổi tiệc thứ ba vì Robin, vào buổi tối chủ nhật.</i>
+<i>Vậy đó là Robin. Vậy nên ta tổ chức buổi tiệc thứ ba vì Robin,</i>
 
 256
 00:12:46,699 --> 00:12:48,326
 Oh, this is lame. ;
-<i>Oh, thật kỳ quặc.</i>
+<i>vào buổi tối chủ nhật.</i>
 
 257
 00:12:48,734 --> 00:12:51,202
 Lame or casual? ;
-<i>Kỳ quặc hay bình thường?</i>
+<i>Oh, thật kỳ quặc.</i>
 
 258
 00:12:51,837 --> 00:12:54,067
 - Lame.
 - Or casual? ;
-<i>Kỳ quặc. Hay bình thường?</i>
+<i>Kỳ quặc hay bình thường?</i>
 
 259
 00:12:55,574 --> 00:12:59,305
 Hey, law books.
 Ready for a little 15-minute recess? ;
-<i>Hey, anh chàng luật sư. Sẵn sàng cho 15p nghỉ ngơi chứ?</i>
+<i>Kỳ quặc. Hay bình thường?</i>
 
 260
 00:12:59,411 --> 00:13:02,869
 Sorry, baby, I gotta work.
 I need all my blood up here. ;
-<i>Xin lỗi, em yêu, anh phải làm việc. Anh cần tất cả máu tập trung ở đây.</i>
+<i>Hey, anh chàng luật sư. Sẵn sàng cho 15p nghỉ ngơi chứ?</i>
 
 261
 00:13:03,282 --> 00:13:05,978
 Has anybody seen
 <i>An Introduction to Contract, Tort</i> ;
-<i>Có ai thấy Giới thiệu về hợp đồng, ngoài hợp đồng và luật bồi thường từ 1865 - 1923?</i>
+<i>Xin lỗi, em yêu, anh phải làm việc. Anh cần tất cả máu tập trung ở đây.</i>
 
 262
 00:13:06,085 --> 00:13:09,612
@@ -1450,75 +1450,75 @@ Has anybody seen
 00:13:11,357 --> 00:13:14,485
 - Anybody seen a big-ass book?
 - No. ;
-<i>Có ai thấy quyển sách dày không? Không.</i>
+<i>— Có ai thấy quyển sách to đùng đâu không? — Không.</i>
 
 264
 00:13:15,394 --> 00:13:16,861
 Hello, Barney. ;
-<i>Hello, barney.</i>
+<i>Có ai thấy quyển sách dày không?</i>
 
 265
 00:13:17,663 --> 00:13:18,994
 Of course. ;
-<i>Tất nhiên rồi.</i>
+<i>Không. Hello, barney.</i>
 
 266
 00:13:21,200 --> 00:13:22,667
 You look well. ;
-<i>Trông anh tuyệt quá.</i>
+<i>Tất nhiên rồi.</i>
 
 267
 00:13:22,902 --> 00:13:25,393
 Is it weird they invited both of us? ;
-<i>Anh có thấy lạ là họ mời cả hai chúng ta không?</i>
+<i>Trông anh tuyệt quá.</i>
 
 268
 00:13:25,671 --> 00:13:26,729
 Who? ;
-<i>Ai?</i>
+<i>Anh có thấy lạ là họ mời cả hai chúng ta không?</i>
 
 269
 00:13:27,807 --> 00:13:31,402
 Who invited you?
 No one even knows who you are. ;
-<i>Ai đã mời em? Thậm chí chẳng ai biết em là ai.</i>
+<i>Ai?</i>
 
 270
 00:13:32,211 --> 00:13:36,113
 I understand you're hurt,
 but you don't have to be cruel. ;
-<i>Em biết là anh đang bị tổn thương, nhưng anh không cần phải nổi nóng thế.</i>
+<i>Ai đã mời em? Thậm chí chẳng ai biết em là ai. Em biết là anh đang bị tổn thương,</i>
 
 271
 00:13:37,249 --> 00:13:39,308
 Carlos was right about you. ;
-<i>Carlos đã đúng về anh.</i>
+<i>nhưng anh không cần phải nổi nóng thế.</i>
 
 272
 00:13:40,219 --> 00:13:42,312
 Who is Carlos? ;
-<i>Ai là Carlos?</i>
+<i>Carlos đã đúng về anh.</i>
 
 273
 00:13:42,421 --> 00:13:44,218
 Hey, where the hell is my... ;
-<i>Hey, cái quyển sách của tớ ở nơi quái nào...</i>
+<i>Ai là Carlos?</i>
 
 274
 00:13:44,657 --> 00:13:45,646
 Oh! ;
-<i>oh!</i>
+<i>Ồ!</i>
 
 275
 00:13:48,861 --> 00:13:49,919
 Okay. ;
-<i>Được rồi.</i>
+<i>oh!</i>
 
 276
 00:13:51,230 --> 00:13:54,256
 <i>An Introduction to Contract,</i>
 <i>Tort and Restitution Statutes</i> ;
-<i>Giới thiệu về hợp đồng, ngoài hợp đồng và luật bồi thường từ 1865 đến 1923.</i>
+<i>Được rồi.</i>
 
 277
 00:13:54,366 --> 00:13:56,596
@@ -1528,110 +1528,110 @@ Okay. ;
 278
 00:13:56,969 --> 00:13:58,732
 is not a coaster! ;
-<i>Không phải là cái lót cốc trên bàn!</i>
+<i>không phải cái lót ly!</i>
 
 279
 00:13:58,838 --> 00:14:02,569
 Ted, I'm jeopardizing my law career
 so you can throw not one, ;
-<i>Ted, tớ đang mạo hiểm sự nghiệp luật sư của tớ để cậu tổ chức không phải một,</i>
+<i>Không phải là cái lót cốc trên bàn!</i>
 
 280
 00:14:02,675 --> 00:14:06,202
 not two, but three parties
 for some girl that you just met ;
-<i>không phải hai, mà là ba buổi tiệc, cho một cô nàng cậu vừa mới gặp, người mà thậm chí chẳng bao giờ xuất hiện!</i>
+<i>Ted, tớ đang mạo hiểm sự nghiệp luật sư của tớ để cậu tổ chức không phải một,</i>
 
 281
 00:14:06,312 --> 00:14:08,109
 who's probably not even gonna show up! ;
-<i>không phải hai, mà là ba buổi tiệc, cho một cô nàng cậu vừa mới gặp, người mà thậm chí chẳng bao giờ xuất hiện!</i>
+<i>không phải hai, mà là ba buổi tiệc,</i>
 
 282
 00:14:08,214 --> 00:14:10,876
 I mean, where is she, Ted, huh?
 Where's Robin? ;
-<i>Ý tớ là, cô ấy đâu, Ted, hả? Robin đâu?</i>
+<i>cho một cô nàng cậu vừa mới gặp, người mà thậm chí chẳng bao giờ xuất hiện!</i>
 
 283
 00:14:13,152 --> 00:14:15,677
 Hi. Hi, Robin. ;
-<i>Hi. Hi, ron.</i>
+<i>Robin đâu?</i>
 
 284
 00:14:24,430 --> 00:14:27,228
 So, you threw all these parties for me? ;
-<i>Vậy, anh tổ chức cả ba buổi tiệc chỉ để cho em sao?</i>
+<i>Vậy cậu tổ chức tất cả mấy bữa tiệc này vì tớ à?</i>
 
 285
 00:14:28,100 --> 00:14:30,625
 No. Oh, you thought that... No. ;
-<i>Không. Oh, em nghĩ thế à... không.</i>
+<i>Vậy, anh tổ chức cả ba buổi tiệc chỉ để cho em sao?</i>
 
 286
 00:14:31,203 --> 00:14:32,864
 Okay, yes. You got me. ;
-<i>Được rồi, đúng. Anh làm điều đó vì em.</i>
+<i>Không. Oh, em nghĩ thế à... không.</i>
 
 287
 00:14:33,472 --> 00:14:37,499
 One of the reasons I threw these parties
 was so that I could introduce you ;
-<i>Một trong những lý do mà anh tổ chức ba buổi tiệc là để giới thiệu em,</i>
+<i>Được rồi, đúng. Anh làm điều đó vì em.</i>
 
 288
 00:14:37,610 --> 00:14:39,840
 to this guy. ;
-<i>với anh chàng này.</i>
+<i>Một trong những lý do mà anh tổ chức ba buổi tiệc là để giới thiệu em,</i>
 
 289
 00:14:40,779 --> 00:14:43,179
 I figured, you know,
 since it didn't work out between us ;
-<i>Anh hình dung rằng, em biết đấy, từ lúc chúng ta không thể cùng nhau</i>
+<i>với anh chàng này.</i>
 
 290
 00:14:43,282 --> 00:14:44,806
 and now we can just laugh about it. ;
-<i>và bây giờ chúng ta có thể cười về điều đó.</i>
+<i>Anh hình dung rằng, em biết đấy, từ lúc chúng ta không thể cùng nhau</i>
 
 291
 00:14:46,018 --> 00:14:49,715
 - Well, anyway, Robin, this is...
 - Carlos. ;
-<i>- Well, dù sao thì, Robin, đây là... carlos.</i>
+<i>và bây giờ chúng ta có thể cười về điều đó. - Well, dù sao thì, Robin, đây là...</i>
 
 292
 00:14:57,796 --> 00:14:59,991
 She's still talking to Carlos. ;
-<i>Cô ấy vẫn còn đang nói chuyện với Carlos.</i>
+<i>Cô ấy vẫn đang nói chuyện với Carlos.</i>
 
 293
 00:15:00,165 --> 00:15:02,133
 I can still win this. It's not over. ;
-<i>Tớ vẫn có thể giành chiến thắng. Vẫn chưa kết thúc.</i>
+<i>Cô ấy vẫn còn đang nói chuyện với Carlos.</i>
 
 294
 00:15:02,234 --> 00:15:04,668
 Okay, buddy, time for the tough talk. ;
-<i>Được rồi, anh bạn, đến lúc để nói chuyện rồi.</i>
+<i>Tớ vẫn có thể giành chiến thắng. Vẫn chưa kết thúc.</i>
 
 295
 00:15:05,271 --> 00:15:07,899
 Robin seems great,
 but let's look at the facts. ;
-<i>Robin có vẻ tuyệt đấy, nhưng hãy nhìn vào thực tế.</i>
+<i>Được rồi, anh bạn, đến lúc để nói chuyện rồi.</i>
 
 296
 00:15:08,007 --> 00:15:09,474
 You want to get married ;
-<i>Cậu muốn đi đến hôn nhân</i>
+<i>Robin có vẻ tuyệt đấy, nhưng hãy nhìn vào thực tế.</i>
 
 297
 00:15:09,575 --> 00:15:13,909
 and right now there's a million women
 in New York looking for exactly you. ;
-<i>và ngay lúc này có hàng triệu phụ nữ ở New York đang tìm kiếm người như cậu.</i>
+<i>Cậu muốn đi đến hôn nhân và ngay lúc này có hàng triệu phụ nữ ở New York đang tìm kiếm người như cậu.</i>
 
 298
 00:15:14,013 --> 00:15:15,480
@@ -1641,127 +1641,127 @@ But Robin ain't one of them. ;
 299
 00:15:15,581 --> 00:15:18,209
 She's not just one of them. She's the one. ;
-<i>Cô ấy không phải là một trong số đó. Cô ấy là duy nhất.</i>
+<i>Nhưng Robin không nằm trong số đó.</i>
 
 300
 00:15:18,317 --> 00:15:21,309
 Yeah well, "the one"
 is heading up to the roof. ;
-<i>Yeah well, "duy nhất" đang hướng đến sân thượng.</i>
+<i>Cô ấy không phải là một trong số đó. Cô ấy là duy nhất.</i>
 
 301
 00:15:24,156 --> 00:15:26,386
 What are you gonna do? ;
-<i>Cậu định làm gì?</i>
+<i>Yeah well, "duy nhất" đang hướng đến sân thượng.</i>
 
 302
 00:15:26,492 --> 00:15:29,723
 Nothing. It's a game. I gotta just ;
-<i>Không gì cả. Đây là trò chơi.</i>
+<i>Cậu định làm gì? Không gì cả.</i>
 
 303
 00:15:29,828 --> 00:15:31,420
 keep playing it. ;
-<i>Tớ sẽ chỉ tiếp tục chơi thôi.</i>
+<i>Đây là trò chơi. Tớ sẽ chỉ tiếp tục chơi thôi.</i>
 
 304
 00:16:10,369 --> 00:16:11,836
 - Hey.
 - Hey. ;
-<i>Tớ sẽ chỉ tiếp tục chơi thôi.</i>
+<i>— Này. — Này.</i>
 
 305
 00:16:11,971 --> 00:16:15,498
 - Carlos, can you give us a minute?
 - Hey, no sweat, <i>hombre,</i> ;
-<i>- Này, carlos, có thể cho bọn tôi vài phút được không? - Hey, không vấn đề gì.</i>
+<i>Ted... - Này, carlos, có thể cho bọn tôi vài phút được không?</i>
 
 306
 00:16:16,075 --> 00:16:17,235
 See you. ;
-<i>Gặp anh sau.</i>
+<i>- Hey, không vấn đề gì.</i>
 
 307
 00:16:20,980 --> 00:16:24,939
 Robin, look, I didn't throw this party
 to set you up with Carlos ;
-<i>Robin, nghe này, anh không tổ chức 3 buổi tiệc để giới thiệu em với Carlos,</i>
+<i>Robin,</i>
 
 308
 00:16:25,050 --> 00:16:28,076
 or the one before that,
 or the one before that. ;
-<i>hoặc ai đó trước đó, hoặc ai đó trước nữa.</i>
+<i>nghe này, anh không tổ chức 3 buổi tiệc để giới thiệu em với Carlos, hoặc ai đó trước đó,</i>
 
 309
 00:16:29,421 --> 00:16:32,618
 I threw these parties
 because I wanted to see you. ;
-<i>Anh tổ chức ba buổi tiệc bởi vì anh muốn gặp em.</i>
+<i>hoặc ai đó trước nữa.</i>
 
 310
 00:16:33,192 --> 00:16:34,750
 Well, here I am. ;
-<i>Well, em đang ở đây rồi.</i>
+<i>Anh tổ chức ba buổi tiệc bởi vì anh muốn gặp em.</i>
 
 311
 00:16:35,995 --> 00:16:39,021
 There's something here.
 Look, unless I'm crazy. ;
-<i>Có điều gì đó đang ở đây. Nghe này, trừ khi là anh điên.</i>
+<i>Well, em đang ở đây rồi.</i>
 
 312
 00:16:39,665 --> 00:16:41,257
 You're not crazy. ;
-<i>Anh không điên đâu.</i>
+<i>Có điều gì đó đang ở đây. Nghe này, trừ khi là anh điên.</i>
 
 313
 00:16:43,135 --> 00:16:46,593
 I don't know, Ted.
 I mean, we barely know each other ;
-<i>Em không biết nữa, Ted. Ý em là, chúng ta chỉ vừa mới biết nhau</i>
+<i>Anh không điên đâu. Em không biết nữa, Ted.</i>
 
 314
 00:16:46,905 --> 00:16:49,703
 and you're looking at me with that look
 and it's like... ;
-<i>và anh vẫn đang nhìn em như là và nó giống như là...</i>
+<i>Ý em là, chúng ta chỉ vừa mới biết nhau</i>
 
 315
 00:16:49,808 --> 00:16:52,868
 - What, like what?
 - It's like, "Let's fall in love, ;
-<i>- Gì, như gì chứ? - Như là, hãy yêu nhau, rồi cưới</i>
+<i>và anh vẫn đang nhìn em như là và nó giống như là...</i>
 
 316
 00:16:52,978 --> 00:16:56,277
 "and get married and have kids
 and drive them to soccer practice." ;
-<i>và có con và hướng dẫn chúng chơi bóng.</i>
+<i>- Gì, như gì chứ? - Như là, hãy yêu nhau, rồi cưới</i>
 
 317
 00:16:56,382 --> 00:17:00,148
 I'm not gonna force sports on them
 unless they're interested. ;
-<i>Anh sẽ không tạo áp lực thể thao lên chúng trừ khi chúng thực sự thích.</i>
+<i>và có con và hướng dẫn chúng chơi bóng. Anh sẽ không tạo áp lực thể thao lên chúng trừ khi chúng thực sự thích.</i>
 
 318
 00:17:00,486 --> 00:17:03,751
 It's a great look,
 but you're looking at the wrong girl. ;
-<i>Điều đó nghe thật tuyệt, nhưng anh đang tìm nhầm người rồi.</i>
+<i>Ánh mắt đó rất tuyệt, nhưng cậu đang nhìn nhầm cô gái rồi.</i>
 
 319
 00:17:03,856 --> 00:17:05,756
 - No, I'm not.
 - Yes, you are. ;
-<i>- Không, không phải thế. - Đúng thế đấy.</i>
+<i>Điều đó nghe thật tuyệt,</i>
 
 320
 00:17:05,858 --> 00:17:08,326
 I don't want to get married right now,
 maybe ever. ;
-<i>Em vẫn chưa muốn kết hôn lúc này.</i>
+<i>nhưng anh đang tìm nhầm người rồi. - Không, không phải thế. - Đúng thế đấy.</i>
 
 321
 00:17:08,427 --> 00:17:11,692
@@ -1778,34 +1778,34 @@ or break your heart ;
 00:17:15,901 --> 00:17:18,870
 and I just couldn't do
 either of those things. ;
-<i>và em chỉ là không thể làm một trong 2 điều đó.</i>
+<i>và tớ không thể làm cả hai chuyện đó.</i>
 
 324
 00:17:19,138 --> 00:17:22,107
 Just like you can't turn off
 the way you feel. ;
-<i>Chỉ giống như anh không thể tắt được cảm giác của anh.</i>
+<i>và em chỉ là không thể làm một trong 2 điều đó. Chỉ giống như anh không thể tắt được cảm giác của anh.</i>
 
 325
 00:17:25,144 --> 00:17:26,168
 Click. ;
-<i>Click.</i>
+<i>Tách.</i>
 
 326
 00:17:26,311 --> 00:17:27,744
 Off. Let's make out. ;
-<i>Tắt rồi. Chúng ta hôn nhau đi.</i>
+<i>Tắt rồi. Hôn nhau thôi.</i>
 
 327
 00:17:28,414 --> 00:17:29,745
 What? ;
-<i>Gì?</i>
+<i>Click.</i>
 
 328
 00:17:29,848 --> 00:17:33,215
 What? That was the off switch
 and I turned it off. ;
-<i>Sao chứ? Đó là một cái công tắc và anh đã tắt nó đi.</i>
+<i>Tắt rồi. Chúng ta hôn nhau đi. Gì?</i>
 
 329
 00:17:33,685 --> 00:17:36,017
@@ -1816,76 +1816,76 @@ I mean, look, sure, yes, I wanna ;
 00:17:36,121 --> 00:17:40,057
 fall in love, get married, blah, blah, blah.
 But, on the other hand, ;
-<i>Ý anh là, nghe này, đúng thế, anh muốn được yêu em, kết hôn, blah, blah, blah. Nhưng, lúc này đây...</i>
+<i>Ý anh là, nghe này, đúng thế, anh muốn được yêu em, kết hôn, blah, blah, blah.</i>
 
 331
 00:17:40,159 --> 00:17:42,719
 you, me, ;
-<i>em, anh.</i>
+<i>Nhưng, lúc này đây... em, anh.</i>
 
 332
 00:17:42,828 --> 00:17:44,455
 the roof. ;
-<i>Sân thượng.</i>
+<i>mái nhà.</i>
 
 333
 00:17:45,497 --> 00:17:49,297
 - There's no off switch.
 - There is an off switch. ;
-<i>Không có cái công tắc nào cả. Có một cái công tắc đấy.</i>
+<i>Sân thượng. Không có cái công tắc nào cả.</i>
 
 334
 00:17:50,469 --> 00:17:51,902
 And it's off. ;
-<i>Và nó tắt rồi.</i>
+<i>Có một cái công tắc đấy.</i>
 
 335
 00:17:52,171 --> 00:17:53,604
 No, it's not. ;
-<i>Không, vẫn chưa.</i>
+<i>Và nó tắt rồi.</i>
 
 336
 00:17:54,540 --> 00:17:55,871
 Yes, it is. ;
-<i>Đúng, tắt rồi.</i>
+<i>Không, vẫn chưa.</i>
 
 337
 00:17:56,675 --> 00:17:58,768
 - No, it's not.
 - Yes, ;
-<i>- Không, vẫn chưa.</i>
+<i>Đúng, tắt rồi.</i>
 
 338
 00:17:59,945 --> 00:18:01,105
 it is. ;
-<i>Rồi.</i>
+<i>- Không, vẫn chưa. Rồi.</i>
 
 339
 00:18:10,489 --> 00:18:11,513
 Oh. ;
-<i>Rồi.</i>
+<i>Ồ.</i>
 
 340
 00:18:15,461 --> 00:18:16,985
 No, it's not. ;
-<i>Không, vẫn chưa.</i>
+<i>Không phải đâu.</i>
 
 341
 00:18:17,596 --> 00:18:20,087
 You're right. There's no off switch. ;
-<i>Em đúng. Không có cái công tắc nào cả.</i>
+<i>Không, vẫn chưa.</i>
 
 342
 00:18:21,433 --> 00:18:25,471
 - God, I wish there was an off switch.
 - Me, too. ;
-<i>- Chúa ơi, anh ước là đã có một cái công tắc. Em cũng thế.</i>
+<i>Em đúng. Không có cái công tắc nào cả. - Chúa ơi, anh ước là đã có một cái công tắc.</i>
 
 343
 00:18:25,471 --> 00:18:25,869
 - God, I wish there was an off switch.
 - Me, too. ;
-<i>- Chúa ơi, anh ước là đã có một cái công tắc. Em cũng thế.</i>
+<i>— Trời ơi, giá mà có công tắc tắt cảm xúc. — Em cũng vậy.</i>
 
 344
 00:18:31,076 --> 00:18:32,543
@@ -1895,66 +1895,66 @@ So... ;
 345
 00:18:34,146 --> 00:18:35,773
 What do we do now? ;
-<i>chúng ta làm gì bây giờ?</i>
+<i>Vậy...</i>
 
 346
 00:18:38,484 --> 00:18:40,008
 We could be friends. ;
-<i>Chúng ta có thể là bạn bè.</i>
+<i>Chúng ta có thể làm bạn.</i>
 
 347
 00:18:42,621 --> 00:18:46,580
 Look, I know it sounds insincere
 when people say that ;
-<i>nghe này, em biết điều này nghe có vẻ giả dối khi mọi người nói thế.</i>
+<i>Ồ...</i>
 
 348
 00:18:46,692 --> 00:18:48,990
 but we could. ;
-<i>Nhưng chúng ta có thể.</i>
+<i>nghe này, em biết điều này nghe có vẻ giả dối khi mọi người nói thế.</i>
 
 349
 00:18:50,062 --> 00:18:51,552
 I don't know, Robin. ;
-<i>Anh không biết nữa, Robin.</i>
+<i>Nhưng chúng ta có thể.</i>
 
 350
 00:18:51,663 --> 00:18:53,290
 I made such a jackass of myself here, ;
-<i>Anh đã biến mình thành một chàng ngốc.</i>
+<i>Anh không biết nữa, Robin.</i>
 
 351
 00:18:53,398 --> 00:18:55,491
 we start hanging out,
 every time I see you, it'll be like, ;
-<i>Chúng ta bắt đầu hẹn hò, mỗi khi anh nhìn em, nó giống như là, "oh, đúng rồi, tôi là một chàng ngốc."</i>
+<i>Anh đã biến mình thành một chàng ngốc.</i>
 
 352
 00:18:55,601 --> 00:18:57,660
 "Oh, that's right, I'm a jackass." ;
-<i>Chúng ta bắt đầu hẹn hò, mỗi khi anh nhìn em, nó giống như là, "oh, đúng rồi, tôi là một chàng ngốc."</i>
+<i>“À phải rồi, mình đúng là thằng ngốc.”</i>
 
 353
 00:18:58,070 --> 00:19:00,004
 You're not a jackass. ;
-<i>Anh không phải là chàng ngốc.</i>
+<i>Chúng ta bắt đầu hẹn hò, mỗi khi anh nhìn em, nó giống như là, "oh, đúng rồi, tôi là một chàng ngốc."</i>
 
 354
 00:19:00,105 --> 00:19:04,599
 Look, I'm sorry. I only moved here in April,
 and I'm always working. ;
-<i>Nghe này, em xin lỗi. Em chỉ vừa mới chuyển đến đây hồi tháng 4, và em vẫn luôn làm việc.</i>
+<i>Anh không phải là chàng ngốc. Nghe này, em xin lỗi. Em chỉ vừa mới chuyển đến đây hồi tháng 4,</i>
 
 355
 00:19:05,277 --> 00:19:08,678
 And I just haven't met
 a lot of good people so far. ;
-<i>Và em vẫn chưa gặp được ai đối xử tốt với em.</i>
+<i>và em vẫn luôn làm việc.</i>
 
 356
 00:19:09,815 --> 00:19:11,407
 But I understand. ;
-<i>Nhưng em hiểu.</i>
+<i>Và em vẫn chưa gặp được ai đối xử tốt với em.</i>
 
 357
 00:19:12,684 --> 00:19:13,776
@@ -1975,22 +1975,22 @@ you know, get a beer. ;
 360
 00:19:21,960 --> 00:19:24,952
 Yeah. That sounds good. ;
-<i>Yeah. Nghe thật tuyệt.</i>
+<i>Yeah.</i>
 
 361
 00:19:26,798 --> 00:19:28,425
 I'll see you, Ted. ;
-<i>Em sẽ gặp anh, Ted.</i>
+<i>Nghe thật tuyệt.</i>
 
 362
 00:19:33,505 --> 00:19:35,370
 Or, you know, now. ;
-<i>Hoặc là, em biết đấy, ngay bây giờ.</i>
+<i>Hoặc... ngay bây giờ cũng được.</i>
 
 363
 00:19:39,211 --> 00:19:41,304
 We could all get a beer now. ;
-<i>Chúng ta có thể cùng đi uống bia bây giờ.</i>
+<i>Giờ cả nhóm mình đi uống bia cũng được.</i>
 
 364
 00:19:44,716 --> 00:19:46,183
@@ -2001,153 +2001,153 @@ I'd like that. ;
 00:19:48,453 --> 00:19:52,253
 My friends are gonna love you, like you,
 you know as a friend. ;
-<i>Các bạn của anh cũng sẽ yêu em, thích em, như một người bạn.</i>
+<i>Em thích thế. Các bạn của anh cũng sẽ yêu em, thích em, như một người bạn.</i>
 
 366
 00:19:54,193 --> 00:19:55,387
 Jackass. ;
-<i>Thằng ngu.</i>
+<i>Đồ ngốc.</i>
 
 367
 00:19:58,130 --> 00:19:59,495
 Unbelievable. ;
-<i>Không thể tin được.</i>
+<i>Không thể tin nổi.</i>
 
 368
 00:20:00,232 --> 00:20:03,030
 That's just a recipe for disaster.
 They work together. ;
-<i>Đó đúng là một công thức tai họa Họ làm việc cùng nhau.</i>
+<i>Không thể tin được.</i>
 
 369
 00:20:03,135 --> 00:20:05,103
 - You jealous?
 - Oh, please. ;
-<i>Anh đang ghen hả? - Oh, thôi xin.</i>
+<i>Đó đúng là một công thức tai họa Họ làm việc cùng nhau.</i>
 
 370
 00:20:05,204 --> 00:20:08,469
 - What does Carlos have that I don't?
 - A date tonight? ;
-<i>Cái gì Carlos có mà tớ lại không chứ? Một buổi hẹn tối nay.</i>
+<i>Anh đang ghen hả? - Oh, thôi xin. Cái gì Carlos có mà tớ lại không chứ?</i>
 
 371
 00:20:09,708 --> 00:20:11,835
 Stop the tape. Rewind, play it again. ;
-<i>Dừng băng. Tua lại, chơi lại lần nữa.</i>
+<i>Một buổi hẹn tối nay.</i>
 
 372
 00:20:11,944 --> 00:20:13,639
 A date tonight? ;
-<i>Một buổi hẹn tối nay.</i>
+<i>Dừng băng. Tua lại, chơi lại lần nữa.</i>
 
 373
 00:20:15,013 --> 00:20:16,640
 I'm not sure I like her. ;
-<i>Tớ không chắc là tớ thích cô ấy.</i>
+<i>Một buổi hẹn tối nay.</i>
 
 374
 00:20:17,316 --> 00:20:18,874
 Hey, don't you have a paper to write? ;
-<i>Này, không phải cậu còn bài luận để viết hay sao?</i>
+<i>Tớ không chắc là tớ thích cô ấy.</i>
 
 375
 00:20:18,984 --> 00:20:21,316
 - Dude, you're talking to the kid.
 - I know it. ;
-<i>- Anh bạn, cậu đang nói chuyện với thằng nhóc đấy. - Tớ biết mà.</i>
+<i>Này, không phải cậu còn bài luận để viết hay sao?</i>
 
 376
 00:20:21,420 --> 00:20:24,981
 I'm gonna knock back this beer,
 I'm gonna knock back one more beer, ;
-<i>Tớ sẽ uống cạn cốc này, tớ sẽ uống cạn cốc nữa,</i>
+<i>- Anh bạn, cậu đang nói chuyện với thằng nhóc đấy. - Tớ biết mà. Tớ sẽ uống cạn cốc này,</i>
 
 377
 00:20:25,090 --> 00:20:27,957
 I'm gonna go home,
 I'm gonna write a 25-page paper, ;
-<i>tớ sẽ về nhà, tớ sẽ viết 25 trang giấy,</i>
+<i>tớ sẽ uống cạn cốc nữa,</i>
 
 378
 00:20:28,060 --> 00:20:30,290
 I'm gonna hand it in
 and I'm gonna get a "A." ;
-<i>tớ sẽ mang đi nộp và tớ có một điểm A.</i>
+<i>tớ sẽ về nhà, tớ sẽ viết 25 trang giấy,</i>
 
 379
 00:20:30,395 --> 00:20:33,091
 My name is Rufus and that's the Troofus. ;
-<i>Tên tớ là Rufus và đó là sự thật hiển nhiên.</i>
+<i>tớ sẽ mang đi nộp và tớ có một điểm A.</i>
 
 380
 00:20:34,266 --> 00:20:35,426
 <i>He got a B-minus,</i> ;
-<i>Chú ấy đã được điểm B-</i>
+<i>Tên tớ là Rufus và đó là sự thật hiển nhiên.</i>
 
 381
 00:20:35,534 --> 00:20:39,766
 <i>But, still, 25 pages in one night, B-minus?</i>
 <i>The kid was good,</i> ;
-<i>Nhưng mà 25 trang giấy trong một đêm mà được B-? Thằng nhóc này giỏi thật.</i>
+<i>Chú ấy đã được điểm B- Nhưng mà 25 trang giấy trong một đêm mà được B-?</i>
 
 382
 00:20:40,572 --> 00:20:43,837
 At least, let me buy you a beer.
 Come on, I'll buy everyone a beer. ;
-<i>Ít nhất, để tớ mua cho cậu một cốc bia. Đi nào, tớ sẽ mua cho mỗi người một cốc bia.</i>
+<i>Thằng nhóc này giỏi thật.</i>
 
 383
 00:20:43,942 --> 00:20:45,432
 I'll help carry. ;
-<i>Em sẽ cầm giúp.</i>
+<i>Ít nhất, để tớ mua cho cậu một cốc bia. Đi nào, tớ sẽ mua cho mỗi người một cốc bia.</i>
 
 384
 00:20:50,249 --> 00:20:51,716
 - You know something, Ted?
 - What? ;
-<i>- Anh biết điều gì không, Ted? - Gì?</i>
+<i>— Ted, cậu biết không? — Gì?</i>
 
 385
 00:20:51,817 --> 00:20:55,719
 You are a catch.
 You're gonna make some girl very happy. ;
-<i>Anh là một người cuốn hút. Anh sẽ làm cho cô gái nào đó cảm thấy rất hạnh phúc.</i>
+<i>- Anh biết điều gì không, Ted? - Gì? Anh là một người cuốn hút.</i>
 
 386
 00:20:55,921 --> 00:20:58,788
 And I am going to help you find her. ;
-<i>Và em sẽ giúp anh tìm được cô ấy.</i>
+<i>Anh sẽ làm cho cô gái nào đó cảm thấy rất hạnh phúc.</i>
 
 387
 00:20:58,890 --> 00:21:00,790
 Well, good luck. ;
-<i>Well, chúc may mắn.</i>
+<i>Và em sẽ giúp anh tìm được cô ấy.</i>
 
 388
 00:21:00,892 --> 00:21:02,883
 I mean, maybe,
 New York is just too big a town. ;
-<i>Ý anh là, có thể, new York là một thành phố quá lớn.</i>
+<i>Well, chúc may mắn.</i>
 
 389
 00:21:02,995 --> 00:21:04,986
 I mean, there's millions of people
 in this city. ;
-<i>Ý anh là, có hàng triệu người trong thành phố.</i>
+<i>Ý anh là, có thể, new York là một thành phố quá lớn.</i>
 
 390
 00:21:05,097 --> 00:21:08,089
 How, in all this mess, is a guy
 supposed to find the love of his life? ;
-<i>Làm thế nào, trong cái mớ hỗn độn này, 1 anh chàng có thể tìm thấy tình yêu của cuộc đời?</i>
+<i>Ý anh là, có hàng triệu người trong thành phố.</i>
 
 391
 00:21:08,200 --> 00:21:10,532
 I mean, where do you even begin? ;
-<i>Ý anh là, em sẽ bắt đầu từ đâu?</i>
+<i>Làm thế nào, trong cái mớ hỗn độn này, 1 anh chàng có thể tìm thấy tình yêu của cuộc đời?</i>
 
 392
 00:21:13,338 --> 00:21:15,499
 Hi, have you met Ted? ;
-<i>Chào, cô đã gặp Ted chưa?</i>
+<i>Ý anh là, em sẽ bắt đầu từ đâu?</i>
