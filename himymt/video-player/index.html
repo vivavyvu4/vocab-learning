@@ -193,7 +193,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
         <div class="check-row"><label for="showVietnamese">Show Vietnamese</label><input id="showVietnamese" type="checkbox" checked></div>
         <div class="check-row"><label for="showSubtitles">Show subtitles</label><input id="showSubtitles" type="checkbox" checked></div>
 
-        <div class="control"><label for="fontSize">Subtitle size</label><select id="fontSize"><option value="18">Small</option><option value="23" selected>Medium</option><option value="29">Large</option><option value="35">Extra large</option></select></div>
+        <div class="control"><label for="fontSize">Subtitle size</label><select id="fontSize"><option value="12">Tiny</option><option value="14">Very small</option><option value="16">Extra small</option><option value="18">Small</option><option value="23" selected>Medium</option><option value="29">Large</option><option value="35">Extra large</option></select></div>
         <div class="control"><label for="subtitlePosition">Subtitle position</label><select id="subtitlePosition"><option value="9">Bottom</option><option value="18">A little higher</option><option value="30">Middle-lower</option></select></div>
         <div class="control"><label for="offset">Sync offset (milliseconds)</label><input id="offset" type="number" step="100" value="0"></div>
         <div class="actions"><button id="minusOffset">− 500 ms</button><button id="resetOffset">Reset</button><button id="plusOffset">＋ 500 ms</button></div>
@@ -631,7 +631,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     $("captionEn").style.display = en ? "block" : "none";
     $("captionVi").style.display = vi ? "block" : "none";
     $("captionEn").style.fontSize = $("fontSize").value + "px";
-    $("captionVi").style.fontSize = Math.max(15, Number($("fontSize").value) - 3) + "px";
+    $("captionVi").style.fontSize = Math.max(9, Number($("fontSize").value) - 3) + "px";
     $("captionLayer").style.bottom = $("subtitlePosition").value + "%";
     syncPictureInPictureCaptions();
   }
