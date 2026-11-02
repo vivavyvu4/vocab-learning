@@ -1498,13 +1498,13 @@ I gotta do something. ;
 275
 00:13:26,438 --> 00:13:28,838
 Excuse me. Pardon me, just a sec. ;
-<i>Tớ phải làm một việc.</i>
+<i>Xin lỗi, cho tôi qua một chút. Phiền mọi người nhé.</i>
 
 276
 00:13:29,008 --> 00:13:30,441
 - Enjoy your coffee.
 - Hey! ;
-<i>Xin lỗi. Thứ lỗi cho tôi. Một giây thôi.</i>
+<i>— Thưởng thức cà phê nhé. — Này!</i>
 
 277
 00:13:31,043 --> 00:13:32,010
