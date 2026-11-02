@@ -1641,7 +1641,7 @@ But Robin ain't one of them. ;
 299
 00:15:15,581 --> 00:15:18,209
 She's not just one of them. She's the one. ;
-<i>Nhưng Robin không nằm trong số đó.</i>
+<i>Cô ấy không chỉ là một trong số đó. Cô ấy mới chính là người ấy.</i>
 
 300
 00:15:18,317 --> 00:15:21,309
@@ -1895,7 +1895,7 @@ So... ;
 345
 00:18:34,146 --> 00:18:35,773
 What do we do now? ;
-<i>Vậy...</i>
+<i>Giờ chúng ta phải làm gì đây?</i>
 
 346
 00:18:38,484 --> 00:18:40,008
