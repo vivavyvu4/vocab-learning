@@ -240,7 +240,7 @@ pick someone up at the airport? ;
 44
 00:02:36,122 --> 00:02:37,248
 Scenario. ;
-<i>nghĩa là cậu sẽ "chọn một người" ở sân bay à?</i>
+<i>Tình huống giả định nhé.</i>
 
 45
 00:02:37,357 --> 00:02:40,690
@@ -262,12 +262,12 @@ just back from a lucrative trip to Japan. ;
 48
 00:02:47,200 --> 00:02:49,498
 Sample dialog. You have a wheelie bag? ;
-<i>Cuộc đối thoại bình thường: "Em có cái túi kéo à?</i>
+<i>Cuộc đối thoại bình thường:</i>
 
 49
 00:02:49,602 --> 00:02:51,593
 Why, I have a wheelie bag. ;
-<i>Well, anh cũng có một cái."</i>
+<i>"Em có cái túi kéo à? Well, anh cũng có một cái."</i>
 
 50
 00:02:51,704 --> 00:02:53,763
@@ -301,12 +301,12 @@ You're too liberal with the word legendary. ;
 00:03:04,551 --> 00:03:07,884
 We're building an igloo in Central Park.
 It's gonna be legendary. ;
-<i>Bọn mình đang dựng một cái lều tuyết ở Central Park. Nó sẽ là một huyền thoại.</i>
+<i>Bọn mình đang dựng một cái lều tuyết ở Central Park.</i>
 
 56
 00:03:07,987 --> 00:03:09,454
 Snowsuit up! ;
-<i>Mặc vét vào!</i>
+<i>Nó sẽ là một huyền thoại. Mặc vét vào!</i>
 
 57
 00:03:11,057 --> 00:03:13,287
@@ -316,13 +316,13 @@ Ted, Ted, Ted. Right here! ;
 58
 00:03:13,760 --> 00:03:14,784
 This is happening. ;
-<i>Điều này đang xảy ra.</i>
+<i>Chuyện này thật sự đang diễn ra.</i>
 
 59
 00:03:14,894 --> 00:03:16,623
 Now, you can either put the bags
 on the carousel now ;
-<i>Bây giờ cậu có thể đặt mấy cái túi này lên băng chuyền</i>
+<i>Điều này đang xảy ra. Bây giờ cậu có thể đặt mấy cái túi này lên băng chuyền</i>
 
 60
 00:03:16,729 --> 00:03:18,629
@@ -368,13 +368,13 @@ I'm so glad we finally get to hang out, ;
 00:03:37,951 --> 00:03:39,384
 - just the two of us.
 - Yeah. ;
-<i>Yeah.</i>
+<i>— Chỉ có hai chị em mình thôi. — Ừ.</i>
 
 68
 00:03:39,485 --> 00:03:41,646
 And you sure you're okay
 giving up your Friday night ;
-<i>Cậu có chắc là thoải mái khi dành cả buổi tối thứ Sáu với một "gái già" đã đính hôn?</i>
+<i>Yeah.</i>
 
 69
 00:03:41,754 --> 00:03:43,915
@@ -449,13 +449,13 @@ Japan. ;
 82
 00:04:28,935 --> 00:04:31,563
 Okay, carousel four is tapped out. Ready? ;
-<i>Được rồi, băng chuyền 4 dừng rồi. Sẵn sàng chưa?</i>
+<i>Được rồi, băng chuyền 4 dừng rồi.</i>
 
 83
 00:04:31,671 --> 00:04:36,074
 'Cause I'm about to drop some knowledge.
 Cute girls are not from Buffalo. ;
-<i>Bởi tớ sắp cho cậu một ít kiến thức. Những cô nàng dễ thương không đến từ Buffalo.</i>
+<i>Sẵn sàng chưa? Bởi tớ sắp cho cậu một ít kiến thức. Những cô nàng dễ thương không đến từ Buffalo.</i>
 
 84
 00:04:36,876 --> 00:04:38,434
@@ -471,30 +471,30 @@ You ready to rock this, Tedder? ;
 00:04:40,780 --> 00:04:42,941
 All right, I think we need to refine
 our back-story first. ;
-<i>Được rồi, tớ nghĩ chúng ta cần xem lại câu chuyện của chúng ta trước đã.</i>
+<i>Được rồi, tớ nghĩ chúng ta cần xem lại câu chuyện của chúng ta trước đã. Làm sao chúng ta...?</i>
 
 87
 00:04:43,049 --> 00:04:46,075
 - How did we...
 - Ted! You klutzy, great guy you! ;
-<i>Làm sao chúng ta...? Ted, cậu thật là một người bạn tốt.</i>
+<i>Ted, cậu thật là một người bạn tốt.</i>
 
 88
 00:04:48,254 --> 00:04:49,653
 Hey. Barney. ;
-<i>- Hey, tôi là Barney.</i>
+<i>- Hey, tôi là Barney. - Hi.</i>
 
 89
 00:04:50,223 --> 00:04:51,918
 - Hi.
 - My God, are you okay? ;
-<i>- Hi. - Chúa ơi, anh ổn chứ?</i>
+<i>— Chào. — Trời ơi, cô không sao chứ?</i>
 
 90
 00:04:52,025 --> 00:04:54,186
 - I am so sorry.
 - It's fine, no. ;
-<i>- Tôi rất xin lỗi.</i>
+<i>- Chúa ơi, anh ổn chứ? - Tôi rất xin lỗi.</i>
 
 91
 00:04:54,294 --> 00:04:57,559
@@ -516,7 +516,7 @@ that we have to hit and run, ;
 94
 00:05:01,734 --> 00:05:02,928
 but we've got a plane to catch. ;
-<i>Tôi là Laura. Ồ, tôi thật sự xin lỗi nhưng chúng tôi phải đi vì còn phải đón chuyến bay nữa.</i>
+<i>nhưng chúng tôi sắp phải lên máy bay rồi.</i>
 
 95
 00:05:03,036 --> 00:05:04,867
@@ -563,7 +563,7 @@ get on that subsequent escalator! ;
 00:05:55,288 --> 00:05:59,384
 Hey, guess where I am? I'm on a... Ready?
 Plane to... Ready? Philadelphia. ;
-<i>Hey, đoán xem mình đang ở đâu. Mình đang ở trên một... sẵn sàng chưa? Máy bay... Đến Philadelphia.</i>
+<i>Hey, đoán xem mình đang ở đâu. Mình đang ở trên một... sẵn sàng chưa? Máy bay... sẵn sàng chưa? Đến Philadelphia.</i>
 
 103
 00:05:59,492 --> 00:06:02,052
@@ -574,18 +574,18 @@ Plane to... Ready? Philadelphia. ;
 104
 00:06:02,161 --> 00:06:03,458
 Marshall, stop whatever you're doing, ;
-<i>Thật tuyệt vời. Hey, Marshall đấy à?</i>
+<i>Marshall, dừng việc cậu đang làm lại,</i>
 
 105
 00:06:03,563 --> 00:06:06,031
 get in that hoopty-ass Fiero of yours
 and come meet us in Philly. ;
-<i>Marshall, dừng tất cả lại, nhảy vào con Fiero của cậu và đến gặp chúng tớ ở Phily.</i>
+<i>Marshall, dừng tất cả lại, nhảy vào con Fiero của cậu</i>
 
 106
 00:06:06,132 --> 00:06:07,429
 It's gonna be legendary! ;
-<i>Nó sẽ trở thành huyền thoại.</i>
+<i>và đến gặp chúng tớ ở Phily. Nó sẽ trở thành huyền thoại.</i>
 
 107
 00:06:07,533 --> 00:06:09,398
@@ -617,7 +617,7 @@ This much... 35,000 feet of fun. ;
 00:06:26,018 --> 00:06:27,713
 Well, I didn't think
 I'd be flying to Philadelphia ;
-<i>Well, tớ không nghĩ là tớ sẽ bay đến Philadenfia khi thức dậy sáng nay, tớ thừa nhận điều đó.</i>
+<i>Ừ thì, sáng nay thức dậy tớ đâu nghĩ mình sẽ bay đến Philadelphia</i>
 
 113
 00:06:27,820 --> 00:06:29,549
@@ -853,17 +853,17 @@ I'll sock him in the kisser! ;
 00:08:38,150 --> 00:08:40,482
 No, seriously,
 you girls have a good time tonight. ;
-<i>Không. Nghiêm túc đấy, các em cứ vui chơi tối nay nhé.</i>
+<i>Không. Nghiêm túc đấy, các em cứ vui chơi tối nay nhé. Bye.</i>
 
 156
 00:08:40,586 --> 00:08:41,746
 Bye. ;
-<i>Bye.</i>
+<i>Tạm biệt.</i>
 
 157
 00:08:48,928 --> 00:08:50,862
 Robin! Robin! ;
-<i>Robin!</i>
+<i>Robin! Robin!</i>
 
 158
 00:08:51,697 --> 00:08:53,255
@@ -888,12 +888,12 @@ But we're on an adventure. ;
 162
 00:09:01,307 --> 00:09:03,104
 We're on a tarmac in Philadelphia. ;
-<i>Bọn tớ buộc phải đến Philadelphia.</i>
+<i>Bọn tớ buộc phải đến Philadelphia. Một cuộc phiêu lưu... điên rồ.</i>
 
 163
 00:09:03,209 --> 00:09:05,177
 Crazy adventure. ;
-<i>Một cuộc phiêu lưu... điên rồ.</i>
+<i>Chuyến phiêu lưu điên rồ thật.</i>
 
 164
 00:09:06,045 --> 00:09:07,239
@@ -903,7 +903,7 @@ Fine. ;
 165
 00:09:08,414 --> 00:09:11,747
 No. No. The night has just started. ;
-<i>Không! Buổi tối chỉ mới bắt đầu mà.</i>
+<i>Không! Không! Buổi tối chỉ mới bắt đầu mà.</i>
 
 166
 00:09:11,851 --> 00:09:14,649
@@ -914,18 +914,18 @@ Look, airport bar. Flight attendants. ;
 00:09:14,754 --> 00:09:17,279
 They'll get your tray table
 in its full, upright position. ;
-<i>Họ sẽ làm cho bàn ăn của cậu vào tư thế đầy và thẳng đứng.</i>
+<i>Họ sẽ làm cho bàn ăn của cậu vào tư thế đầy và thẳng đứng. Nói sao hả?</i>
 
 168
 00:09:17,390 --> 00:09:20,621
 - Say what?
 - Passengers Mosby and Stinson? ;
-<i>Nói sao hả?</i>
+<i>Hành khách Mosby và Stenson, các ông vui lòng đi cùng chúng tôi.</i>
 
 169
 00:09:20,726 --> 00:09:22,250
 Please come with us, gentlemen. ;
-<i>Hành khách Mosby và Stenson, các ông vui lòng đi cùng chúng tôi.</i>
+<i>Mời hai quý ông đi theo chúng tôi.</i>
 
 170
 00:09:22,361 --> 00:09:26,161
@@ -952,7 +952,7 @@ This is an outrage. ;
 174
 00:09:35,374 --> 00:09:37,342
 We are international businessmen ;
-<i>Đây là một sự xúc phạm!</i>
+<i>Chúng tôi là doanh nhân quốc tế</i>
 
 175
 00:09:37,443 --> 00:09:39,968
@@ -969,12 +969,12 @@ I demand you release us immediately. ;
 00:09:42,548 --> 00:09:45,278
 You demand?
 No, no, no, no, he does not demand. ;
-<i>Cậu yêu cầu?! Không, không, không. Cậu ấy không yêu cầu.</i>
+<i>Cậu yêu cầu?! Không, không, không. Cậu ấy không yêu cầu. Chúng - Chúng - Chúng tôi không yêu cầu gì cả.</i>
 
 178
 00:09:45,384 --> 00:09:46,851
 We have no demands. ;
-<i>Chúng - Chúng - Chúng tôi không yêu cầu gì cả.</i>
+<i>Chúng tôi không có yêu sách gì cả.</i>
 
 179
 00:09:46,953 --> 00:09:49,217
@@ -997,18 +997,18 @@ on JFK carousel three, ;
 00:09:55,695 --> 00:10:00,098
 and abandoning them
 to purchase a last-minute flight with cash. ;
-<i>và bỏ chúng lại để mua vé máy bay giờ chót bằng tiền mặt.</i>
+<i>và bỏ chúng lại để mua vé máy bay giờ chót bằng tiền mặt. Mấy cái túi đó là trách nhiệm của cậu.</i>
 
 183
 00:10:00,199 --> 00:10:02,690
 - Those bags were your responsibility.
 - They were your bags. ;
-<i>Mấy cái túi đó là trách nhiệm của cậu. - Chúng là của cậu mà!</i>
+<i>- Chúng là của cậu mà! - Thưa ngài, làm ơn.</i>
 
 184
 00:10:02,802 --> 00:10:04,201
 Sir, please. ;
-<i>- Thưa ngài, làm ơn.</i>
+<i>Thưa ông, làm ơn.</i>
 
 185
 00:10:04,437 --> 00:10:06,837
@@ -1019,7 +1019,7 @@ We're assessing the bag situation. ;
 00:10:10,910 --> 00:10:13,310
 Look. This is all just...
 It's a misunderstanding. ;
-<i>Nghe này, tất cả chỉ là... một sự nhầm lẫn.</i>
+<i>Nghe này, tất cả chỉ là... một sự nhầm lẫn. Làm ơn.</i>
 
 187
 00:10:13,412 --> 00:10:14,572
@@ -1052,7 +1052,7 @@ I saw an international businessman ;
 192
 00:10:30,062 --> 00:10:31,723
 with an untucked shirt. ;
-<i>Không thể nhớ được lần cuối tôi gặp một doanh nhân quốc tế mà không "đóng thùng".</i>
+<i>mà lại để áo ngoài quần.</i>
 
 193
 00:10:32,531 --> 00:10:36,831
@@ -1069,19 +1069,19 @@ that duffle bag thing worked. ;
 195
 00:11:07,900 --> 00:11:10,300
 The truth is, my friend, he does this thing ;
-<i>Sự thật là, bạn tôi</i>
+<i>Sự thật là, bạn tôi anh ấy vào sân bay với hành lí giả</i>
 
 196
 00:11:10,403 --> 00:11:12,803
 where he goes to airports
 with fake luggage to pick up girls. ;
-<i>anh ấy vào sân bay với hành lí giả</i>
+<i>để tán tỉnh mấy cô gái và rồi chúng tôi theo họ tới Philadelphia.</i>
 
 197
 00:11:12,905 --> 00:11:14,805
 And we followed some here
 to Philadelphia. ;
-<i>để tán tỉnh mấy cô gái và rồi chúng tôi theo họ tới Philadelphia.</i>
+<i>Và chúng tôi đã đi theo vài cô đến tận Philadelphia.</i>
 
 198
 00:11:14,907 --> 00:11:17,137
@@ -1136,24 +1136,24 @@ You're both American citizens. ;
 00:11:43,402 --> 00:11:46,599
 Don't let them pull any Patriot-Act voodoo.
 You both retain the right ;
-<i>Đừng để ông ta dọa bằng mấy trò anh ninh.</i>
+<i>Đừng để ông ta dọa bằng mấy trò anh ninh. Các cậu có quyền từ chối trả lời tất cả các câu hỏi khi không có luật sư,</i>
 
 208
 00:11:46,706 --> 00:11:49,072
 to refuse to answer any questions
 without an attorney present. ;
-<i>Các cậu có quyền từ chối trả lời tất cả các câu hỏi khi không có luật sư,</i>
+<i>có quyền từ chối trả lời mọi câu hỏi khi không có luật sư bên cạnh.</i>
 
 209
 00:11:49,175 --> 00:11:51,234
 So don't say anything
 until I get there, all right? ;
-<i>nên đừng nói gì cả cho tới khi tớ đến, được chứ?</i>
+<i>nên đừng nói gì cả cho tới khi tớ đến, được chứ? Rồi, tạm biệt.</i>
 
 210
 00:11:51,343 --> 00:11:52,571
 Okay, goodbye. ;
-<i>Rồi, tạm biệt.</i>
+<i>Philly!</i>
 
 211
 00:12:04,857 --> 00:12:07,417
@@ -1257,7 +1257,7 @@ Maybe we can still make last call. ;
 229
 00:13:08,621 --> 00:13:10,054
 Sascha. ;
-<i>Chúng ta sẽ tới nhà Sasha. Sasha là đứa quái nào thế?</i>
+<i>Sasha.</i>
 
 230
 00:13:10,156 --> 00:13:13,057
@@ -1273,13 +1273,13 @@ It's gonna be legend... Wait for it, ;
 232
 00:13:15,961 --> 00:13:17,428
 and I hope you're not lactose intolerant, ;
-<i>và tớ hi vọng cậu không bị tiêu chảy sau khi uống sữa vì nửa còn lại của nó là...</i>
+<i>và hy vọng cậu không bị chứng không dung nạp lactose,</i>
 
 233
 00:13:17,530 --> 00:13:19,930
 'cause the second half of that word
 is "dairy." ;
-<i>và tớ hi vọng cậu không bị tiêu chảy sau khi uống sữa vì nửa còn lại của nó là...</i>
+<i>và tớ hi vọng cậu không bị tiêu chảy sau khi uống sữa vì nửa còn lại của nó là... thoại".</i>
 
 234
 00:13:20,032 --> 00:13:21,829
@@ -1307,7 +1307,7 @@ Hold on, I have another call. ;
 00:13:29,008 --> 00:13:31,408
 - Hello?
 - Marshall, we're going to Sascha's. ;
-<i>- Marshall, chúng ta sẽ tới nhà Sasha.</i>
+<i>- Hello? - Marshall, chúng ta sẽ tới nhà Sasha.</i>
 
 239
 00:13:31,510 --> 00:13:32,841
@@ -1317,7 +1317,7 @@ No, we're not. ;
 240
 00:13:33,212 --> 00:13:36,477
 Ted, Ted, Ted. Right here. Yes, we are. ;
-<i>- Nhìn đây. Có, chúng ta sẽ đi.</i>
+<i>- Ted, Ted, Ted. - Nhìn đây. Có, chúng ta sẽ đi.</i>
 
 241
 00:13:36,582 --> 00:13:38,812
@@ -1346,19 +1346,19 @@ and you're not listening to me, ;
 00:13:54,099 --> 00:13:55,430
 - Hey.
 - Hey. ;
-<i>- Hey.</i>
+<i>- Hey. - Hey.</i>
 
 246
 00:13:56,468 --> 00:14:00,370
 I'm engaged. You know, I'm sorry.
 I took my ring off. ;
-<i>Tôi đính hôn rồi. Anh biết đấy, tôi xin lỗi. Tôi vừa tháo chiếc nhẫn ra.</i>
+<i>Tôi đính hôn rồi. Anh biết đấy, tôi xin lỗi.</i>
 
 247
 00:14:00,472 --> 00:14:03,600
 It's very, very sweet of you
 to come over and talk to me, but I just... ;
-<i>Thật tuyệt khi anh đến và nói chuyện với tôi, nhưng tôi vừa...</i>
+<i>Tôi vừa tháo chiếc nhẫn ra. Thật tuyệt khi anh đến và nói chuyện với tôi, nhưng tôi vừa...</i>
 
 248
 00:14:03,709 --> 00:14:05,199
@@ -1384,7 +1384,7 @@ Damn it! ;
 252
 00:14:19,058 --> 00:14:20,685
 <i>Philadelphia, PA,</i> ;
-<i>Vậy cuối cùng thì ta và Barney cũng đến thành phố Philadelphia, PA.</i>
+<i>Philadelphia, bang Pennsylvania,</i>
 
 253
 00:14:20,793 --> 00:14:23,819
@@ -1415,7 +1415,7 @@ Who wants hard lemonade? ;
 258
 00:14:50,689 --> 00:14:51,713
 Philly! ;
-<i>Philly!</i>
+<i>Philly! Shh!</i>
 
 259
 00:14:53,459 --> 00:14:54,687
@@ -1487,7 +1487,7 @@ Well, just tell her I called ;
 271
 00:15:41,440 --> 00:15:45,274
 and tell her that she's awesome. ;
-<i>Và nói rằng cô ấy... Thật sự, thật sự tuyệt vời.</i>
+<i>Và nói rằng cô ấy... tuyệt vời.</i>
 
 272
 00:16:03,796 --> 00:16:07,061
@@ -1547,12 +1547,12 @@ has ever licked the Liberty Bell. ;
 282
 00:16:31,323 --> 00:16:33,257
 If someone were to pull that off, ;
-<i>Nếu ai đó dám làm điều ấy, tôi sẽ nói đó là...</i>
+<i>Nếu có ai làm được chuyện đó,</i>
 
 283
 00:16:33,359 --> 00:16:36,851
 I dare say it would be... What's the word? ;
-<i>là gì nhỉ?</i>
+<i>Nếu ai đó dám làm điều ấy, tôi sẽ nói đó là... là gì nhỉ?</i>
 
 284
 00:16:37,229 --> 00:16:40,665
@@ -1646,7 +1646,7 @@ And Marshall. ;
 300
 00:17:26,912 --> 00:17:28,539
 Lily, all these girls here tonight ;
-<i>Và Marshall.</i>
+<i>Lily, tất cả những cô gái ở đây tối nay</i>
 
 301
 00:17:28,647 --> 00:17:31,241
@@ -1691,7 +1691,7 @@ You wanna mess, pal? ;
 00:17:52,704 --> 00:17:55,298
 That's my fiancée's hot backside
 that you're dabbing! ;
-<i>Muốn kiếm chuyện hả, anh bạn?</i>
+<i>Cậu đang vỗ vào mông của người vợ sắp cưới gợi cảm của tôi đấy.</i>
 
 309
 00:17:55,407 --> 00:17:57,671
@@ -1880,7 +1880,7 @@ Without you, I'm just the dynamic <i>uno,</i> ;
 342
 00:19:52,157 --> 00:19:53,351
 So, fine. ;
-<i>Không có cậu, tớ chỉ... tớ chỉ là Dynamic Uno.</i>
+<i>Được thôi.</i>
 
 343
 00:19:53,458 --> 00:19:57,724
@@ -1906,7 +1906,7 @@ Good, 'cause we're here. ;
 347
 00:20:11,843 --> 00:20:13,811
 <i>but we got out, Dana let us in,</i> ;
-<i>Bố không biết làm cách nào mà Barney đổi hướng chiếc taxi mà anh không hề hay biết. Nhưng bọn ta đi ra.</i>
+<i>nhưng bọn tôi đã xuống xe, Dana cho bọn tôi vào,</i>
 
 348
 00:20:13,912 --> 00:20:16,642
