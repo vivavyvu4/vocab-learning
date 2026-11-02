@@ -38,6 +38,7 @@ body.pseudo-fullscreen-active{overflow:hidden;overscroll-behavior:none}
 video{display:block;width:100%;height:100%;max-height:74vh;object-fit:contain;background:#03060c}
 .placeholder{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:22px;color:var(--muted);pointer-events:none}
 .placeholder strong{display:block;color:var(--text);font-size:18px;margin-bottom:6px}
+.pip-notice{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:20px;color:var(--muted);font-weight:650;background:#03060c}.pip-notice[hidden]{display:none}
 .caption-layer{position:absolute;left:4%;right:4%;bottom:9%;display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center;pointer-events:auto}
 .caption{max-width:100%;width:max-content;padding:4px 13px;border-radius:8px;background:rgba(0,0,0,.78);color:#fff;text-shadow:0 1px 2px #000;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.28;font-weight:650}
 .caption.vi{color:#ffe7a8;font-weight:550}
@@ -122,6 +123,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
         <div class="video-wrap" id="videoWrap">
           <video id="video" controls playsinline preload="metadata"></video>
           <button type="button" class="video-fullscreen" id="fullscreenButton" aria-label="Enter fullscreen" title="Fullscreen">⛶</button>
+          <div class="pip-notice" id="pipNotice" hidden>Video is playing in Picture-in-Picture</div>
           <div class="placeholder" id="placeholder"><div><strong>Load your HIMYM videos</strong>Select one or several video files from your computer.</div></div>
           <div class="caption-layer" id="captionLayer" aria-live="off">
             <div class="caption en" id="captionEn"></div>
@@ -203,6 +205,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
         <div class="grid-two">
           <button id="back5">↶ 5 seconds</button><button id="forward5">5 seconds ↷</button>
         </div>
+        <div class="actions"><button id="pipButton" type="button">▣ Picture-in-Picture</button></div>
+        <div class="muted small" id="pipStatus">Open a floating video window to keep watching while using other apps (Chrome / Edge desktop).</div>
         <div class="control"><label for="playbackRate">Playback speed</label><select id="playbackRate"><option value=".75">0.75×</option><option value=".9">0.9×</option><option value="1" selected>1× Normal</option><option value="1.1">1.1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option></select></div>
         <div class="note">Keyboard: <span class="kbd">Space</span> play / pause · <span class="kbd">←</span> / <span class="kbd">→</span> seek 5 seconds.</div>
       </section>
@@ -629,6 +633,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     $("captionEn").style.fontSize = $("fontSize").value + "px";
     $("captionVi").style.fontSize = Math.max(15, Number($("fontSize").value) - 3) + "px";
     $("captionLayer").style.bottom = $("subtitlePosition").value + "%";
+    syncPictureInPictureCaptions();
   }
 
   function renderPlaylist() {
@@ -869,6 +874,90 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
 
   const fullscreenButton = $("fullscreenButton");
   const videoWrap = $("videoWrap");
+  const pipButton = $("pipButton");
+  const pipNotice = $("pipNotice");
+  let pipWindow = null;
+  let pipOriginalParent = null;
+  let pipOriginalNextSibling = null;
+
+  function syncPictureInPictureCaptions() {
+    if (!pipWindow || pipWindow.closed) return;
+    const doc = pipWindow.document;
+    const en = doc.getElementById("pipCaptionEn");
+    const vi = doc.getElementById("pipCaptionVi");
+    if (!en || !vi) return;
+    en.textContent = $("captionEn").textContent;
+    vi.textContent = $("captionVi").textContent;
+    en.style.display = $("captionEn").style.display;
+    vi.style.display = $("captionVi").style.display;
+    en.style.fontSize = $("captionEn").style.fontSize;
+    vi.style.fontSize = $("captionVi").style.fontSize;
+    doc.getElementById("pipCaptionLayer").style.bottom = $("subtitlePosition").value + "%";
+  }
+
+  function restoreVideoFromPictureInPicture() {
+    if (!pipWindow) return;
+    if (pipOriginalParent) {
+      pipOriginalParent.insertBefore(video, pipOriginalNextSibling);
+    }
+    pipWindow = null;
+    pipOriginalParent = null;
+    pipOriginalNextSibling = null;
+    pipNotice.hidden = true;
+    pipButton.textContent = "▣ Picture-in-Picture";
+    $("pipStatus").textContent = "Picture-in-Picture closed. The video is back in the player.";
+  }
+
+  async function togglePictureInPicture() {
+    if (pipWindow && !pipWindow.closed) {
+      pipWindow.close();
+      restoreVideoFromPictureInPicture();
+      return;
+    }
+    if (!("documentPictureInPicture" in window)) {
+      $("pipStatus").textContent = "This browser does not support Document Picture-in-Picture. Please use the latest Chrome or Edge on desktop.";
+      return;
+    }
+    if (!video.currentSrc) {
+      $("pipStatus").textContent = "Please load a video before opening Picture-in-Picture.";
+      return;
+    }
+
+    try {
+      pipWindow = await window.documentPictureInPicture.requestWindow({ width: 640, height: 390 });
+      const doc = pipWindow.document;
+      doc.documentElement.style.cssText = "margin:0;width:100%;height:100%;background:#000;color:#fff";
+      doc.body.style.cssText = "margin:0;width:100%;height:100%;overflow:hidden;background:#000;font-family:system-ui,-apple-system,Segoe UI,sans-serif";
+      const style = doc.createElement("style");
+      style.textContent = "*,*::before,*::after{box-sizing:border-box}#pipStage{position:relative;width:100%;height:100%;display:grid;place-items:center;background:#000}#pipStage video{display:block;width:100%;height:100%;max-height:none;object-fit:contain;background:#000}#pipCaptionLayer{position:absolute;left:3%;right:3%;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;pointer-events:none}.pip-caption{max-width:100%;width:max-content;padding:3px 9px;border-radius:6px;background:rgba(0,0,0,.78);color:#fff;text-shadow:0 1px 2px #000;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.25;font-weight:650}.pip-caption.vi{color:#ffe7a8;font-weight:550}";
+      doc.head.appendChild(style);
+      const stage = doc.createElement("div");
+      stage.id = "pipStage";
+      const captionLayer = doc.createElement("div");
+      captionLayer.id = "pipCaptionLayer";
+      const en = doc.createElement("div");
+      en.id = "pipCaptionEn";
+      en.className = "pip-caption";
+      const vi = doc.createElement("div");
+      vi.id = "pipCaptionVi";
+      vi.className = "pip-caption vi";
+      captionLayer.append(en, vi);
+      stage.append(video, captionLayer);
+      doc.body.appendChild(stage);
+
+      pipOriginalParent = videoWrap;
+      pipOriginalNextSibling = $("fullscreenButton");
+      pipNotice.hidden = false;
+      pipButton.textContent = "× Close Picture-in-Picture";
+      $("pipStatus").textContent = "Floating player is open. You can switch to other apps; subtitles stay visible.";
+      syncPictureInPictureCaptions();
+      pipWindow.addEventListener("pagehide", restoreVideoFromPictureInPicture, { once: true });
+    } catch (error) {
+      pipWindow = null;
+      $("pipStatus").textContent = "Could not open Picture-in-Picture. Check that you are using Chrome or Edge and allow the popup window.";
+    }
+  }
+  pipButton.addEventListener("click", togglePictureInPicture);
   function isPlayerFullscreen() {
     return videoWrap.classList.contains("pseudo-fullscreen") ||
       document.fullscreenElement === videoWrap ||
@@ -1026,6 +1115,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
   });
 
   window.addEventListener("beforeunload", () => {
+    if (pipWindow && !pipWindow.closed) pipWindow.close();
     for (const url of state.objectUrls) URL.revokeObjectURL(url);
   });
 })();
