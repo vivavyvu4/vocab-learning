@@ -100,300 +100,300 @@ at the end of the news. ;
 00:01:10,403 --> 00:01:14,066
 Old people, babies, monkeys.
 That's not journalism. ;
-<i>Người già, em bé, khỉ.</i>
+<i>Người già, em bé, khỉ. Đó đâu phải báo chí.</i>
 
 19
 00:01:14,174 --> 00:01:16,233
 That's just things in a diaper. ;
-<i>Đó đâu phải báo chí.</i>
+<i>Toàn là mấy thứ đóng bỉm thôi.</i>
 
 20
 00:01:16,709 --> 00:01:20,270
 For your information,
 my boss is about to bump me up ;
-<i>Toàn là mấy thứ đóng bỉm thôi.</i>
+<i>Nói cho anh biết, sếp tôi sắp cho tôi thăng chức</i>
 
 21
 00:01:20,613 --> 00:01:24,743
 - to the City Hall beat.
 - City Hall. Miss Thing! ;
-<i>Nói cho anh biết, sếp tôi sắp cho tôi thăng chức</i>
+<i>— sang mảng tin Tòa thị chính đấy. — Tòa thị chính cơ à? Ghê chưa!</i>
 
 22
 00:01:24,918 --> 00:01:28,445
 So I'm not gonna jeopardize my promotion
 by saying "booger" for 50 bucks. ;
-<i>— sang mảng tin Tòa thị chính đấy. — Tòa thị chính cơ à? Ghê chưa!</i>
+<i>Nên tôi sẽ không đem cơ hội thăng chức ra đánh đổi</i>
 
 23
 00:01:28,555 --> 00:01:29,613
 Of course not. ;
-<i>Nên tôi sẽ không đem cơ hội thăng chức ra đánh đổi</i>
+<i>chỉ để nói từ “cứt mũi” lấy 50 đô đâu.</i>
 
 24
 00:01:30,190 --> 00:01:34,149
 'Cause now you're saying "nipple"
 and it's $100. ;
-<i>chỉ để nói từ “cứt mũi” lấy 50 đô đâu.</i>
+<i>Tất nhiên là không rồi.</i>
 
 25
 00:01:34,294 --> 00:01:36,762
 Step into my web. ;
-<i>Tất nhiên là không rồi.</i>
+<i>Vì giờ cô sẽ nói từ “núm vú”, và giá là 100 đô.</i>
 
 26
 00:01:39,365 --> 00:01:40,491
 Whose bourbon is this? ;
-<i>Vì giờ cô sẽ nói từ “núm vú”, và giá là 100 đô.</i>
+<i>Rơi vào lưới của tôi rồi nhé.</i>
 
 27
 00:01:40,600 --> 00:01:42,431
 I don't know.
 It was here when we sat down. ;
-<i>Rơi vào lưới của tôi rồi nhé.</i>
+<i>Ly bourbon này của ai vậy?</i>
 
 28
 00:01:44,037 --> 00:01:46,767
 The point is, I seem to like bourbon now. ;
-<i>Ly bourbon này của ai vậy?</i>
+<i>Không biết. Nó có sẵn ở đây khi bọn mình ngồi xuống.</i>
 
 29
 00:01:46,873 --> 00:01:48,534
 I could have sworn I hated bourbon. ;
-<i>Không biết. Nó có sẵn ở đây khi bọn mình ngồi xuống.</i>
+<i>Vấn đề là hình như giờ tớ thích bourbon rồi.</i>
 
 30
 00:01:48,641 --> 00:01:50,632
 First the shirt, now bourbon. ;
-<i>Vấn đề là hình như giờ tớ thích bourbon rồi.</i>
+<i>Tớ cứ tưởng mình ghét bourbon cơ.</i>
 
 31
 00:01:50,743 --> 00:01:53,473
 I spent 27 years making up my mind
 about things, right? ;
-<i>Tớ cứ tưởng mình ghét bourbon cơ.</i>
+<i>Đầu tiên là cái áo, giờ đến bourbon.</i>
 
 32
 00:01:53,580 --> 00:01:55,241
 The movie I saw once and hated, ;
-<i>Đầu tiên là cái áo, giờ đến bourbon.</i>
+<i>Tớ đã mất 27 năm để quyết định mình thích hay ghét những thứ gì, đúng không?</i>
 
 33
 00:01:55,348 --> 00:01:58,181
 the city I'll never go back to
 'cause it was raining the day I visited. ;
-<i>Tớ đã mất 27 năm để quyết định mình thích hay ghét những thứ gì, đúng không?</i>
+<i>Như bộ phim tớ từng xem một lần rồi ghét cay ghét đắng,</i>
 
 34
 00:01:58,284 --> 00:02:01,082
 Maybe it's time to start forming
 some second impressions. ;
-<i>Như bộ phim tớ từng xem một lần rồi ghét cay ghét đắng,</i>
+<i>hay thành phố mà tớ thề sẽ không bao giờ quay lại chỉ vì hôm tớ đến trời mưa.</i>
 
 35
 00:02:01,187 --> 00:02:03,587
 You're finally gonna watch <i>Goonies</i> again. ;
-<i>hay thành phố mà tớ thề sẽ không bao giờ quay lại chỉ vì hôm tớ đến trời mưa.</i>
+<i>Có lẽ đã đến lúc tớ nên cho mọi thứ cơ hội thứ hai.</i>
 
 36
 00:02:03,790 --> 00:02:05,621
 "Sloth love Chunk." ;
-<i>Có lẽ đã đến lúc tớ nên cho mọi thứ cơ hội thứ hai.</i>
+<i>Cuối cùng cậu cũng định xem lại phim Goonies à?</i>
 
 37
 00:02:07,026 --> 00:02:09,051
 Not <i>Goonies,</i> Girls. ;
-<i>Cuối cùng cậu cũng định xem lại phim Goonies à?</i>
+<i>“Sloth yêu Chunk.”</i>
 
 38
 00:02:09,162 --> 00:02:10,686
 What if there's someone from my past ;
-<i>“Sloth yêu Chunk.”</i>
+<i>Không phải Goonies. Là con gái cơ.</i>
 
 39
 00:02:10,797 --> 00:02:12,856
 who I thought was wrong for me
 at the time, ;
-<i>Không phải Goonies. Là con gái cơ.</i>
+<i>Nhỡ đâu có một cô gái trong quá khứ mà lúc đó tớ nghĩ là không hợp với mình,</i>
 
 40
 00:02:12,966 --> 00:02:17,062
 when, in fact, she, like this shirt,
 is actually a perfect fit? ;
-<i>Nhỡ đâu có một cô gái trong quá khứ mà lúc đó tớ nghĩ là không hợp với mình,</i>
+<i>nhưng thực ra cô ấy, giống như chiếc áo này, lại vừa khít với tớ thì sao?</i>
 
 41
 00:02:17,170 --> 00:02:20,936
 Hold up. There are only two reasons
 to ever date a girl you've already dated. ;
-<i>nhưng thực ra cô ấy, giống như chiếc áo này, lại vừa khít với tớ thì sao?</i>
+<i>Khoan đã. Chỉ có hai lý do để hẹn hò lại với một cô gái mình từng hẹn hò.</i>
 
 42
 00:02:21,040 --> 00:02:22,701
 Breast implants. ;
-<i>Khoan đã. Chỉ có hai lý do để hẹn hò lại với một cô gái mình từng hẹn hò.</i>
+<i>Cô ấy nâng ngực.</i>
 
 43
 00:02:23,710 --> 00:02:25,268
 This isn't a bad idea. ;
-<i>Cô ấy nâng ngực.</i>
+<i>Ý tưởng này không tệ đâu.</i>
 
 44
 00:02:25,378 --> 00:02:27,972
 Let's think. Ted's greatest hits. ;
-<i>Ý tưởng này không tệ đâu.</i>
+<i>Thử nghĩ xem. Những mối tình nổi bật nhất của Ted.</i>
 
 45
 00:02:28,748 --> 00:02:32,047
 - What about that girl, Steph?
 - Steph. ;
-<i>Thử nghĩ xem. Những mối tình nổi bật nhất của Ted.</i>
+<i>— Còn cô nàng Steph thì sao? — Steph à.</i>
 
 46
 00:02:32,485 --> 00:02:34,316
 Okay, this is difficult to say. ;
-<i>— Còn cô nàng Steph thì sao? — Steph à.</i>
+<i>Được rồi, chuyện này hơi khó nói.</i>
 
 47
 00:02:34,420 --> 00:02:37,321
 Back when I lived in LA,
 I was pretty broke, ;
-<i>Được rồi, chuyện này hơi khó nói.</i>
+<i>Hồi còn sống ở Los Angeles, tớ khá túng tiền,</i>
 
 48
 00:02:37,423 --> 00:02:40,950
 so I spent a month making adult films. ;
-<i>Hồi còn sống ở Los Angeles, tớ khá túng tiền,</i>
+<i>nên tớ đã dành một tháng đóng phim người lớn.</i>
 
 49
 00:02:42,428 --> 00:02:45,761
 Wow! Okay. How many did you make? ;
-<i>nên tớ đã dành một tháng đóng phim người lớn.</i>
+<i>Chà! Được rồi. Cậu đóng bao nhiêu phim?</i>
 
 50
 00:02:45,965 --> 00:02:47,057
 175. ;
-<i>Chà! Được rồi. Cậu đóng bao nhiêu phim?</i>
+<i>175 phim.</i>
 
 51
 00:02:50,136 --> 00:02:54,038
 Say what you will about the porn industry,
 they're hard workers. ;
-<i>175 phim.</i>
+<i>Muốn nói gì thì nói về ngành phim khiêu dâm, họ làm việc chăm chỉ thật.</i>
 
 52
 00:02:54,140 --> 00:02:56,836
 What about that chick, Jackie? ;
-<i>Muốn nói gì thì nói về ngành phim khiêu dâm, họ làm việc chăm chỉ thật.</i>
+<i>Còn cô nàng Jackie thì sao?</i>
 
 53
 00:02:57,510 --> 00:03:00,104
 ...and my bathing suit
 had fallen completely off. ;
-<i>Còn cô nàng Jackie thì sao?</i>
+<i>...và bộ đồ tắm của tôi tuột sạch xuống.</i>
 
 54
 00:03:01,114 --> 00:03:03,878
 I know the feeling. Once, when I was 16, ;
-<i>...và bộ đồ tắm của tôi tuột sạch xuống.</i>
+<i>Tôi hiểu cảm giác đó. Có lần hồi 16 tuổi,</i>
 
 55
 00:03:03,983 --> 00:03:07,043
 I was driving and I hit this hitchhiker. ;
-<i>Tôi hiểu cảm giác đó. Có lần hồi 16 tuổi,</i>
+<i>tôi đang lái xe thì đâm trúng một người đi nhờ xe.</i>
 
 56
 00:03:07,420 --> 00:03:10,116
 Don't know what happened to him.
 Just kept driving. ;
-<i>tôi đang lái xe thì đâm trúng một người đi nhờ xe.</i>
+<i>Chẳng biết chuyện gì xảy ra với anh ta nữa. Tôi cứ lái tiếp thôi.</i>
 
 57
 00:03:13,059 --> 00:03:14,048
 No. ;
-<i>Chẳng biết chuyện gì xảy ra với anh ta nữa. Tôi cứ lái tiếp thôi.</i>
+<i>Không.</i>
 
 58
 00:03:14,627 --> 00:03:16,652
 What about Natalie? ;
-<i>Không.</i>
+<i>Thế còn Natalie?</i>
 
 59
 00:03:17,430 --> 00:03:19,694
 - Natalie!
 - Natalie! ;
-<i>Thế còn Natalie?</i>
+<i>— Natalie! — Natalie!</i>
 
 60
 00:03:19,799 --> 00:03:21,266
 Who's Natalie? ;
-<i>— Natalie! — Natalie!</i>
+<i>Natalie? Cô ấy là ai vậy?</i>
 
 61
 00:03:21,434 --> 00:03:24,767
 <i>Natalie, I had so many</i>
 <i>fond memories of her,</i> ;
-<i>Natalie? Cô ấy là ai vậy?</i>
+<i>Natalie, tớ có biết bao kỷ niệm đẹp về cô ấy.</i>
 
 62
 00:03:25,672 --> 00:03:27,936
 <i>The tea candles on her dresser,</i> ;
-<i>Natalie, tớ có biết bao kỷ niệm đẹp về cô ấy.</i>
+<i>Những cây nến nhỏ trên tủ trang điểm của cô ấy,</i>
 
 63
 00:03:28,074 --> 00:03:30,167
 <i>The sock monkey collection on her bed,</i> ;
-<i>Những cây nến nhỏ trên tủ trang điểm của cô ấy,</i>
+<i>bộ sưu tập khỉ tất trên giường,</i>
 
 64
 00:03:30,376 --> 00:03:33,641
 <i>That one Belle and Sebastian song</i>
 <i>she always listened to,</i> ;
-<i>bộ sưu tập khỉ tất trên giường,</i>
+<i>và bài hát của Belle and Sebastian mà cô ấy lúc nào cũng nghe.</i>
 
 65
 00:03:34,080 --> 00:03:35,741
 <i>Her smile,</i> ;
-<i>và bài hát của Belle and Sebastian mà cô ấy lúc nào cũng nghe.</i>
+<i>Nụ cười của cô ấy.</i>
 
 66
 00:03:36,616 --> 00:03:39,084
 Man, I haven't seen her in,
 like, three years. ;
-<i>Nụ cười của cô ấy.</i>
+<i>Trời, tớ chưa gặp cô ấy khoảng ba năm rồi.</i>
 
 67
 00:03:39,185 --> 00:03:40,345
 Well, why did you guys break up? ;
-<i>Trời, tớ chưa gặp cô ấy khoảng ba năm rồi.</i>
+<i>Thế sao hai người chia tay?</i>
 
 68
 00:03:40,453 --> 00:03:42,284
 I just wasn't looking
 for a big commitment at the time. ;
-<i>Thế sao hai người chia tay?</i>
+<i>Lúc đó tớ chưa muốn cam kết một mối quan hệ nghiêm túc.</i>
 
 69
 00:03:42,388 --> 00:03:44,652
 Course, now a big commitment
 doesn't seem so bad. ;
-<i>Lúc đó tớ chưa muốn cam kết một mối quan hệ nghiêm túc.</i>
+<i>Còn bây giờ, chuyện cam kết lâu dài nghe cũng không tệ lắm.</i>
 
 70
 00:03:44,757 --> 00:03:46,952
 Maybe I should call her.
 What do you guys think? ;
-<i>Còn bây giờ, chuyện cam kết lâu dài nghe cũng không tệ lắm.</i>
+<i>Có lẽ tớ nên gọi cho cô ấy. Mọi người thấy sao?</i>
 
 71
 00:03:47,093 --> 00:03:49,618
 You dumped a porn star? ;
-<i>Có lẽ tớ nên gọi cho cô ấy. Mọi người thấy sao?</i>
+<i>Cậu đá một ngôi sao phim người lớn á?</i>
 
 72
 00:03:50,430 --> 00:03:52,125
 Friendship over. ;
-<i>Cậu đá một ngôi sao phim người lớn á?</i>
+<i>Tình bạn chấm dứt!</i>
 
 73
 00:03:52,398 --> 00:03:54,628
@@ -403,90 +403,90 @@ Friendship over! ;
 74
 00:03:57,470 --> 00:04:00,132
 Come in. All right, get back to me then. ;
-<i>Tình bạn chấm dứt!</i>
+<i>Mời vào. Được rồi, vậy liên lạc lại với tôi nhé.</i>
 
 75
 00:04:00,607 --> 00:04:03,235
 - You wanted to see me, Mr. Adams?
 - Yes, I did. ;
-<i>Mời vào. Được rồi, vậy liên lạc lại với tôi nhé.</i>
+<i>— Ông muốn gặp tôi à, ông Adams? — Đúng vậy.</i>
 
 76
 00:04:03,343 --> 00:04:07,040
 I need you to cover a story.
 It's down at City Hall. ;
-<i>— Ông muốn gặp tôi à, ông Adams? — Đúng vậy.</i>
+<i>Tôi cần cô đưa tin một vụ. Ở dưới Tòa thị chính.</i>
 
 77
 00:04:07,280 --> 00:04:10,306
 City Hall? Oh, my God. ;
-<i>Tôi cần cô đưa tin một vụ. Ở dưới Tòa thị chính.</i>
+<i>Tòa thị chính á? Ôi trời ơi!</i>
 
 78
 00:04:12,018 --> 00:04:14,578
 So next time you're passing City Hall, ;
-<i>Tòa thị chính á? Ôi trời ơi!</i>
+<i>Lần tới khi đi ngang qua Tòa thị chính,</i>
 
 79
 00:04:14,687 --> 00:04:17,952
 make sure and stop by
 New York's oldest hot dog cart. ;
-<i>Lần tới khi đi ngang qua Tòa thị chính,</i>
+<i>nhớ ghé xe bán hot dog lâu đời nhất New York nhé.</i>
 
 80
 00:04:18,057 --> 00:04:21,026
 Today, a delicious hot dog
 will cost you $2.50, ;
-<i>nhớ ghé xe bán hot dog lâu đời nhất New York nhé.</i>
+<i>Hôm nay, một chiếc hot dog thơm ngon có giá 2 đô 50,</i>
 
 81
 00:04:21,127 --> 00:04:24,585
 but back when the stand
 first opened in 1955, ;
-<i>Hôm nay, một chiếc hot dog thơm ngon có giá 2 đô 50,</i>
+<i>nhưng khi xe hàng này mới mở vào năm 1955,</i>
 
 82
 00:04:24,697 --> 00:04:26,995
 you could get one for only a nipple. ;
-<i>nhưng khi xe hàng này mới mở vào năm 1955,</i>
+<i>bạn chỉ cần trả một cái núm vú là mua được một chiếc.</i>
 
 83
 00:04:27,100 --> 00:04:30,934
 Reporting live, Robin Scherbatsky,
 Metro News 1. ;
-<i>bạn chỉ cần trả một cái núm vú là mua được một chiếc.</i>
+<i>Tôi là Robin Scherbatsky, đưa tin trực tiếp cho Metro News 1.</i>
 
 84
 00:04:31,204 --> 00:04:34,173
 I said "nipple" on the news.
 That was so unprofessional. ;
-<i>Tôi là Robin Scherbatsky, đưa tin trực tiếp cho Metro News 1.</i>
+<i>Tôi vừa nói từ “núm vú” trên bản tin. Thật thiếu chuyên nghiệp quá.</i>
 
 85
 00:04:34,274 --> 00:04:36,242
 I said "nipple" on the news. ;
-<i>Tôi vừa nói từ “núm vú” trên bản tin. Thật thiếu chuyên nghiệp quá.</i>
+<i>Tôi vừa nói từ “núm vú” trên bản tin đấy.</i>
 
 86
 00:04:36,342 --> 00:04:38,367
 At least it's better than "booger." ;
-<i>Tôi vừa nói từ “núm vú” trên bản tin đấy.</i>
+<i>Ít ra còn đỡ hơn “cứt mũi”.</i>
 
 87
 00:04:39,279 --> 00:04:40,541
 Booger. ;
-<i>Ít ra còn đỡ hơn “cứt mũi”.</i>
+<i>Cứt mũi.</i>
 
 88
 00:04:42,649 --> 00:04:43,946
 There she is. ;
-<i>Cứt mũi.</i>
+<i>Cô ấy kìa.</i>
 
 89
 00:04:44,717 --> 00:04:47,652
 Hey, is it cold in here?
 'Cause I can kind of see Robin's nickels. ;
-<i>Cô ấy kìa.</i>
+<i>Này, ở đây lạnh à? Vì hình như tôi thấy hai cái núm vú của Robin lộ ra rồi thì phải.</i>
 
 90
 00:04:50,089 --> 00:04:52,250
