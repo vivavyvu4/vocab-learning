@@ -924,7 +924,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-
     }
 
     try {
-      pipWindow = await window.documentPictureInPicture.requestWindow({ width: 640, height: 390 });
+      pipWindow = await window.documentPictureInPicture.requestWindow({ width: 420, height: 260 });
       const doc = pipWindow.document;
       doc.documentElement.style.cssText = "margin:0;width:100%;height:100%;background:#000;color:#fff";
       doc.body.style.cssText = "margin:0;width:100%;height:100%;overflow:hidden;background:#000;font-family:system-ui,-apple-system,Segoe UI,sans-serif";
