@@ -491,35 +491,35 @@ Hey, is it cold in here?
 90
 00:04:50,089 --> 00:04:52,250
 Now, for your next challenge. ;
-<i>Này, ở đây lạnh à? Vì tôi hình như thấy hai “đồng xu” của Robin rồi.</i>
+<i>Nào, đến thử thách tiếp theo đây.</i>
 
 91
 00:04:52,358 --> 00:04:55,589
 There is not going to be another challenge.
 I don't care how much you offer me. ;
-<i>Giờ đến thử thách tiếp theo.</i>
+<i>Sẽ không có thử thách nào nữa đâu. Anh có trả bao nhiêu cũng vậy thôi.</i>
 
 92
 00:04:55,695 --> 00:04:58,095
 Oh, search your soul, Robin. ;
-<i>Sẽ không có thử thách tiếp theo nào nữa đâu. Anh có trả bao nhiêu cũng vậy thôi.</i>
+<i>Ôi Robin, hãy lắng nghe tiếng lòng mình đi.</i>
 
 93
 00:04:58,231 --> 00:05:00,096
 You and I both know
 this wasn't about the money. ;
-<i>Ôi Robin, hãy lắng nghe tiếng lòng mình đi.</i>
+<i>Cả tôi và cô đều biết chuyện này đâu phải vì tiền.</i>
 
 94
 00:05:00,199 --> 00:05:02,793
 Sure, Metro News 1 pays you jack. ;
-<i>Cả tôi và cô đều biết chuyện này đâu phải vì tiền.</i>
+<i>Đúng là Metro News 1 trả lương bèo bọt thật.</i>
 
 95
 00:05:02,902 --> 00:05:07,703
 And, hey, a little green salad on the side
 is good for you, me, and Mr. McGee. ;
-<i>Đúng là Metro News 1 trả lương bèo bọt thật.</i>
+<i>Và này, thêm chút rau xanh ăn kèm cũng tốt cho cô, cho tôi, và cả ông McGee nữa.</i>
 
 96
 00:05:08,007 --> 00:05:09,736
