@@ -1986,19 +1986,19 @@ I have my Krav Maga class in half an hour. ;
 00:19:46,785 --> 00:19:50,186
 <i>It's a form of guerrilla street-fighting</i>
 <i>developed by the Israeli army,</i> ;
-<i>mà là một môn võ tự vệ đường phố</i>
+<i>mà là một môn võ tự vệ đường phố do quân đội Israel phát triển.</i>
 
 361
 00:19:55,093 --> 00:19:55,227
 This is compliments
 of those two gentlemen at the bar. ;
-<i>do quân đội Israel phát triển.</i>
+<i>Đồ uống này là lời mời của hai quý ông ở quầy bar kia.</i>
 
 362
 00:19:55,227 --> 00:19:58,492
 This is compliments
 of those two gentlemen at the bar. ;
-<i>Đồ uống này là lời mời của hai quý ông ở quầy bar.</i>
+<i>Đồ uống này là lời mời của hai quý ông ở quầy bar kia.</i>
 
 363
 00:19:59,064 --> 00:20:03,023
